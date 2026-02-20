@@ -101,5 +101,1477 @@
     ],
     "answer": "B",
     "explanation": "Dr. Voss mówi: 'Restoration is a stopgap, not a solution' i ostrzega, że bez działań klimatycznych rafy będą ponownie blaknąć. Odpowiedź B."
+  },
+  {
+    "id": "r001",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Przeczytaj tekst i zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "The concept of 'slow travel' has emerged as a counter-movement to mass tourism. Rather than rushing through a checklist of famous landmarks, slow travellers spend extended periods in fewer locations, immersing themselves in local culture, cuisine and daily life. Advocates argue that this approach is not only more fulfilling for the traveller but also less damaging to fragile ecosystems and local communities. Critics, however, suggest it remains a luxury available only to those with the financial means and time flexibility to stay abroad for weeks or months at a time.",
+    "question": "What criticism of slow travel is mentioned in the text?",
+    "options": [
+      "A. It causes more environmental damage than conventional tourism.",
+      "B. It is inaccessible to most people due to time and financial constraints.",
+      "C. It fails to expose travellers to cultural experiences.",
+      "D. It is too focused on visiting famous landmarks."
+    ],
+    "answer": "B",
+    "explanation": "Tekst stwierdza, że slow travel 'remains a luxury available only to those with the financial means and time flexibility' — czyli jest dostępny tylko dla zamożnych z elastycznym grafikiem."
+  },
+  {
+    "id": "r002",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2023,
+    "instruction": "Zdecyduj: TRUE (T), FALSE (F), lub NOT GIVEN (NG) na podstawie tekstu.",
+    "text": "Bioluminescence — the ability of living organisms to produce and emit light — has fascinated scientists for centuries. Found in deep-sea creatures, fireflies, and certain fungi, this phenomenon results from a chemical reaction involving a compound called luciferin. While bioluminescence has been studied extensively in marine environments, its applications in medicine and technology are only beginning to be explored. Researchers have recently used bioluminescent markers to track cancer cells in laboratory settings, though clinical applications remain years away.",
+    "question": "Bioluminescence has already been successfully used to treat cancer patients in hospitals.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Tekst mówi, że 'clinical applications remain years away' — stosowanie kliniczne jest dopiero w przyszłości, więc twierdzenie jest fałszywe."
+  },
+  {
+    "id": "r003",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Przeczytaj tekst i zaznacz właściwą odpowiedź.",
+    "text": "The 'paradox of choice', a concept popularised by psychologist Barry Schwartz, suggests that an abundance of options can lead to anxiety, indecision, and ultimately dissatisfaction. In consumer contexts, shoppers presented with dozens of varieties of a single product often leave without buying anything, while those given three or four options tend to make a purchase and report higher satisfaction. This has practical implications for everything from product design to public policy — simplifying choices may, counterintuitively, lead to better outcomes for individuals.",
+    "question": "According to the text, what happens when consumers are given too many choices?",
+    "options": [
+      "A. They become more decisive and choose quickly.",
+      "B. They experience anxiety and may not purchase anything.",
+      "C. They always select the most expensive option available.",
+      "D. They report the highest levels of satisfaction."
+    ],
+    "answer": "B",
+    "explanation": "Tekst jasno mówi: zbyt wiele opcji prowadzi do 'anxiety, indecision' i może skutkować tym, że klienci 'leave without buying anything'."
+  },
+  {
+    "id": "r004",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Przeczytaj tekst i zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "Urban vertical farming — growing crops in stacked layers inside climate-controlled buildings — has been heralded as a solution to food security challenges. Proponents point to its year-round productivity, minimal water use (up to 95% less than conventional farming), and independence from weather conditions. However, the energy costs remain prohibitive. Studies suggest that lettuce grown in vertical farms requires approximately 250 times more electricity per kilogram than field-grown lettuce. Until renewable energy becomes sufficiently cheap and abundant, vertical farming's environmental credentials are, at best, mixed.",
+    "question": "What is the main concern raised about vertical farming in the text?",
+    "options": [
+      "A. It uses significantly more water than conventional farming.",
+      "B. The crops it produces are of lower nutritional quality.",
+      "C. Its high energy consumption undermines its environmental benefits.",
+      "D. It cannot produce crops year-round."
+    ],
+    "answer": "C",
+    "explanation": "Tekst wskazuje na 'energy costs remain prohibitive' i stwierdza, że 'environmental credentials are mixed' — główny problem to zużycie energii."
+  },
+  {
+    "id": "r005",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2022,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "The Great Barrier Reef, stretching over 2,300 kilometres along the northeast coast of Australia, is the world's largest coral reef system and can be seen from outer space. Since the 1980s, it has lost approximately half of its coral due to climate change-induced bleaching events, crown-of-thorns starfish outbreaks, and water quality degradation from agricultural runoff. The Australian government has committed billions of dollars to reef protection, though marine biologists remain divided on whether current interventions are sufficient to prevent further irreversible damage.",
+    "question": "Marine biologists unanimously agree that the Australian government's investment is sufficient to save the reef.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Tekst mówi, że biolodzy 'remain divided' — są podzieleni, więc nie ma jednomyślności. Odpowiedź: FALSE."
+  },
+  {
+    "id": "r006",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Przeczytaj tekst i zaznacz właściwą odpowiedź.",
+    "text": "Imposter syndrome — the persistent feeling that one's achievements are undeserved and that others will soon 'find out' — was first described by psychologists Pauline Clance and Suzanne Imes in 1978. Originally studied in high-achieving women, subsequent research has shown it affects people of all genders, professions, and backgrounds. Studies suggest up to 70% of people experience it at some point. Rather than reflecting genuine incompetence, imposter syndrome is paradoxically most common among highly capable individuals who are acutely aware of the complexity of their field.",
+    "question": "What does the research suggest about those most likely to experience imposter syndrome?",
+    "options": [
+      "A. It predominantly affects people who genuinely lack the required skills.",
+      "B. It is most common among people who struggle to understand their field.",
+      "C. It is most frequently experienced by highly competent individuals.",
+      "D. It exclusively affects women in high-achieving professions."
+    ],
+    "answer": "C",
+    "explanation": "Tekst stwierdza: 'most common among highly capable individuals who are acutely aware of the complexity of their field'."
+  },
+  {
+    "id": "r007",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2024,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "Night markets have long been a cornerstone of social and culinary life across Southeast Asia. In cities like Taipei, Bangkok, and Kuala Lumpur, they serve not only as places to eat, but as community hubs where generations gather. Vendors often inherit their stalls from parents or grandparents, preserving recipes that date back decades. The recent global interest in street food — fuelled partly by television programmes and food tourism — has brought both economic opportunity and the risk of commodification, as markets adapt to cater to tourist expectations rather than local tastes.",
+    "question": "Television programmes about food have had a negative impact on all night markets in Southeast Asia.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Tekst mówi o 'economic opportunity AND risk' — czyli skutki są mieszane, nie jednoznacznie negatywne. FALSE."
+  },
+  {
+    "id": "r008",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "The term 'digital nomad' describes individuals who use technology to work remotely while travelling the world. What began as a niche lifestyle in the early 2010s exploded during the COVID-19 pandemic, when millions of workers suddenly found themselves untethered from fixed office locations. Several countries — including Portugal, Estonia, and Barbados — have introduced dedicated digital nomad visas to attract this demographic, recognising the economic potential of workers spending their foreign income locally. Critics, however, raise concerns about the impact on housing affordability in popular destinations, as increased demand from higher-income nomads can price out local residents.",
+    "question": "Why have some countries introduced digital nomad visas?",
+    "options": [
+      "A. To prevent digital nomads from working illegally within their borders.",
+      "B. To attract remote workers whose spending can benefit the local economy.",
+      "C. To encourage their own citizens to work abroad.",
+      "D. To reduce housing costs in their major cities."
+    ],
+    "answer": "B",
+    "explanation": "Tekst mówi: kraje 'recognising the economic potential of workers spending their foreign income locally'."
+  },
+  {
+    "id": "g001",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie używając słowa kluczowego (2–5 wyrazów, nie zmieniaj formy słowa).",
+    "question": "It was so cold that we couldn't go outside. (TOO)\nIt was _______ go outside.",
+    "answer": "too cold to",
+    "explanation": "Transformacja 'so...that we couldn't' → 'too...to': It was too cold to go outside."
+  },
+  {
+    "id": "g002",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "The last time I saw her was three years ago. (SEEN)\nI _______ three years.",
+    "answer": "haven't seen her for",
+    "explanation": "Czas present perfect z 'for' opisuje okres, przez który coś nie miało miejsca: I haven't seen her for three years."
+  },
+  {
+    "id": "g003",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "Someone broke into the office last night. (BROKEN)\nThe office _______ last night.",
+    "answer": "was broken into",
+    "explanation": "Strona bierna czasownika frazowego 'break into': The office was broken into."
+  },
+  {
+    "id": "g004",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "I'm sure it was Tom who sent that email. (MUST)\nTom _______ that email.",
+    "answer": "must have sent",
+    "explanation": "Dedukcja o przeszłości: must have + past participle: Tom must have sent that email."
+  },
+  {
+    "id": "g005",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "He started working here five years ago. (FOR)\nHe _______ five years.",
+    "answer": "has been working here for",
+    "explanation": "Present perfect continuous z 'for': He has been working here for five years."
+  },
+  {
+    "id": "g006",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "\"Don't touch anything in the lab,\" the professor told us. (WARNED)\nThe professor _______ anything in the lab.",
+    "answer": "warned us not to touch",
+    "explanation": "Mowa zależna z 'warn sb not to do sth': warned us not to touch."
+  },
+  {
+    "id": "g007",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "It wasn't necessary for her to rewrite the report. (NEED)\nShe _______ the report.",
+    "answer": "needn't have rewritten",
+    "explanation": "'Needn't have done' = nie musiała tego robić (ale zrobiła). Wyraża zbędne działanie w przeszłości."
+  },
+  {
+    "id": "g008",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "Despite being tired, she finished the marathon. (ALTHOUGH)\nShe finished the marathon _______ tired.",
+    "answer": "although she was",
+    "explanation": "'Despite + gerund' → 'although + clause': although she was tired."
+  },
+  {
+    "id": "g009",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij luki właściwą formą gramatyczną słowa w nawiasie.",
+    "text": "If only I ___1___ (listen) to my parents' advice. By now I ___2___ (finish) university and ___3___ (start) a career. It's high time I ___4___ (take) things more seriously.",
+    "blanks": [
+      { "num": 1, "hint": "żal za przeszłością", "answer": "had listened" },
+      {
+        "num": 2,
+        "hint": "wynik hipotetyczny",
+        "answer": "would have finished"
+      },
+      { "num": 3, "hint": "wynik hipotetyczny", "answer": "started" },
+      { "num": 4, "hint": "it's high time + past", "answer": "took" }
+    ],
+    "explanation": "If only + past perfect (żal). Would have finished (3rd conditional). It's high time + past simple: took."
+  },
+  {
+    "id": "g010",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "___1___ had she left the building when the fire alarm went off. Under no circumstances ___2___ she have known about the evacuation plan. It was as ___3___ the whole event had been choreographed.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "inwersja z barely/hardly/scarcely",
+        "answer": "Hardly"
+      },
+      {
+        "num": 2,
+        "hint": "inwersja pod warunkiem negatywnym",
+        "answer": "could"
+      },
+      { "num": 3, "hint": "porównanie hipotetyczne", "answer": "if" }
+    ],
+    "explanation": "Inversja: Hardly had... / Under no circumstances could... / as if + past perfect."
+  },
+  {
+    "id": "g011",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "People believe that he committed the crime alone. (BELIEVED)\nHe _______ the crime alone.",
+    "answer": "is believed to have committed",
+    "explanation": "Pasywna konstrukcja reportingowa: He is believed to have committed — strona bierna z bezokolicznikiem perfect."
+  },
+  {
+    "id": "g012",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "You really should stop smoking immediately. (GAVE)\nIt's high time you _______ smoking.",
+    "answer": "gave up",
+    "explanation": "'Give up' = rzucić. It's high time + past simple: It's high time you gave up smoking."
+  },
+  {
+    "id": "g013",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "I'm sorry I didn't call you earlier. (WISH)\nI _______ you earlier.",
+    "answer": "wish I had called",
+    "explanation": "Żal za przeszłością: I wish + past perfect: I wish I had called you earlier."
+  },
+  {
+    "id": "g014",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Wpisz właściwą formę czasownika w nawiasie.",
+    "text": "The new legislation ___1___ (propose) by the minister last Monday. It ___2___ (currently / debate) in parliament and ___3___ (expect) to pass by the end of the month.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "strona bierna, czas przeszły",
+        "answer": "was proposed"
+      },
+      {
+        "num": 2,
+        "hint": "strona bierna, czas teraźniejszy ciągły",
+        "answer": "is currently being debated"
+      },
+      {
+        "num": 3,
+        "hint": "strona bierna, teraźniejszy",
+        "answer": "is expected"
+      }
+    ],
+    "explanation": "Was proposed (past passive), is currently being debated (present continuous passive), is expected (present passive)."
+  },
+  {
+    "id": "g015",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "She was so talented that everybody admired her. (SUCH)\nShe was _______ that everybody admired her.",
+    "answer": "such a talented person",
+    "explanation": "Transformacja so + adjective → such a + adjective + noun: such a talented person."
+  },
+  {
+    "id": "uoe001",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij każdą lukę jednym słowem.",
+    "text": "Climate change is no longer a distant threat — it is something we are already living ___1___. Scientists warn that ___2___ we act immediately, the consequences will be irreversible. ___3___ all the warnings, governments continue to delay meaningful action, which raises the question of ___4___ anyone is truly in charge.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "preposition after 'live through'",
+        "answer": "through"
+      },
+      { "num": 2, "hint": "spójnik warunkowy", "answer": "unless" },
+      { "num": 3, "hint": "przyimek 'pomimo'", "answer": "Despite" },
+      { "num": 4, "hint": "zaimek pytający", "answer": "whether" }
+    ],
+    "explanation": "live through (przeżywać), unless (chyba że), despite (pomimo), whether (czy — po raise the question)."
+  },
+  {
+    "id": "uoe002",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Wpisz jedno słowo pasujące do wszystkich trzech zdań.",
+    "text": "1. She decided to _____ a stand against the unfair policy.\n2. He couldn't _____ the pressure any longer and resigned.\n3. How long does it _____ to fly from Warsaw to London?",
+    "blanks": [
+      { "num": 1, "hint": "jedno słowo do wszystkich zdań", "answer": "take" }
+    ],
+    "explanation": "TAKE: take a stand (zająć stanowisko), take the pressure (znosić presję), take time (zajmować czas)."
+  },
+  {
+    "id": "uoe003",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Wpisz jedno słowo pasujące do wszystkich trzech zdań.",
+    "text": "1. The company is trying to _____ a good impression on potential investors.\n2. She couldn't _____ up her mind about which university to choose.\n3. The storm is expected to _____ landfall on Friday evening.",
+    "blanks": [
+      { "num": 1, "hint": "jedno słowo do wszystkich zdań", "answer": "make" }
+    ],
+    "explanation": "MAKE: make an impression, make up one's mind (zdecydować się), make landfall (dotrzeć do lądu — o burzy)."
+  },
+  {
+    "id": "uoe004",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów), nie zmieniaj formy słowa.",
+    "question": "He finds it difficult to concentrate in noisy environments. (DIFFICULTY)\nHe _______ in noisy environments.",
+    "answer": "has difficulty concentrating",
+    "explanation": "'Have difficulty doing sth' = mieć trudności z czymś: He has difficulty concentrating."
+  },
+  {
+    "id": "uoe005",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "It's possible that the flight was delayed due to the storm. (MAY)\nThe flight _______ due to the storm.",
+    "answer": "may have been delayed",
+    "explanation": "Możliwość dotycząca przeszłości: may have been delayed (strona bierna + modal perfect)."
+  },
+  {
+    "id": "uoe006",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "The exhibition ___1___ free of charge, so there's no reason not to go. It ___2___ place at the National Museum ___3___ Friday until Sunday. Don't miss it — ___4___ the chance to see these rare artefacts passes.",
+    "blanks": [
+      { "num": 1, "hint": "strona bierna 'be admitted'", "answer": "is" },
+      { "num": 2, "hint": "takes/took", "answer": "takes" },
+      { "num": 3, "hint": "przyimek daty", "answer": "from" },
+      { "num": 4, "hint": "spójnik czasowy", "answer": "once" }
+    ],
+    "explanation": "is (free of charge), takes place, from Friday, once the chance passes."
+  },
+  {
+    "id": "uoe007",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "I would prefer you not to mention this to anyone. (RATHER)\nI _______ this to anyone.",
+    "answer": "would rather you didn't mention",
+    "explanation": "'Would rather + subject + past simple' (nie dziel)= woleć żeby ktoś czegoś nie robił."
+  },
+  {
+    "id": "uoe008",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Wpisz jedno słowo pasujące do wszystkich zdań.",
+    "text": "1. The new policy came _____ effect in January.\n2. She fell _____ love with the city immediately.\n3. He managed to get _____ touch with the director.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "przyimek we wszystkich 3 zdaniach",
+        "answer": "into"
+      }
+    ],
+    "explanation": "INTO: come into effect (wejść w życie), fall into love→ fall in love, get into touch → get in touch. Poprawne: into."
+  },
+  {
+    "id": "v001",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Utwórz właściwy wyraz pochodny od słowa w nawiasie.",
+    "text": "The prime minister gave a surprisingly ___1___ (candid) speech about the country's economic ___2___ (difficult). His ___3___ (acknowledge) of past mistakes was widely praised, though some critics questioned his ___4___ (sincere).",
+    "blanks": [
+      { "num": 1, "hint": "przysłówek", "answer": "candidly" },
+      {
+        "num": 2,
+        "hint": "liczba mnoga rzeczownika",
+        "answer": "difficulties"
+      },
+      {
+        "num": 3,
+        "hint": "rzeczownik od acknowledge",
+        "answer": "acknowledgement"
+      },
+      { "num": 4, "hint": "rzeczownik od sincere", "answer": "sincerity" }
+    ],
+    "explanation": "candid→candidly (adv), difficulty→difficulties (pl noun), acknowledge→acknowledgement, sincere→sincerity."
+  },
+  {
+    "id": "v002",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The documentary explored the ___1___ (environment) consequences of fast fashion. The industry's ___2___ (rely) on synthetic fibres has proved ___3___ (catastrophe) for ecosystems. Experts call for greater ___4___ (transparent) in supply chains.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "environmental" },
+      { "num": 2, "hint": "rzeczownik", "answer": "reliance" },
+      { "num": 3, "hint": "przymiotnik", "answer": "catastrophic" },
+      { "num": 4, "hint": "rzeczownik", "answer": "transparency" }
+    ],
+    "explanation": "environmental (adj), reliance (noun), catastrophic (adj), transparency (noun)."
+  },
+  {
+    "id": "v003",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The scientist's groundbreaking research _______ a new era in genetic medicine.",
+    "options": [
+      "A. ushered in",
+      "B. pulled off",
+      "C. looked into",
+      "D. set back"
+    ],
+    "answer": "A",
+    "explanation": "'Usher in' = zapoczątkować, inaugurować. To jest właściwe wyrażenie opisujące rozpoczęcie nowej ery."
+  },
+  {
+    "id": "v004",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "After the scandal, the politician tried to _______ the blame by claiming he had acted on advice from his team.",
+    "options": ["A. deflect", "B. attract", "C. reinforce", "D. accumulate"],
+    "answer": "A",
+    "explanation": "'Deflect blame' = odwracać winę, zrzucać odpowiedzialność. Powszechna kolokacja."
+  },
+  {
+    "id": "v005",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The study revealed an ___1___ (alarm) rise in antibiotic ___2___ (resistant) among common bacteria. The ___3___ (find) suggest that current treatments may soon become ___4___ (effect) against certain infections.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "alarming" },
+      { "num": 2, "hint": "rzeczownik", "answer": "resistance" },
+      { "num": 3, "hint": "liczba mnoga rzeczownika", "answer": "findings" },
+      { "num": 4, "hint": "przymiotnik z prefiksem", "answer": "ineffective" }
+    ],
+    "explanation": "alarming (adj), resistance (noun), findings (noun pl), ineffective (prefix in- = nie-)."
+  },
+  {
+    "id": "v006",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The film received _______ reviews — most critics called it a masterpiece of contemporary cinema.",
+    "options": ["A. scathing", "B. lukewarm", "C. glowing", "D. mixed"],
+    "answer": "C",
+    "explanation": "'Glowing reviews' = entuzjastyczne recenzje. 'Scathing' = druzgocące, 'lukewarm' = letnie/chłodne, 'mixed' = mieszane."
+  },
+  {
+    "id": "v007",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The ___1___ (govern) of the region announced a series of ___2___ (controversies) reforms. Public ___3___ (react) was overwhelmingly ___4___ (hostile), with thousands taking to the streets.",
+    "blanks": [
+      { "num": 1, "hint": "rzeczownik – tytuł", "answer": "governor" },
+      { "num": 2, "hint": "przymiotnik", "answer": "controversial" },
+      { "num": 3, "hint": "rzeczownik", "answer": "reaction" },
+      { "num": 4, "hint": "przysłówek", "answer": "hostile" }
+    ],
+    "explanation": "governor (noun), controversial (adj), reaction (noun), hostile — tu jako przymiotnik po 'overwhelmingly'."
+  },
+  {
+    "id": "v008",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The company has decided to _______ its operations to a country with lower corporate tax rates.",
+    "options": ["A. relocate", "B. dismiss", "C. withdraw", "D. absorb"],
+    "answer": "A",
+    "explanation": "'Relocate operations' = przenieść działalność. Prawidłowa kolokacja biznesowa."
+  },
+  {
+    "id": "v009",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The ___1___ (innovate) design of the new smartphone was praised for its ___2___ (function) and sleek appearance. However, its high price raised questions about ___3___ (afford) for the average consumer, and some critics argued the improvements were largely ___4___ (cosmetic).",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "innovative" },
+      { "num": 2, "hint": "rzeczownik", "answer": "functionality" },
+      { "num": 3, "hint": "rzeczownik", "answer": "affordability" },
+      { "num": 4, "hint": "przymiotnik — surface level", "answer": "cosmetic" }
+    ],
+    "explanation": "innovative (adj), functionality (noun), affordability (noun), cosmetic (adj — tutaj bez zmiany)."
+  },
+  {
+    "id": "v010",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "After years of conflict, the two countries finally reached a _______ agreement to end hostilities.",
+    "options": ["A. bilateral", "B. unilateral", "C. peripheral", "D. trivial"],
+    "answer": "A",
+    "explanation": "'Bilateral' = dwustronny (między dwoma stronami). 'Unilateral' = jednostronny."
+  },
+  {
+    "id": "v011",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The journalist's article _______ widespread debate about privacy in the digital age.",
+    "options": ["A. suppressed", "B. sparked", "C. hindered", "D. resolved"],
+    "answer": "B",
+    "explanation": "'Spark debate' = wywołać debatę. Powszechna kolokacja: spark controversy/debate/interest."
+  },
+  {
+    "id": "v012",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "Despite ___1___ (overwhelm) evidence of climate change, some politicians remain ___2___ (convince) that action is necessary. This ___3___ (willing) to act has drawn sharp ___4___ (criticise) from environmental groups worldwide.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "przymiotnik od overwhelm",
+        "answer": "overwhelming"
+      },
+      {
+        "num": 2,
+        "hint": "przymiotnik z prefiksem — nieprzekonany",
+        "answer": "unconvinced"
+      },
+      {
+        "num": 3,
+        "hint": "rzeczownik z prefiksem — niechęć",
+        "answer": "unwillingness"
+      },
+      { "num": 4, "hint": "rzeczownik", "answer": "criticism" }
+    ],
+    "explanation": "overwhelming (adj), unconvinced (un- prefix), unwillingness (un- prefix), criticism (noun)."
+  },
+  {
+    "id": "l001",
+    "category": "listening_text",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Przeczytaj transkrypt nagrania i zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "HOST: Welcome back. Today we're joined by Professor Angela Reed, an expert in behavioural economics. Professor Reed, why do people consistently make poor financial decisions even when they know better?\nPROF. REED: That's the central puzzle of our field. The traditional economic model assumes that people are rational actors who weigh up costs and benefits and make optimal choices. But decades of research shows this simply isn't true. We are heavily influenced by cognitive biases — mental shortcuts that served us well on the African savannah but trip us up in modern financial markets. The most pervasive is present bias: we massively overvalue immediate rewards compared to future ones. That's why someone knows they should save for retirement but spends the money on an impulse purchase instead.\nHOST: Is there a way to counteract these biases?\nPROF. REED: Absolutely. The most effective intervention is what we call 'choice architecture' — designing the environment so that the default option is the beneficial one. For example, automatically enrolling employees in pension schemes dramatically increases participation, even though opting out is equally simple. The key insight is that people don't always choose what they prefer — they often choose what's easiest.",
+    "question": "According to Professor Reed, what is 'present bias'?",
+    "options": [
+      "A. The tendency to make rational decisions based on future outcomes.",
+      "B. The preference for immediate rewards over future benefits.",
+      "C. The inability to save money due to low income.",
+      "D. A cognitive bias that helps people navigate financial markets."
+    ],
+    "answer": "B",
+    "explanation": "Prof. Reed wyjaśnia: 'we massively overvalue immediate rewards compared to future ones' — to definicja present bias."
+  },
+  {
+    "id": "l002",
+    "category": "listening_text",
+    "type": "true_false_ng",
+    "year": 2022,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN na podstawie transkryptu.",
+    "text": "JOURNALIST: You've spent three months living off-grid in rural Norway. What surprised you most?\nSURVIVALIST: Honestly, the silence. In London, there's never true silence — there's always traffic, construction, neighbours. In the Norwegian forest, the absence of artificial noise was initially distressing. My brain kept searching for sounds to process. After about two weeks, I stopped noticing it. What I didn't expect was how profoundly my sleep improved — I was falling asleep within minutes of getting dark and waking naturally with the sunrise. My cognitive clarity within a month was noticeably sharper. I started a journal, which I'd never managed to maintain before.\nJOURNALIST: Would you recommend it to others?\nSURVIVALIST: With caveats. It's not for everyone. The physical demands are considerable, and the psychological adjustment — especially for those used to constant digital stimulation — can be genuinely difficult. But I believe most people would benefit from even a short disconnection.",
+    "question": "The survivalist found the silence in Norway immediately comfortable and relaxing.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Mówi, że cisza była 'initially distressing' (początkowo niepokojąca) — nie komfortowa. FALSE."
+  },
+  {
+    "id": "l003",
+    "category": "listening_text",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "HOST: Today on Tech Futures, we discuss the ethics of facial recognition technology with Dr. Miriam Osei. Dr. Osei, where do you stand?\nDR. OSEI: It's complex. The technology has genuine benefits — finding missing children, identifying terrorists, reuniting families. But the risks are significant and, I'd argue, currently outweigh the benefits in many applications. Studies have repeatedly shown accuracy rates drop dramatically for darker skin tones and for women, which raises serious concerns about discriminatory policing. Several US cities have already banned it for law enforcement use. What troubles me most is the chilling effect on public behaviour — if people know they're being identified in real time, it changes how freely they move and assemble.\nHOST: Can regulation solve these problems?\nDR. OSEI: Regulation is essential but not sufficient on its own. We need investment in diverse training data, mandatory independent auditing, and genuinely democratic debates about where — if anywhere — this technology belongs in a public space.",
+    "question": "What does Dr. Osei identify as her greatest concern about facial recognition technology?",
+    "options": [
+      "A. The financial cost of implementing the technology.",
+      "B. The impact on people's freedom of movement and assembly.",
+      "C. The fact that it cannot identify missing children accurately.",
+      "D. The opposition from US cities that have banned it."
+    ],
+    "answer": "B",
+    "explanation": "Dr. Osei mówi: 'What troubles me most is the chilling effect on public behaviour' — wpływ na swobodę poruszania się."
+  },
+  {
+    "id": "l004",
+    "category": "listening_text",
+    "type": "true_false_ng",
+    "year": 2023,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "INTERVIEWER: Professor Kim, you've argued that the 40-hour working week is a historical accident rather than an evidence-based optimum. Can you explain?\nPROF. KIM: Certainly. The 40-hour week was standardised in the early 20th century, primarily in manufacturing contexts. Henry Ford is often credited with popularising it — not for humanitarian reasons, but because he found workers were more productive with rest days. The intellectual and creative work that dominates modern economies has fundamentally different demands. Research consistently shows that knowledge workers produce their best output in 4 to 6 hours of focused work per day. Beyond that, productivity curves downward sharply. Countries piloting 4-day weeks have reported maintained or improved output alongside dramatic improvements in employee wellbeing.\nINTERVIEWER: Is this universally applicable?\nPROF. KIM: No — it works better for office-based, project-driven roles. Shift-based industries like healthcare and logistics require different thinking.",
+    "question": "Henry Ford introduced the 40-hour week primarily to improve workers' quality of life.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Prof. Kim mówi: Ford wprowadził krótszy tydzień 'not for humanitarian reasons' ale bo pracownicy byli bardziej produktywni. FALSE."
+  },
+  {
+    "id": "l005",
+    "category": "listening_text",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "PRESENTER: In today's programme, we explore the phenomenon of 'doom-scrolling' — the compulsive consumption of negative news online. Psychologist Dr. Fen Wu joins us. Dr. Wu, what drives this behaviour?\nDR. WU: It's deeply rooted in our evolutionary past. Our brains are wired to prioritise threatening information — a survival mechanism that kept our ancestors alive. In the modern news environment, this means negative stories capture our attention disproportionately. Social media algorithms exploit this by promoting outrage-inducing content, since it generates more engagement. The result is a feedback loop: the more alarming the content, the more we scroll, and the more the algorithm serves us similar material. People often report feeling unable to stop even as they feel increasingly anxious and hopeless.\nPRESENTER: What can people do?\nDR. WU: Deliberate news scheduling helps — reading news at set times rather than continuously. Physical activity and time in nature have strong evidence behind them as antidotes to anxiety. And critically, cultivating a media diet that includes solutions-focused journalism, not just problem-focused reporting.",
+    "question": "Why does Dr. Wu say social media algorithms promote alarming content?",
+    "options": [
+      "A. Because it is more accurate than other types of content.",
+      "B. Because it generates more engagement from users.",
+      "C. Because it is required by law in most countries.",
+      "D. Because it reduces users' anxiety levels effectively."
+    ],
+    "answer": "B",
+    "explanation": "Dr. Wu tłumaczy: 'algorithms exploit this by promoting outrage-inducing content, since it generates more engagement'."
+  },
+  {
+    "id": "l006",
+    "category": "listening_text",
+    "type": "true_false_ng",
+    "year": 2024,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "REPORTER: The Svalbard Global Seed Vault, carved into the permafrost of a Norwegian mountain, currently stores over 1.3 million seed varieties from around the world. It was designed as a 'fail-safe' backup in case of regional or global catastrophes that destroy plant diversity. The vault is managed jointly by the Norwegian government and the Crop Trust, a non-profit organisation. Although it was built to withstand almost any conceivable disaster, including nuclear war, it is not entirely immune to climate change — unusually warm temperatures in 2017 caused meltwater to enter the entrance tunnel, though no seeds were damaged. The vault has been used exactly once for its intended purpose: to restore seeds to war-torn Syria in 2015.",
+    "question": "Seeds stored in the vault were damaged during the 2017 flooding incident.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Tekst wyraźnie mówi: 'no seeds were damaged' podczas incydentu z 2017. FALSE."
+  },
+  {
+    "id": "w001",
+    "category": "writing",
+    "type": "essay",
+    "year": 2023,
+    "instruction": "Napisz esej (200–250 słów). Przedstaw argumenty za i przeciw, wyraź własną opinię. Zadbaj o odpowiednią strukturę i spójność.",
+    "question": "'Remote work should become the default mode of employment for all office-based jobs.' Do you agree or disagree? Discuss.",
+    "answer": "",
+    "explanation": "Struktura eseju maturalnego:\n• Wstęp: teza i zarys problemu (2–3 zdania)\n• Argument ZA: elastyczność, oszczędność czasu, work-life balance\n• Argument PRZECIW: izolacja, trudności z komunikacją, nieefektywność dla niektórych\n• Kontrargument i własna opinia\n• Zakończenie: podsumowanie stanowiska\nSłownictwo: remote work, hybrid model, collaboration, productivity, work-life balance, commute, isolation, flexibility."
+  },
+  {
+    "id": "w002",
+    "category": "writing",
+    "type": "email",
+    "year": 2022,
+    "instruction": "Napisz e-mail formalny (150–200 słów) zgodnie z instrukcją.",
+    "question": "You recently attended a conference on climate change that was poorly organised. Write a formal email to the conference organisers: explain what the problems were, describe the impact this had on attendees, and suggest improvements for future events.",
+    "answer": "",
+    "explanation": "E-mail formalny:\n• Nagłówek: Dear Sir/Madam lub Dear [Title Name],\n• Wstęp: cel wiadomości (I am writing to express...)\n• Rozwinięcie: problemy (poor time management, technical issues, lack of catering), wpływ na uczestników\n• Sugestie: advance schedule, technical rehearsal, catering provision\n• Zakończenie: I look forward to your response / Yours faithfully"
+  },
+  {
+    "id": "w003",
+    "category": "writing",
+    "type": "essay",
+    "year": 2024,
+    "instruction": "Napisz esej argumentacyjny (200–250 słów).",
+    "question": "'Zoos are outdated institutions that should be replaced by wildlife sanctuaries and conservation programmes.' To what extent do you agree?",
+    "answer": "",
+    "explanation": "Argumenty ZA zamknięcia zoo: ograniczanie wolności zwierząt, stres w niewoli, sztuczne środowisko.\nArgumenty PRZECIW: edukacja, ochrona gatunków zagrożonych wyginięciem, programy hodowlane (breeding programmes), badania naukowe.\nStruktura: wstęp z tezą → 2 akapity z argumentami → konkluzja z własną opinią."
+  },
+  {
+    "id": "w004",
+    "category": "writing",
+    "type": "email",
+    "year": 2023,
+    "instruction": "Napisz e-mail nieformalny (150–200 słów) do anglojęzycznego przyjaciela.",
+    "question": "Your English-speaking friend has asked for your advice. They are considering dropping out of university to start their own business. Write an email giving your honest opinion, describing both risks and potential benefits, and suggesting what they should consider before making the decision.",
+    "answer": "",
+    "explanation": "E-mail nieformalny:\n• Nagłówek: Hi/Hey [Name],\n• Ciepłe otwarcie: Thanks for reaching out / Great to hear from you\n• Treść: opinia, argumenty (financial risk, lack of experience vs. passion, entrepreneurial freedom)\n• Rada: research the market, start part-time, talk to a mentor\n• Zakończenie: Let me know what you decide! / Take care, [Imię]"
+  },
+  {
+    "id": "w005",
+    "category": "writing",
+    "type": "essay",
+    "year": 2022,
+    "instruction": "Napisz esej (200–250 słów).",
+    "question": "'Compulsory voting should be introduced in all democratic countries.' Discuss the advantages and disadvantages and give your own view.",
+    "answer": "",
+    "explanation": "ZA: wyższy udział obywatelski, rządy bardziej reprezentatywne, przeciwdziałanie apatii politycznej.\nPRZECIW: ograniczenie wolności wyboru, przymus w demokracji jest sprzeczny z zasadami, głosy 'na ślepo'.\nSłownictwo: civic duty, voter turnout, democratic participation, compulsory, disenfranchisement, political apathy."
+  },
+  {
+    "id": "w006",
+    "category": "writing",
+    "type": "email",
+    "year": 2024,
+    "instruction": "Napisz e-mail formalny (150–200 słów).",
+    "question": "You have seen a job advertisement for a junior journalist position at an English-language magazine. Write a formal email of application. Include: why you are interested in the role, what relevant experience or skills you have, and when you are available for an interview.",
+    "answer": "",
+    "explanation": "E-mail aplikacyjny:\n• Dear [Name] / Dear Hiring Manager\n• I am writing to apply for the position of...\n• Doświadczenie: school newspaper, blog, internship, strong written English\n• Umiejętności: research, interviewing, deadline management\n• Dostępność: I am available for interview at your convenience\n• Yours sincerely, [Name]"
+  },
+  {
+    "id": "r009",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Przeczytaj tekst i zaznacz właściwą odpowiedź.",
+    "text": "The placebo effect — the measurable, positive health outcome that results from a patient receiving an inert treatment while believing it to be real — has long been dismissed as 'mere psychology'. Yet accumulating research suggests it is a potent physiological phenomenon. Patients given sugar pills for chronic pain show real reductions in pain, accompanied by measurable changes in brain activity and the release of endogenous opioids. More surprising still, studies by Harvard researcher Ted Kaptchuk have shown that 'open-label placebos' — inert treatments given to patients who are fully informed they are receiving a placebo — can also produce significant symptom relief. The mechanism remains poorly understood, but the implications for medicine are considerable.",
+    "question": "What is surprising about 'open-label placebos' according to the text?",
+    "options": [
+      "A. They are more effective than conventional medical treatments.",
+      "B. They work even when patients know they are receiving a placebo.",
+      "C. They have been banned by medical authorities in most countries.",
+      "D. They were developed by patients themselves rather than doctors."
+    ],
+    "answer": "B",
+    "explanation": "Tekst stwierdza, że nawet gdy pacjenci wiedzą, że otrzymują placebo, nadal odczuwają poprawę — to jest zaskakujące."
+  },
+  {
+    "id": "r010",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2024,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "Finland has consistently topped global education rankings for decades, prompting intense interest from educators worldwide. The Finnish system differs markedly from many high-performing Asian nations: there are no standardised national tests until the age of 18, homework is minimal, and students don't begin formal schooling until age 7. Teachers in Finland are highly respected professionals, drawn from the top third of graduates, and are given significant autonomy over curriculum and teaching methods. Critics of the 'Finnish model' note that Finland's relative cultural homogeneity and small population may make direct replication in large, diverse nations such as the United States or India impractical.",
+    "question": "Finnish students begin taking standardised national tests at the age of ten.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Tekst mówi: 'no standardised national tests until the age of 18'. Zdanie jest fałszywe. FALSE."
+  },
+  {
+    "id": "r011",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "The sharing economy, exemplified by companies like Airbnb and Uber, promised to democratise access to underused assets and supplement incomes for ordinary people. In practice, however, the picture is more complicated. Research shows that the majority of Airbnb revenue in major cities accrues to professional landlords operating multiple listings, rather than individual homeowners renting out a spare room. Meanwhile, Uber and similar platforms have faced criticism for reclassifying employees as independent contractors to avoid providing benefits, leading to several landmark legal battles in the UK, US, and EU. The 'sharing economy' label, critics argue, has served largely as branding that obscures a new form of deregulated labour market.",
+    "question": "What criticism of the sharing economy does the text primarily focus on?",
+    "options": [
+      "A. It has failed to create any economic value for participants.",
+      "B. The reality differs from its egalitarian promise and may exploit workers.",
+      "C. It has caused widespread unemployment in traditional industries.",
+      "D. Its technology is unreliable and frequently fails users."
+    ],
+    "answer": "B",
+    "explanation": "Tekst wskazuje, że korzyści trafiają do profesjonalnych właścicieli, a pracownicy są często wyzyskiwani poprzez reklasyfikację — co jest niezgodne z obietnicą demokratyzacji."
+  },
+  {
+    "id": "g016",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "We expected the project to take two weeks, but it only took three days. (FAR)\nThe project was completed _______ we had expected.",
+    "answer": "far more quickly than",
+    "explanation": "Porównanie z wzmocnieniem 'far': far more quickly than expected — 'far' wzmacnia stopień wyższy przysłówka."
+  },
+  {
+    "id": "g017",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "___1___ the new regulations ___2___ introduced earlier, many businesses would have had more time to adapt. As ___3___ is, the abrupt change has left the industry in disarray. Experts suggest the government ___4___ have consulted more widely before acting.",
+    "blanks": [
+      { "num": 1, "hint": "spójnik warunkowy przeszły", "answer": "Had" },
+      { "num": 2, "hint": "strona bierna", "answer": "been" },
+      { "num": 3, "hint": "wyrażenie 'as it is'", "answer": "it" },
+      { "num": 4, "hint": "modal krytyki", "answer": "should" }
+    ],
+    "explanation": "Inwersja 3rd conditional: Had the regulations been...; as it is (w rzeczywistości); should have consulted (krytyka przeszłości)."
+  },
+  {
+    "id": "g018",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "She allowed the children to play in the garden. (LET)\nShe _______ in the garden.",
+    "answer": "let the children play",
+    "explanation": "'Let sb do sth' (bez 'to'): She let the children play. Różnica: allow + to-infinitive, let + bare infinitive."
+  },
+  {
+    "id": "g019",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "Nobody has used this room for months. (BEEN)\nThis room _______ for months.",
+    "answer": "hasn't been used",
+    "explanation": "Present perfect passive: This room hasn't been used for months."
+  },
+  {
+    "id": "g020",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "I'd rather you ___1___ (not post) those photos online — some of us value our privacy. Besides, I wish I ___2___ (not agree) to go to that party in the first place. What ___3___ done is done, I suppose.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "would rather + past subjunctive",
+        "answer": "didn't post"
+      },
+      { "num": 2, "hint": "wish + past perfect", "answer": "hadn't agreed" },
+      { "num": 3, "hint": "wyrażenie 'what is done'", "answer": "is" }
+    ],
+    "explanation": "Would rather + past simple dla teraźniejszości; wish + past perfect dla żalu; what is done is done."
+  },
+  {
+    "id": "uoe009",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "The new app has taken the market ___1___ storm, attracting over five million users in its first week. Despite ___2___ a free product, the company expects to monetise through premium subscriptions. Whether this model will prove sustainable ___3___ the long ___4___ remains to be seen.",
+    "blanks": [
+      { "num": 1, "hint": "idiom 'take by storm'", "answer": "by" },
+      { "num": 2, "hint": "gerund po 'despite'", "answer": "being" },
+      { "num": 3, "hint": "przyimek z 'long run'", "answer": "in" },
+      {
+        "num": 4,
+        "hint": "dokończenie wyrażenia 'in the long...'",
+        "answer": "run"
+      }
+    ],
+    "explanation": "Take by storm (podbić rynek), despite being, in the long run (na dłuższą metę)."
+  },
+  {
+    "id": "uoe010",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "The last time he played football was when he was at university. (SINCE)\nHe _______ he was at university.",
+    "answer": "hasn't played football since",
+    "explanation": "Present perfect z 'since' opisuje okres od ostatniego zdarzenia: hasn't played football since."
+  },
+  {
+    "id": "uoe011",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Wpisz jedno słowo pasujące do wszystkich trzech zdań.",
+    "text": "1. The negotiations finally _____ through after months of deadlock.\n2. Could you _____ me through to the customer service department?\n3. I can't believe he managed to _____ through such a difficult situation.",
+    "blanks": [
+      { "num": 1, "hint": "jedno słowo do wszystkich zdań", "answer": "get" }
+    ],
+    "explanation": "GET: negotiations get through (zakończyć się sukcesem), put me through (połączyć — tu get przez analogię), get through a situation (przetrwać)."
+  },
+  {
+    "id": "uoe012",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "It is high time the government ___1___ decisive action on housing costs. For ___2___ long as most people can remember, young adults have been priced ___3___ of the property market. The situation is ___4___ from getting better.",
+    "blanks": [
+      { "num": 1, "hint": "it's high time + past", "answer": "took" },
+      { "num": 2, "hint": "wyrażenie 'for as long as'", "answer": "as" },
+      { "num": 3, "hint": "phrasal verb 'priced out of'", "answer": "out" },
+      { "num": 4, "hint": "wyrażenie 'far from'", "answer": "far" }
+    ],
+    "explanation": "It's high time + past simple; for as long as; priced out of (wykluczeni cenami); far from getting better."
+  },
+  {
+    "id": "v013",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The treaty was considered _______ because it failed to address the core issues that had caused the conflict in the first place.",
+    "options": [
+      "A. comprehensive",
+      "B. superficial",
+      "C. binding",
+      "D. impartial"
+    ],
+    "answer": "B",
+    "explanation": "'Superficial' = powierzchowny, nie zajmujący się podstawowymi problemami. Pozostałe: comprehensive (wszechstronny), binding (wiążący prawnie), impartial (bezstronny)."
+  },
+  {
+    "id": "v014",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The charity's ___1___ (rely) on donations makes it ___2___ (vulnerability) to economic downturns. Its latest campaign, however, has proved remarkably ___3___ (success), raising ___4___ (precedent) levels of public awareness.",
+    "blanks": [
+      { "num": 1, "hint": "rzeczownik", "answer": "reliance" },
+      { "num": 2, "hint": "przymiotnik", "answer": "vulnerable" },
+      { "num": 3, "hint": "przymiotnik", "answer": "successful" },
+      { "num": 4, "hint": "przymiotnik z prefiksem", "answer": "unprecedented" }
+    ],
+    "explanation": "reliance (noun), vulnerable (adj), successful (adj), unprecedented (un- prefix = bez precedensu)."
+  },
+  {
+    "id": "v015",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The politician's speech was deliberately _______, leaving voters confused about her actual policy position.",
+    "options": [
+      "A. transparent",
+      "B. forthright",
+      "C. ambiguous",
+      "D. resolute"
+    ],
+    "answer": "C",
+    "explanation": "'Ambiguous' = niejednoznaczny, wieloznaczny. Pasuje do kontekstu, gdy mowa niejasno określa stanowisko."
+  },
+  {
+    "id": "v016",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The government's _______ response to the flooding was heavily criticised, as many families waited days for any assistance.",
+    "options": ["A. swift", "B. tardy", "C. proactive", "D. commendable"],
+    "answer": "B",
+    "explanation": "'Tardy' = spóźniony, powolny. Kontekst mówi o krytyce — odpowiedź była za wolna."
+  },
+  {
+    "id": "v017",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "Achieving a ___1___ (sustain) energy system requires ___2___ (collaborate) between governments, businesses, and citizens. Without ___3___ (commit) at all levels, ___4___ (long-term) solutions will remain out of reach.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "sustainable" },
+      { "num": 2, "hint": "rzeczownik", "answer": "collaboration" },
+      { "num": 3, "hint": "rzeczownik", "answer": "commitment" },
+      { "num": 4, "hint": "przymiotnik złożony", "answer": "long-term" }
+    ],
+    "explanation": "sustainable (adj), collaboration (noun), commitment (noun), long-term (compound adjective — bez zmiany)."
+  },
+  {
+    "id": "g021",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "I didn't know he was ill, so I didn't visit him. (KNOWN)\nHad _______ ill, I would have visited him.",
+    "answer": "I known he was",
+    "explanation": "Inwersja 3rd conditional: Had I known he was ill, I would have visited him."
+  },
+  {
+    "id": "g022",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "It was wrong of him to take the money without asking. (HAVE)\nHe _______ the money without asking.",
+    "answer": "shouldn't have taken",
+    "explanation": "Krytyka przeszłości: shouldn't have + past participle: He shouldn't have taken the money."
+  },
+  {
+    "id": "g023",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "They are building a new hospital in the city centre. (BEING)\nA new hospital _______ in the city centre.",
+    "answer": "is being built",
+    "explanation": "Present continuous passive: is being built — używane dla czynności trwającej."
+  },
+  {
+    "id": "g024",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "Unless you leave now, you'll miss the train. (IF)\nYou'll miss the train _______ now.",
+    "answer": "if you don't leave",
+    "explanation": "Unless = if...not: You'll miss the train if you don't leave now."
+  },
+  {
+    "id": "g025",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Uzupełnij zdania jednym słowem.",
+    "text": "Despite ___1___ worked in finance for twenty years, she still finds certain concepts confusing. She ___2___ as well ask her colleague — he's far more experienced. ___3___ she known about the seminar earlier, she would certainly have attended.",
+    "blanks": [
+      { "num": 1, "hint": "gerund po despite", "answer": "having" },
+      { "num": 2, "hint": "might as well", "answer": "might" },
+      { "num": 3, "hint": "inwersja warunkowa", "answer": "Had" }
+    ],
+    "explanation": "Despite having worked (perfect gerund), might as well (równie dobrze), Had she known (inwersja 3rd conditional)."
+  },
+  {
+    "id": "uoe013",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "Attending the workshop is not obligatory for employees. (HAVE)\nEmployees _______ the workshop.",
+    "answer": "don't have to attend",
+    "explanation": "'Don't have to' = nie musisz (brak obowiązku). Różnica od 'mustn't' (zakaz)."
+  },
+  {
+    "id": "uoe014",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "The merger ___1___ place despite fierce opposition from shareholders. Many feared it would result ___2___ widespread redundancies. ___3___ to their word, the management promised no layoffs — ___4___ least for the first year.",
+    "blanks": [
+      { "num": 1, "hint": "take place", "answer": "took" },
+      { "num": 2, "hint": "result in", "answer": "in" },
+      { "num": 3, "hint": "true to their word", "answer": "True" },
+      { "num": 4, "hint": "at least", "answer": "at" }
+    ],
+    "explanation": "took place, result in, true to their word (dotrzymując słowa), at least (przynajmniej)."
+  },
+  {
+    "id": "r012",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Zaznacz właściwą odpowiedź.",
+    "text": "Solastalgia — a term coined by environmental philosopher Glenn Albrecht — describes the distress caused by environmental change in one's home environment. Unlike nostalgia, which is a longing for a place or time in the past, solastalgia is experienced in the present: it is the grief felt when the landscape around you changes irrevocably due to mining, deforestation, or climate change. Originally documented among indigenous communities and Australian farmers during prolonged droughts, it is now recognised as a psychological response to environmental degradation experienced across all demographics.",
+    "question": "How does solastalgia differ from nostalgia according to the text?",
+    "options": [
+      "A. Solastalgia relates to a longing for the past, while nostalgia is felt in the present.",
+      "B. Nostalgia is a response to environmental change, while solastalgia is not.",
+      "C. Solastalgia is distress felt in the present about current environmental changes.",
+      "D. Nostalgia only affects indigenous communities, while solastalgia is universal."
+    ],
+    "answer": "C",
+    "explanation": "Tekst wyjaśnia: nostalgia to tęsknota za przeszłością, a solastalgia 'is experienced in the present' — grief odczuwany teraz."
+  },
+  {
+    "id": "r013",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2023,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "The 'attention economy' is a framework developed by economists to describe how digital platforms compete for users' limited attention. Herbert Simon first noted in the 1970s that information abundance creates attention scarcity. Today, platforms such as YouTube, Instagram, and TikTok employ entire teams of engineers and psychologists to maximise the time users spend on their platforms, using techniques derived from behavioural science including variable reward schedules — the same mechanism that makes slot machines addictive. Critics argue this represents an unprecedented invasion of psychological sovereignty, particularly for minors whose brains are still developing.",
+    "question": "Herbert Simon developed the concept of the attention economy in response to the invention of social media.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Simon pisał w latach 70. — social media jeszcze nie istniało. Tekst wskazuje, że idea poprzedza media społecznościowe. FALSE."
+  },
+  {
+    "id": "r014",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "Gene editing technology CRISPR-Cas9 has revolutionised molecular biology since its therapeutic potential was first demonstrated in 2012. By allowing scientists to 'cut and paste' specific sections of DNA with unprecedented precision, it holds promise for curing genetic diseases from sickle cell anaemia to certain cancers. However, the technology raises profound ethical questions. In 2018, Chinese scientist He Jiankui announced the birth of the world's first gene-edited babies — twin girls whose embryos had been altered to resist HIV infection. The announcement provoked near-universal condemnation from the scientific community, not because of the goal, but because the experiment bypassed established ethical protocols and consent procedures, and because the long-term implications for the children's health remain unknown.",
+    "question": "Why did the scientific community condemn He Jiankui's experiment?",
+    "options": [
+      "A. Because the goal of preventing HIV was considered unethical.",
+      "B. Because the experiment failed to produce any viable results.",
+      "C. Because proper ethical procedures were not followed and long-term effects are unknown.",
+      "D. Because CRISPR technology was not yet sufficiently developed for human application."
+    ],
+    "answer": "C",
+    "explanation": "Tekst mówi: potępiono nie za cel, lecz za 'bypassed established ethical protocols' i nieznane konsekwencje zdrowotne."
+  },
+  {
+    "id": "v018",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The evidence against the suspect was entirely _______ — there was not a single piece of physical proof.",
+    "options": [
+      "A. conclusive",
+      "B. circumstantial",
+      "C. tangible",
+      "D. forensic"
+    ],
+    "answer": "B",
+    "explanation": "'Circumstantial evidence' = dowody poszlakowe — pośrednie, bez bezpośrednich dowodów fizycznych."
+  },
+  {
+    "id": "v019",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The author's ___1___ (prose) style made the complex topic surprisingly ___2___ (access) to general readers. Her ability to ___3___ (simple) difficult concepts without losing ___4___ (accurate) was widely admired.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik od prose", "answer": "prose" },
+      { "num": 2, "hint": "przymiotnik od access", "answer": "accessible" },
+      { "num": 3, "hint": "bezokolicznik od simple", "answer": "simplify" },
+      { "num": 4, "hint": "rzeczownik od accurate", "answer": "accuracy" }
+    ],
+    "explanation": "prose (adj — bez zmian jako określenie stylu), accessible (adj), simplify (verb), accuracy (noun)."
+  },
+  {
+    "id": "v020",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The council voted to _______ the historic building rather than demolish it, citing its cultural significance.",
+    "options": ["A. dismantle", "B. preserve", "C. abandon", "D. reconstruct"],
+    "answer": "B",
+    "explanation": "'Preserve' = zachować, ochraniać. W kontekście ochrony budynku historycznego jest to właściwe słowo."
+  },
+  {
+    "id": "l007",
+    "category": "listening_text",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "MODERATOR: Our guest today is urban planner Yusuf Demir, who has been working on 15-minute city concepts. Yusuf, can you explain the idea?\nYUSUF: The 15-minute city is a vision of urban life where everything you need — work, shopping, healthcare, education, leisure — is accessible within a 15-minute walk or cycle from your home. It's not a new concept; it draws on ideas from Jane Jacobs and others going back to the 1960s. But it's gaining traction partly because of the pandemic, which showed us that many people function perfectly well without long commutes, and partly because of climate concerns.\nMODERATOR: Are there critics?\nYUSUF: Absolutely. The main critique from the right is that it restricts freedom of movement and creates 'urban islands'. That's largely a misrepresentation — nobody is proposing to stop people travelling; the idea is to ensure that not travelling is a viable choice. A more substantive concern is about affordability: if central areas are made more desirable, property prices rise and lower-income residents can be displaced. Getting that balance right is the real challenge.",
+    "question": "What does Yusuf say is the 'more substantive concern' about 15-minute cities?",
+    "options": [
+      "A. That they restrict citizens from travelling beyond their local area.",
+      "B. That rising property prices may displace lower-income residents.",
+      "C. That they require dismantling existing public transport networks.",
+      "D. That they are impractical in cities with populations over one million."
+    ],
+    "answer": "B",
+    "explanation": "Yusuf mówi wprost: 'if central areas are made more desirable, property prices rise and lower-income residents can be displaced'."
+  },
+  {
+    "id": "l008",
+    "category": "listening_text",
+    "type": "true_false_ng",
+    "year": 2023,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "ANCHOR: Tonight, a report from the International Energy Agency suggests renewable energy is growing faster than at any point in history. Our energy correspondent, Sofia Andrade, has been following the story.\nSOFIA: That's right. The IEA's data shows solar capacity alone added more new electricity-generating capacity in 2023 than all other energy sources combined — including natural gas, coal, and nuclear. The costs have fallen by over 90% in the past decade, making solar the cheapest source of electricity in history. The IEA does caution, however, that the pace of fossil fuel phase-out remains far too slow to meet the targets set by the Paris Agreement. Developing nations, in particular, struggle to finance the transition without significant international support.",
+    "question": "The IEA report states that renewable energy growth is sufficient to meet Paris Agreement targets.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "IEA 'cautions that the pace of fossil fuel phase-out remains far too slow to meet the targets' — czyli wzrost OZE nie jest wystarczający. FALSE."
+  },
+  {
+    "id": "g026",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "It would be better if you submitted the report today. (SOONER)\nI'd _______ the report today.",
+    "answer": "sooner you submitted",
+    "explanation": "'I'd sooner + subject + past simple' = woleć żeby ktoś coś zrobił: I'd sooner you submitted."
+  },
+  {
+    "id": "g027",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "His arrogance was the reason he failed the interview. (BECAUSE)\nHe failed the interview _______ arrogant.",
+    "answer": "because he was so",
+    "explanation": "'Because he was so arrogant' — spójnik przyczynowy + stopień zwykły przymiotnika z 'so'."
+  },
+  {
+    "id": "g028",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "No sooner ___1___ she arrived home ___2___ the phone rang. She would have ignored it, ___3___ not for the fact that it was her doctor calling. ___4___ for her quick response, things might have turned out very differently.",
+    "blanks": [
+      { "num": 1, "hint": "inwersja z no sooner", "answer": "had" },
+      { "num": 2, "hint": "than/when po no sooner", "answer": "than" },
+      { "num": 3, "hint": "were it not for", "answer": "were" },
+      { "num": 4, "hint": "but for / were it not for", "answer": "But" }
+    ],
+    "explanation": "No sooner had... than (inwersja); were it not for (gdyby nie); But for her response = Were it not for her response."
+  },
+  {
+    "id": "uoe015",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Wpisz jedno słowo pasujące do wszystkich zdań.",
+    "text": "1. She always _____ things into perspective when I'm stressed.\n2. The company plans to _____ on new staff in the spring.\n3. It's important not to _____ risks when it comes to road safety.",
+    "blanks": [{ "num": 1, "hint": "jedno słowo", "answer": "take" }],
+    "explanation": "TAKE: put/take things into perspective (spojrzeć z dystansem), take on staff (zatrudnić), take risks (ryzykować)."
+  },
+  {
+    "id": "uoe016",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "It's a pity she didn't apply for that scholarship. (ONLY)\n_______ applied for that scholarship!",
+    "answer": "If only she had",
+    "explanation": "'If only + past perfect' wyraża żal za przeszłością: If only she had applied!"
+  },
+  {
+    "id": "r015",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2023,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "Dark tourism — travel to sites associated with death, tragedy, or disaster — is a growing, if controversial, sector of the tourism industry. Destinations such as Auschwitz-Birkenau, Chernobyl, and the 9/11 Memorial in New York attract millions of visitors annually. Proponents argue that such visits foster historical understanding and empathy; that bearing witness to atrocity is a moral and educational act. Critics counter that the commercialisation of suffering risks turning trauma into spectacle, and that the line between respectful commemoration and voyeuristic entertainment is uncomfortably blurred. The debate intensified with the development of Chernobyl tourism following the popularity of the 2019 HBO miniseries.",
+    "question": "What concern do critics of dark tourism raise?",
+    "options": [
+      "A. It trivialises historical events by turning suffering into entertainment.",
+      "B. It prevents local communities from healing after tragedies.",
+      "C. It is economically harmful to the regions where it takes place.",
+      "D. It provides inaccurate historical information to visitors."
+    ],
+    "answer": "A",
+    "explanation": "Krytycy mówią o 'commercialisation of suffering risks turning trauma into spectacle' — uczynienie z tragedii atrakcji."
+  },
+  {
+    "id": "r016",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2024,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "Caffeine is the world's most widely consumed psychoactive substance. It works by blocking adenosine receptors in the brain — adenosine being the chemical that promotes sleepiness. Regular consumption can lead to tolerance, meaning larger doses are needed to achieve the same effect, and withdrawal symptoms including headaches and irritability upon cessation. Despite this, caffeine is classified as safe by regulatory bodies worldwide at moderate consumption levels. Research published in the British Medical Journal found that drinking 3–4 cups of coffee per day is associated with a lower risk of numerous health conditions, including type 2 diabetes and certain liver diseases.",
+    "question": "The BMJ research found that drinking more than four cups of coffee per day eliminates health risks entirely.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "C",
+    "explanation": "Tekst mówi tylko o 3–4 filiżankach — nie ma informacji o konsekwencjach picia więcej. NOT GIVEN."
+  },
+  {
+    "id": "v021",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The defence lawyer made a _______ argument that cast serious doubt on the prosecution's evidence.",
+    "options": ["A. feeble", "B. compelling", "C. irrelevant", "D. vague"],
+    "answer": "B",
+    "explanation": "'Compelling argument' = przekonujący, mocny argument — pasuje do kontekstu wzbudzania wątpliwości."
+  },
+  {
+    "id": "v022",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The report highlighted the ___1___ (grow) divide between ___2___ (wealth) and poorer nations in terms of vaccine access. International ___3___ (solid) remains crucial, as ___4___ (equal) in healthcare has direct consequences for global security.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "growing" },
+      { "num": 2, "hint": "przymiotnik od wealth", "answer": "wealthier" },
+      { "num": 3, "hint": "rzeczownik", "answer": "solidarity" },
+      { "num": 4, "hint": "rzeczownik z prefiksem", "answer": "inequality" }
+    ],
+    "explanation": "growing (adj), wealthier (comparative adj), solidarity (noun), inequality (in- prefix)."
+  },
+  {
+    "id": "l009",
+    "category": "listening_text",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "HOST: Today we speak with architect Fatima Zahra about biophilic design. Fatima, can you explain the concept?\nFATIMA: Biophilic design is the practice of incorporating natural elements into built environments — not as decoration, but as core structural and psychological features. We're talking about natural light, living plant walls, water features, natural materials like wood and stone, and views of the outdoors. The premise is that human beings evolved in natural environments over hundreds of thousands of years and are psychologically and physiologically adapted to them. Disconnecting people from nature — as most modern buildings do — has measurable costs: increased stress, reduced concentration, lower wellbeing.\nHOST: Is there evidence for this?\nFATIMA: Considerable evidence. Studies of hospital patients show faster recovery rates in rooms with natural views. Office workers in biophilically designed spaces show up to 15% higher productivity and significantly lower rates of absenteeism. Schools with natural light and greenery show improved academic performance. The evidence base is strong and growing.",
+    "question": "What does Fatima say about the effect of biophilic design in hospitals?",
+    "options": [
+      "A. It reduces medical costs but has no effect on recovery time.",
+      "B. Patients in rooms with natural views recover more quickly.",
+      "C. It has only been studied in schools and offices, not hospitals.",
+      "D. It is primarily effective for patients with mental health conditions."
+    ],
+    "answer": "B",
+    "explanation": "Fatima mówi: 'hospital patients show faster recovery rates in rooms with natural views'."
+  },
+  {
+    "id": "l010",
+    "category": "listening_text",
+    "type": "true_false_ng",
+    "year": 2022,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "PRESENTER: Our next guest is oceanographer Dr. Ravi Menon, who studies deep-sea ecosystems. Dr. Menon, most people know very little about the deep ocean. Why is it so understudied?\nDR. MENON: The honest answer is cost and difficulty. Sending equipment to depths of 4,000 metres is technically challenging and enormously expensive. We've mapped more of the surface of Mars than the ocean floor. Despite this, what we have discovered is astounding — entire ecosystems clustered around hydrothermal vents, sustained not by sunlight but by chemosynthesis. Species entirely new to science are found on virtually every deep-sea expedition. Some biologists now believe the deep ocean may harbour more undiscovered biodiversity than all terrestrial ecosystems combined.\nPRESENTER: Is deep-sea mining a concern?\nDR. MENON: An enormous one. Commercial interests are moving faster than our scientific understanding, which is deeply troubling.",
+    "question": "Scientists have completed a comprehensive map of the entire ocean floor.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Dr. Menon mówi: 'We've mapped more of the surface of Mars than the ocean floor' — implikuje, że ocean nie jest zmapowany kompleksowo. FALSE."
+  },
+  {
+    "id": "w007",
+    "category": "writing",
+    "type": "essay",
+    "year": 2022,
+    "instruction": "Napisz esej argumentacyjny (200–250 słów).",
+    "question": "'Governments should ban single-use plastics entirely within the next five years.' Discuss both sides of this argument and give your opinion.",
+    "answer": "",
+    "explanation": "ZA: redukcja zanieczyszczenia oceanów, ochrona dzikiej przyrody, zmiana nawyków konsumentów.\nPRZECIW: wpływ na gospodarkę, trudności dla sektorów spożywczego i medycznego, alternatywy niekoniecznie lepsze (bawełniane torby mają wyższy ślad węglowy).\nSłownictwo: single-use plastics, biodegradable alternatives, environmental impact, regulatory measures, carbon footprint."
+  },
+  {
+    "id": "w008",
+    "category": "writing",
+    "type": "email",
+    "year": 2023,
+    "instruction": "Napisz e-mail nieformalny (150–200 słów).",
+    "question": "An English-speaking friend has invited you to participate in a charity run in London next month. Write an email: accept the invitation enthusiastically, ask three relevant questions about the event, and suggest meeting up before the run.",
+    "answer": "",
+    "explanation": "E-mail nieformalny: Hi [Name]! / Thanks so much for the invitation! / Pytania: what distance, what to wear/bring, how to register. Sugestia spotkania: Maybe we could grab a coffee the day before? / Looking forward to it! / [Imię]"
+  },
+  {
+    "id": "r017",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2022,
+    "instruction": "Zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "Nudge theory, developed by economists Richard Thaler and Cass Sunstein, proposes that small environmental changes can significantly influence behaviour without restricting choice. Classic nudges include placing healthy food at eye level in cafeterias, printing social norms on energy bills ('Your neighbours use 20% less energy than you'), or defaulting employees into pension schemes. Unlike mandates or taxes, nudges preserve freedom of choice — they simply make the desired behaviour easier or more salient. Critics, however, raise concerns about manipulation: if people are being nudged without their knowledge, is their autonomy being genuinely respected? Proponents respond that all environments are designed — the question is whether that design is intentional and beneficial.",
+    "question": "What is the main argument made by proponents of nudge theory against the charge of manipulation?",
+    "options": [
+      "A. They argue that nudges are completely transparent and always disclosed to the public.",
+      "B. They claim that environmental design is inevitable, so it may as well be beneficial.",
+      "C. They suggest that people who are nudged should receive financial compensation.",
+      "D. They maintain that nudges are only used in emergency public health situations."
+    ],
+    "answer": "B",
+    "explanation": "Zwolennicy mówią: 'all environments are designed — the question is whether that design is intentional and beneficial'."
+  },
+  {
+    "id": "g029",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "She is too young to vote in the election. (ENOUGH)\nShe is not _______ in the election.",
+    "answer": "old enough to vote",
+    "explanation": "Too + adjective → not + adjective + enough + to-infinitive: not old enough to vote."
+  },
+  {
+    "id": "g030",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "\"Why don't you take a break?\" his colleague said. (SUGGESTED)\nHis colleague _______ a break.",
+    "answer": "suggested that he take",
+    "explanation": "Mowa zależna z 'suggest': suggest + that + subject + bare infinitive (subjunctive): suggested that he take a break."
+  },
+  {
+    "id": "v023",
+    "category": "vocabulary",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Wybierz słowo, które najlepiej pasuje do kontekstu.",
+    "question": "The charity's founder was known for her _______ personality — she inspired everyone she met with her tireless optimism and warmth.",
+    "options": ["A. charismatic", "B. reclusive", "C. abrasive", "D. mediocre"],
+    "answer": "A",
+    "explanation": "'Charismatic' = charyzmatyczny — pasuje do kogoś inspirującego innych swoją osobowością."
+  },
+  {
+    "id": "v024",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The politician's ___1___ (apology) response to the scandal did little to ___2___ (restore) public trust. Many citizens felt his ___3___ (admit) came too late and was ___4___ (sincere) — motivated by political pressure rather than genuine remorse.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik od apology", "answer": "apologetic" },
+      { "num": 2, "hint": "bezokolicznik — odbudować", "answer": "restore" },
+      { "num": 3, "hint": "rzeczownik od admit", "answer": "admission" },
+      {
+        "num": 4,
+        "hint": "przymiotnik z prefiksem — nieszczery",
+        "answer": "insincere"
+      }
+    ],
+    "explanation": "apologetic (adj), restore (verb — bez zmian), admission (noun), insincere (in- prefix)."
+  },
+  {
+    "id": "uoe017",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij luki jednym słowem.",
+    "text": "The conference attracted delegates ___1___ all over the world. ___2___ the high registration fee, attendance broke all previous records. This speaks ___3___ to the relevance of the topics covered, which ranged ___4___ renewable energy to artificial intelligence.",
+    "blanks": [
+      { "num": 1, "hint": "from all over", "answer": "from" },
+      { "num": 2, "hint": "pomimo — despite", "answer": "Despite" },
+      { "num": 3, "hint": "speaks volumes/well", "answer": "volumes" },
+      { "num": 4, "hint": "ranged from...to", "answer": "from" }
+    ],
+    "explanation": "from all over the world; despite; speaks volumes (wiele mówi); ranged from...to."
+  },
+  {
+    "id": "uoe018",
+    "category": "use_of_english",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "She regrets not keeping in touch with her old schoolmates. (WISHES)\nShe _______ in touch with her old schoolmates.",
+    "answer": "wishes she had kept",
+    "explanation": "Wishes + past perfect dla żalu za przeszłością: She wishes she had kept in touch."
+  },
+  {
+    "id": "r018",
+    "category": "reading",
+    "type": "true_false_ng",
+    "year": 2023,
+    "instruction": "Zdecyduj: TRUE / FALSE / NOT GIVEN.",
+    "text": "The wolf, once native across most of Europe, was systematically hunted to near-extinction by the mid-twentieth century. Since the 1990s, natural recolonisation has brought wolves back to countries including Germany, France, Italy, and Poland — a return that has proved deeply divisive. Farmers, particularly sheep and cattle herders, report significant livestock losses and argue that adequate compensation schemes are rarely implemented in practice. Conservationists counter that wolves play a vital ecological role and that human-wolf coexistence is achievable with proper management. The European wolf population is estimated at approximately 20,000 individuals.",
+    "question": "Wolves were deliberately reintroduced to Germany and France by conservation organisations.",
+    "options": ["A. TRUE", "B. FALSE", "C. NOT GIVEN"],
+    "answer": "B",
+    "explanation": "Tekst mówi o 'natural recolonisation' — naturalnym powrocie, nie celowym reintrodukowaniu przez organizacje. FALSE."
+  },
+  {
+    "id": "g031",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2023,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "She continued to work despite feeling exhausted. (EVEN)\nShe continued to work _______ exhausted.",
+    "answer": "even though she felt",
+    "explanation": "'Even though' = mimo że (+ zdanie podrzędne). Despite + gerund → even though + clause."
+  },
+  {
+    "id": "g032",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2022,
+    "instruction": "Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów).",
+    "question": "I would prefer not to be disturbed during the meeting. (RATHER)\nI _______ disturbed during the meeting.",
+    "answer": "would rather not be",
+    "explanation": "'Would rather not + bare infinitive' (bierność): I would rather not be disturbed."
+  },
+  {
+    "id": "v025",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2024,
+    "instruction": "Utwórz właściwy wyraz pochodny.",
+    "text": "The ___1___ (globe) financial crisis of 2008 had far-reaching and ___2___ (devastate) consequences for millions of ordinary people. Despite ___3___ (promise) signs of recovery in subsequent years, ___4___ (equal) continued to widen in many developed nations.",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "global" },
+      { "num": 2, "hint": "przymiotnik od devastate", "answer": "devastating" },
+      { "num": 3, "hint": "przymiotnik od promise", "answer": "promising" },
+      { "num": 4, "hint": "rzeczownik z prefiksem", "answer": "inequality" }
+    ],
+    "explanation": "global (adj), devastating (adj), promising (adj), inequality (in- prefix)."
   }
 ]
