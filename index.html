@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matura Angielski — Trener</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0e12;
+    --surface: #13151c;
+    --surface2: #1c1f2a;
+    --border: #2a2d3a;
+    --accent: #e8c547;
+    --accent2: #4fc3f7;
+    --accent3: #f06292;
+    --text: #e8eaf0;
+    --text-muted: #6b7080;
+    --success: #66bb6a;
+    --error: #ef5350;
+    --warn: #ffa726;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,14,18,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--text-muted); font-size: 0.85rem; font-family: 'DM Mono', monospace; display: block; margin-top: -4px; }
+
+  nav { display: flex; gap: 0.5rem; }
+  .nav-btn {
+    background: none; border: none; color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--surface2); color: var(--accent); }
+
+  main { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  /* === VIEWS === */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* === HOME === */
+  .hero { text-align: center; padding: 3rem 0 2rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 0.75rem; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-card .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-card .lbl { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .cat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cat-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--cat-color, #e8c547) 0%, transparent 60%);
+    opacity: 0.05;
+    transition: opacity 0.2s;
+  }
+  .cat-card:hover { border-color: var(--cat-color, var(--accent)); transform: translateY(-2px); }
+  .cat-card:hover::before { opacity: 0.1; }
+  .cat-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cat-name { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem; }
+  .cat-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .cat-progress { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .cat-progress-fill { height: 100%; background: var(--cat-color, var(--accent)); border-radius: 2px; transition: width 0.5s; }
+  .cat-stats { display: flex; gap: 1rem; margin-top: 0.75rem; font-size: 0.78rem; color: var(--text-muted); }
+
+  /* === EXERCISE VIEW === */
+  .ex-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+  .back-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 0.5rem 1rem; border-radius: 8px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .ex-category-badge {
+    font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    padding: 0.3rem 0.8rem; border-radius: 20px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .ex-progress-bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .ex-progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.4s; }
+  .ex-counter { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; }
+
+  .exercise-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  .ex-type-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    padding: 0.25rem 0.6rem; border-radius: 4px;
+    background: var(--surface2); color: var(--accent2);
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .ex-instruction { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem; font-style: italic; }
+  .ex-text {
+    font-size: 1rem; line-height: 1.75;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface2);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent2);
+  }
+  .ex-question { font-size: 1.05rem; font-weight: 500; margin-bottom: 1.25rem; line-height: 1.6; }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 0.6rem; }
+  .option-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.15s;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .option-btn:hover:not(:disabled) { border-color: var(--accent); background: rgba(232,197,71,0.06); }
+  .option-btn .opt-letter {
+    font-family: 'DM Mono', monospace; font-size: 0.8rem;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--border);
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .option-btn.correct { border-color: var(--success); background: rgba(102,187,106,0.1); }
+  .option-btn.correct .opt-letter { background: var(--success); color: #000; }
+  .option-btn.wrong { border-color: var(--error); background: rgba(239,83,80,0.1); }
+  .option-btn.wrong .opt-letter { background: var(--error); color: #fff; }
+  .option-btn:disabled { cursor: default; opacity: 0.7; }
+
+  /* Input types */
+  .ex-input {
+    width: 100%; padding: 0.85rem 1.1rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .ex-input:focus { border-color: var(--accent2); }
+  .ex-input.correct { border-color: var(--success); }
+  .ex-input.wrong { border-color: var(--error); }
+
+  textarea.ex-input { resize: vertical; min-height: 140px; line-height: 1.6; font-family: 'DM Sans', sans-serif; }
+
+  .fill-blanks { display: flex; flex-direction: column; gap: 0.75rem; }
+  .blank-row { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; }
+  .blank-num { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); min-width: 28px; }
+  .blank-input {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 0.95rem;
+    padding: 0.5rem 0.75rem; outline: none;
+    transition: border-color 0.2s; min-width: 180px;
+  }
+  .blank-input:focus { border-color: var(--accent2); }
+  .blank-input.correct { border-color: var(--success); }
+  .blank-input.wrong { border-color: var(--error); }
+  .blank-hint { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* Feedback */
+  .feedback-box {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-top: 1.25rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    display: none;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .feedback-box.correct { background: rgba(102,187,106,0.1); border: 1px solid rgba(102,187,106,0.3); color: var(--success); }
+  .feedback-box.wrong { background: rgba(239,83,80,0.1); border: 1px solid rgba(239,83,80,0.3); color: #ff8a80; }
+  .feedback-box strong { display: block; margin-bottom: 0.25rem; }
+
+  .action-row { display: flex; gap: 0.75rem; margin-top: 1.25rem; justify-content: flex-end; }
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 500;
+    cursor: pointer; border: none; transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { background: #f0d060; }
+  .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:disabled { opacity: 0.4; cursor: default; }
+
+  /* === STATS VIEW === */
+  .stats-section { margin-bottom: 2.5rem; }
+  .stats-section h2 {
+    font-family: 'Playfair Display', serif; font-size: 1.6rem;
+    margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .chart-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+  .chart-row { display: flex; align-items: center; gap: 1rem; }
+  .chart-label { font-size: 0.85rem; min-width: 160px; color: var(--text-muted); }
+  .chart-bar-wrap { flex: 1; height: 28px; background: var(--surface2); border-radius: 6px; overflow: hidden; position: relative; }
+  .chart-bar { height: 100%; border-radius: 6px; transition: width 0.8s ease; display: flex; align-items: center; padding-left: 0.75rem; font-size: 0.78rem; font-family: 'DM Mono', monospace; color: rgba(0,0,0,0.7); }
+  .chart-pct { font-family: 'DM Mono', monospace; font-size: 0.82rem; min-width: 44px; text-align: right; }
+
+  .weak-areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .weak-card {
+    background: var(--surface);
+    border: 1px solid rgba(239,83,80,0.3);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .weak-card .wname { font-weight: 600; margin-bottom: 0.25rem; }
+  .weak-card .wstat { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--error); }
+  .weak-card .wpct { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+  .history-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .history-table th { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-muted); font-weight: 400; font-family: 'DM Mono', monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .history-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(42,45,58,0.5); }
+  .history-table tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'DM Mono', monospace; }
+  .badge.good { background: rgba(102,187,106,0.15); color: var(--success); }
+  .badge.mid { background: rgba(255,167,38,0.15); color: var(--warn); }
+  .badge.bad { background: rgba(239,83,80,0.15); color: var(--error); }
+
+  /* === JSON IMPORT === */
+  .import-area { display: flex; flex-direction: column; gap: 1.5rem; }
+  .import-zone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+  .import-zone:hover { border-color: var(--accent); background: rgba(232,197,71,0.03); }
+  .import-zone-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .import-zone-text { color: var(--text-muted); font-size: 0.92rem; }
+  .import-zone-text strong { color: var(--text); display: block; font-size: 1rem; margin-bottom: 0.5rem; }
+
+  .code-area {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .code-area h3 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; font-family: 'DM Mono', monospace; }
+  textarea.json-input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--accent2);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    padding: 1rem;
+    min-height: 260px;
+    outline: none;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.2s;
+  }
+  textarea.json-input:focus { border-color: var(--accent2); }
+  .import-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+  .import-msg { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.88rem; display: none; margin-top: 0.75rem; }
+  .import-msg.ok { background: rgba(102,187,106,0.1); border: 1px solid rgba(102,187,106,0.3); color: var(--success); display: block; }
+  .import-msg.err { background: rgba(239,83,80,0.1); border: 1px solid rgba(239,83,80,0.3); color: var(--error); display: block; }
+
+  /* === SESSION RESULTS === */
+  .session-results {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .session-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin: 1rem 0;
+  }
+  .session-score span { font-size: 2rem; color: var(--text-muted); }
+  .session-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+  .sb-item { text-align: center; }
+  .sb-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; }
+  .sb-lbl { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* === THEORY VIEW === */
+  .theory-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .th-nav-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 20px;
+    cursor: pointer; font-size: 0.82rem; font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+  .th-nav-btn:hover, .th-nav-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+
+  .theory-section { display: none; }
+  .theory-section.active { display: block; }
+
+  .th-hero {
+    background: linear-gradient(135deg, var(--surface2) 0%, var(--surface) 100%);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 2rem; margin-bottom: 1.5rem;
+  }
+  .th-hero h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .th-hero p { color: var(--text-muted); line-height: 1.7; }
+
+  .th-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .th-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem;
+    border-left: 3px solid var(--card-color, var(--accent));
+  }
+  .th-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--card-color, var(--accent)); }
+  .th-card p, .th-card li { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); }
+  .th-card ul { padding-left: 1.2rem; }
+  .th-card li { margin-bottom: 0.3rem; }
+  .th-card li strong { color: var(--text); }
+  .th-card code {
+    background: var(--surface2); padding: 0.1rem 0.4rem; border-radius: 4px;
+    font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent2);
+  }
+
+  .th-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+  .th-table {
+    width: 100%; border-collapse: collapse; font-size: 0.85rem;
+    background: var(--surface); border-radius: var(--radius); overflow: hidden;
+  }
+  .th-table th {
+    background: var(--surface2); padding: 0.75rem 1rem;
+    text-align: left; font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .th-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(42,45,58,0.5); vertical-align: top; line-height: 1.6; }
+  .th-table tr:last-child td { border-bottom: none; }
+  .th-table tr:hover td { background: var(--surface2); }
+  .th-table .hl { color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.82rem; }
+  .th-table .hl2 { color: var(--accent2); font-family: 'DM Mono', monospace; font-size: 0.82rem; }
+  .th-table .hl3 { color: var(--accent3); font-family: 'DM Mono', monospace; font-size: 0.82rem; }
+
+  .hack-box {
+    background: rgba(232,197,71,0.05); border: 1px solid rgba(232,197,71,0.3);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+  }
+  .hack-box h4 { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+  .hack-box p, .hack-box li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+  .hack-box ul { padding-left: 1.2rem; }
+  .hack-box li { margin-bottom: 0.4rem; }
+  .hack-box li strong { color: var(--text); }
+  .hack-box code { background: var(--surface2); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent2); }
+
+  .warn-box {
+    background: rgba(239,83,80,0.06); border: 1px solid rgba(239,83,80,0.25);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+  }
+  .warn-box h4 { color: var(--error); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .warn-box p, .warn-box li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+  .warn-box ul { padding-left: 1.2rem; }
+  .warn-box li { margin-bottom: 0.4rem; }
+  .warn-box li strong { color: var(--text); }
+
+  .info-box {
+    background: rgba(79,195,247,0.05); border: 1px solid rgba(79,195,247,0.25);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+  }
+  .info-box h4 { color: var(--accent2); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .info-box p, .info-box li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+  .info-box ul { padding-left: 1.2rem; }
+  .info-box li { margin-bottom: 0.4rem; }
+  .info-box li strong { color: var(--text); }
+  .info-box code { background: var(--surface2); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent); }
+
+  .th-section-title {
+    font-family: 'Playfair Display', serif; font-size: 1.3rem;
+    margin: 1.75rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .th-section-title:first-of-type { margin-top: 0; }
+
+  .example-block {
+    background: var(--surface2); border-radius: 8px;
+    padding: 1rem 1.25rem; margin: 0.75rem 0;
+    font-size: 0.88rem; line-height: 1.8;
+    border-left: 2px solid var(--accent2);
+  }
+  .example-block .label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+  .example-block em { color: var(--accent); font-style: normal; font-family: 'DM Mono', monospace; }
+
+  .keyword-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0 1.25rem; }
+  .keyword-tag {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.3rem 0.75rem;
+    font-family: 'DM Mono', monospace; font-size: 0.8rem;
+    color: var(--accent2);
+  }
+  .keyword-tag span { color: var(--text-muted); font-size: 0.72rem; margin-left: 0.3rem; }
+
+  @media (max-width: 600px) { .th-grid { grid-template-columns: 1fr; } }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  @media (max-width: 600px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .session-breakdown { grid-template-columns: repeat(3, 1fr); }
+    .chart-label { min-width: 100px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    MATURA <em style="color:var(--accent)">EN</em>
+    <span>Trener Angielskiego Rozszerzonego</span>
+  </div>
+  <nav>
+    <button class="nav-btn active" onclick="showView('home')">🏠 Strona główna</button>
+    <button class="nav-btn" onclick="showView('stats')">📊 Postępy</button>
+    <button class="nav-btn" onclick="showView('theory')">📒 Teoria & Hacki</button>
+    <button class="nav-btn" onclick="showView('import')">📂 Import JSON</button>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME VIEW -->
+  <div id="view-home" class="view active">
+    <div class="hero">
+      <h1>Zdaj maturę z <em>angielskiego</em><br>rozszerzonego</h1>
+      <p>Ćwicz zadania z ostatnich lat. Śledź postępy. Odkryj słabe strony.</p>
+    </div>
+    <div class="stats-row" id="global-stats">
+      <div class="stat-card"><span class="val" id="stat-total">0</span><span class="lbl">Zadań łącznie</span></div>
+      <div class="stat-card"><span class="val" id="stat-done">0</span><span class="lbl">Zrobionych</span></div>
+      <div class="stat-card"><span class="val" id="stat-score">0%</span><span class="lbl">Skuteczność</span></div>
+      <div class="stat-card"><span class="val" id="stat-streak">0</span><span class="lbl">Dni z rzędu</span></div>
+    </div>
+    <div class="categories-grid" id="categories-grid"></div>
+
+    <div class="theory-promo" onclick="showView('theory')" style="margin-top:1.5rem;cursor:pointer;background:linear-gradient(135deg,#1c1f2a 0%,#13151c 100%);border:1px solid #e8c547;border-radius:12px;padding:1.75rem 2rem;display:flex;align-items:center;gap:2rem;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(232,197,71,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:3rem;flex-shrink:0">📒</div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--accent);margin-bottom:0.3rem">Teoria & Hacki maturalne</div>
+        <div style="color:var(--text-muted);font-size:0.88rem;line-height:1.6">Czasy angielskie, strona bierna, mowa zależna, transformacje zdań, word formation, wskazówki do zadań pisemnych — wszystko w jednym miejscu. Zanim zaczniesz ćwiczyć, naucz się teorii.</div>
+      </div>
+      <div style="margin-left:auto;flex-shrink:0;color:var(--accent);font-size:1.5rem">→</div>
+    </div>
+  </div>
+
+  <!-- EXERCISE VIEW -->
+  <div id="view-exercise" class="view">
+    <div class="ex-header">
+      <button class="back-btn" onclick="endSession()">← Wróć</button>
+      <span class="ex-category-badge" id="ex-cat-name">—</span>
+      <div class="ex-progress-bar"><div class="ex-progress-fill" id="ex-progress-fill" style="width:0%"></div></div>
+      <span class="ex-counter" id="ex-counter">0/0</span>
+    </div>
+    <div id="exercise-area"></div>
+  </div>
+
+  <!-- STATS VIEW -->
+  <div id="view-stats" class="view">
+    <div class="stats-section">
+      <h2>Wyniki według kategorii</h2>
+      <div class="chart-bars" id="chart-categories"></div>
+    </div>
+    <div class="stats-section">
+      <h2>Słabe punkty</h2>
+      <div class="weak-areas" id="weak-areas"></div>
+    </div>
+    <div class="stats-section">
+      <h2>Historia sesji</h2>
+      <table class="history-table">
+        <thead><tr><th>Data</th><th>Kategoria</th><th>Wynik</th><th>Czas</th><th>Ocena</th></tr></thead>
+        <tbody id="history-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- IMPORT VIEW -->
+  <div id="view-import" class="view">
+    <div class="import-area">
+      <div class="import-zone" onclick="document.getElementById('file-input').click()">
+        <div class="import-zone-icon">📄</div>
+        <div class="import-zone-text">
+          <strong>Przeciągnij plik JSON lub kliknij</strong>
+          Format: tablica zadań zgodna ze schematem matura-exercises.json
+        </div>
+        <input type="file" id="file-input" accept=".json" style="display:none" onchange="handleFileImport(event)">
+      </div>
+
+      <div class="code-area">
+        <h3>// lub wklej JSON bezpośrednio</h3>
+        <textarea class="json-input" id="json-textarea" placeholder='[
+  {
+    "id": "unique-id",
+    "category": "reading",
+    "type": "multiple_choice",
+    "instruction": "Przeczytaj tekst i odpowiedz na pytania.",
+    "text": "...",
+    "question": "What is the main topic?",
+    "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+    "answer": "A",
+    "explanation": "Wyjaśnienie poprawnej odpowiedzi."
+  }
+]'></textarea>
+        <div class="import-actions">
+          <button class="btn btn-primary" onclick="importJSON()">Importuj zadania</button>
+          <button class="btn btn-secondary" onclick="loadSampleData()">Załaduj przykładowe zadania</button>
+          <button class="btn btn-secondary" onclick="exportProgress()">Eksportuj postępy</button>
+        </div>
+        <div class="import-msg" id="import-msg"></div>
+      </div>
+
+      <div class="code-area">
+        <h3>// schemat JSON — jak dodawać własne zadania</h3>
+        <pre style="color:var(--text-muted);font-family:'DM Mono',monospace;font-size:0.78rem;line-height:1.8;white-space:pre-wrap">{
+  <span style="color:var(--accent)">"id"</span>: "unikalne-id",
+  <span style="color:var(--accent)">"category"</span>: "reading" | "grammar" | "vocabulary" | "writing" | "use_of_english" | "listening_text",
+  <span style="color:var(--accent)">"type"</span>: "multiple_choice" | "fill_blank" | "true_false_ng" | "open_answer" | "word_formation" | "essay" | "email" | "sentence_transform",
+  <span style="color:var(--accent)">"instruction"</span>: "Instrukcja dla ucznia",
+  <span style="color:var(--accent)">"text"</span>: "Opcjonalny tekst do przeczytania",
+  <span style="color:var(--accent)">"question"</span>: "Pytanie lub polecenie",
+  <span style="color:var(--accent)">"options"</span>: ["A. ...", "B. ...", "C. ...", "D. ..."],  // dla MCQ
+  <span style="color:var(--accent)">"blanks"</span>: [{"num":1,"hint":"czasownik","answer":"have been"}],  // dla fill_blank
+  <span style="color:var(--accent)">"answer"</span>: "Poprawna odpowiedź",
+  <span style="color:var(--accent)">"explanation"</span>: "Wyjaśnienie",
+  <span style="color:var(--accent)">"points"</span>: 1,
+  <span style="color:var(--accent)">"year"</span>: 2023
+}</pre>
+      </div>
+    </div>
+  </div>
+  <!-- THEORY VIEW -->
+  <div id="view-theory" class="view">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
+      <button class="back-btn" onclick="showView('home')">← Wróć</button>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem">📒 Teoria & Hacki Maturalne</div>
+        <div style="color:var(--text-muted);font-size:0.85rem">Angielski Rozszerzony — kompendium wiedzy</div>
+      </div>
+    </div>
+
+    <!-- NAV TABS -->
+    <div class="theory-nav">
+      <button class="th-nav-btn active" onclick="showTheory('tenses')">⏰ Czasy</button>
+      <button class="th-nav-btn" onclick="showTheory('passive')">🔄 Strona bierna</button>
+      <button class="th-nav-btn" onclick="showTheory('conditionals')">🔀 Kondycjonalis</button>
+      <button class="th-nav-btn" onclick="showTheory('reported')">💬 Mowa zależna</button>
+      <button class="th-nav-btn" onclick="showTheory('modal')">🎯 Modals</button>
+      <button class="th-nav-btn" onclick="showTheory('transforms')">🔑 Transformacje</button>
+      <button class="th-nav-btn" onclick="showTheory('wordform')">🧬 Word Formation</button>
+      <button class="th-nav-btn" onclick="showTheory('reading')">📖 Reading</button>
+      <button class="th-nav-btn" onclick="showTheory('writing')">✍️ Writing</button>
+      <button class="th-nav-btn" onclick="showTheory('collocations')">🧩 Kolokacje</button>
+    </div>
+
+    <!-- ======= CZASY ======= -->
+    <div class="theory-section active" id="th-tenses">
+      <div class="th-hero">
+        <h2>⏰ Czasy angielskie</h2>
+        <p>16 czasów angielskich pogrupowanych według aspektu. Na maturze rozszerzonej najczęściej testowane są: Present Perfect (Simple/Continuous), Past Perfect, Future forms i czasy w zdaniach podrzędnych.</p>
+      </div>
+
+      <div class="th-section-title">Przegląd wszystkich czasów</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Czas</th><th>Budowa</th><th>Kiedy używać</th><th>Przykład</th></tr>
+          <tr><td><strong>Present Simple</strong></td><td class="hl">V / V-s</td><td>fakty, nawyki, harmonogramy</td><td class="hl2">She works every day.</td></tr>
+          <tr><td><strong>Present Continuous</strong></td><td class="hl">am/is/are + V-ing</td><td>teraz, plany na bliską przyszłość</td><td class="hl2">I am studying now.</td></tr>
+          <tr><td><strong>Present Perfect Simple</strong></td><td class="hl">have/has + V3</td><td>doświadczenie, wynik, niedawna przeszłość</td><td class="hl2">I have seen that film.</td></tr>
+          <tr><td><strong>Present Perfect Continuous</strong></td><td class="hl">have/has been + V-ing</td><td>czynność trwająca do teraz (akcent na czas/efekt)</td><td class="hl2">I've been waiting for 2h.</td></tr>
+          <tr><td><strong>Past Simple</strong></td><td class="hl">V2 / did + V</td><td>zakończona czynność w przeszłości</td><td class="hl2">She left yesterday.</td></tr>
+          <tr><td><strong>Past Continuous</strong></td><td class="hl">was/were + V-ing</td><td>czynność trwająca w tle, przerywana</td><td class="hl2">I was reading when he called.</td></tr>
+          <tr><td><strong>Past Perfect Simple</strong></td><td class="hl">had + V3</td><td>czynność wcześniejsza od innej przeszłej</td><td class="hl2">She had left before I arrived.</td></tr>
+          <tr><td><strong>Past Perfect Continuous</strong></td><td class="hl">had been + V-ing</td><td>czynność trwająca do pewnego momentu w przeszłości</td><td class="hl2">He had been waiting for hours.</td></tr>
+          <tr><td><strong>Future Simple (will)</strong></td><td class="hl">will + V</td><td>decyzja spontaniczna, przewidywanie, obietnica</td><td class="hl2">I'll call you later.</td></tr>
+          <tr><td><strong>be going to</strong></td><td class="hl">am/is/are going to + V</td><td>plan lub zamiar, oczywiste przewidywanie</td><td class="hl2">It's going to rain.</td></tr>
+          <tr><td><strong>Future Continuous</strong></td><td class="hl">will be + V-ing</td><td>czynność trwająca w przyszłości o określonej godzinie</td><td class="hl2">At 8pm I'll be studying.</td></tr>
+          <tr><td><strong>Future Perfect</strong></td><td class="hl">will have + V3</td><td>czynność skończona przed punktem w przyszłości</td><td class="hl2">By June I will have finished.</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Kluczowe słowa-sygnały</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#e8c547">
+          <h4>Present Perfect — sygnały</h4>
+          <div class="keyword-grid">
+            <span class="keyword-tag">already</span><span class="keyword-tag">yet</span><span class="keyword-tag">just</span><span class="keyword-tag">ever</span><span class="keyword-tag">never</span><span class="keyword-tag">since</span><span class="keyword-tag">for</span><span class="keyword-tag">recently</span><span class="keyword-tag">so far</span><span class="keyword-tag">lately</span><span class="keyword-tag">it's the first time</span>
+          </div>
+          <div class="example-block"><div class="label">Przykłady</div>
+            I have <em>already</em> eaten.<br>
+            She has lived here <em>since</em> 2010.<br>
+            Have you <em>ever</em> been to Japan?
+          </div>
+        </div>
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>Past Simple — sygnały</h4>
+          <div class="keyword-grid">
+            <span class="keyword-tag">yesterday</span><span class="keyword-tag">ago</span><span class="keyword-tag">last year</span><span class="keyword-tag">in 2010</span><span class="keyword-tag">when</span><span class="keyword-tag">then</span>
+          </div>
+          <div class="example-block"><div class="label">Przykłady</div>
+            She left <em>yesterday</em>.<br>
+            I met him <em>three years ago</em>.<br>
+            <em>When</em> I was young, I played piano.
+          </div>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>Future Perfect — sygnały</h4>
+          <div class="keyword-grid">
+            <span class="keyword-tag">by the time</span><span class="keyword-tag">by + data</span><span class="keyword-tag">before</span><span class="keyword-tag">in ... years</span>
+          </div>
+          <div class="example-block"><div class="label">Przykłady</div>
+            <em>By the time</em> you arrive, I will have finished.<br>
+            <em>By 2030</em>, they will have launched the rocket.
+          </div>
+        </div>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #1 — PPS vs. PS: jak wybrać?</h4>
+        <ul>
+          <li>Jeśli zdanie ma <strong>dwie czynności w przeszłości</strong> — ta <em>wcześniejsza</em> idzie w Past Perfect: <code>When she arrived, he had already left.</code></li>
+          <li>Słowa-klucze Past Perfect: <strong>already, by the time, after, before, when (poprzednika), as soon as</strong></li>
+          <li>Jeśli jest tylko <strong>jedna czynność</strong> — Past Simple wystarczy.</li>
+        </ul>
+      </div>
+      <div class="warn-box">
+        <h4>⚠️ Najczęstsze błędy na maturze</h4>
+        <ul>
+          <li><strong>❌</strong> <code>I have seen him yesterday.</code> → ❌ yesterday = Past Simple → <strong>✅</strong> <code>I saw him yesterday.</code></li>
+          <li><strong>❌</strong> <code>She is knowing the answer.</code> → czasowniki statyczne (know, like, believe) nie tworzą Continuous → <strong>✅</strong> <code>She knows.</code></li>
+          <li><strong>❌</strong> <code>When I will arrive, call me.</code> → po "when" (czas) używamy Present Simple → <strong>✅</strong> <code>When I arrive...</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= STRONA BIERNA ======= -->
+    <div class="theory-section" id="th-passive">
+      <div class="th-hero">
+        <h2>🔄 Strona bierna (Passive Voice)</h2>
+        <p>Na maturze rozszerzonej strona bierna pojawia się w transformacjach zdań, fill-in-the-blank oraz w esejach (szczególnie akademickich). Musisz umieć tworzyć ją we wszystkich czasach i z modals.</p>
+      </div>
+
+      <div class="th-section-title">Budowa strony biernej we wszystkich czasach</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Czas</th><th>Budowa (passive)</th><th>Przykład</th></tr>
+          <tr><td>Present Simple</td><td class="hl">am/is/are + V3</td><td class="hl2">The letter is written every day.</td></tr>
+          <tr><td>Present Continuous</td><td class="hl">am/is/are being + V3</td><td class="hl2">The bridge is being built.</td></tr>
+          <tr><td>Present Perfect</td><td class="hl">have/has been + V3</td><td class="hl2">It has been decided.</td></tr>
+          <tr><td>Past Simple</td><td class="hl">was/were + V3</td><td class="hl2">The law was passed in 2010.</td></tr>
+          <tr><td>Past Continuous</td><td class="hl">was/were being + V3</td><td class="hl2">The road was being repaired.</td></tr>
+          <tr><td>Past Perfect</td><td class="hl">had been + V3</td><td class="hl2">The report had been submitted.</td></tr>
+          <tr><td>Future Simple</td><td class="hl">will be + V3</td><td class="hl2">The results will be announced.</td></tr>
+          <tr><td>Modal verbs</td><td class="hl">modal + be + V3</td><td class="hl2">It should be done. / It must be stopped.</td></tr>
+          <tr><td>Modal + Perfect</td><td class="hl">modal + have been + V3</td><td class="hl2">It could have been avoided.</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Reporting verbs w stronie biernej (matura!)</div>
+      <div class="info-box">
+        <h4>📌 Wzory — kluczowe na transformacjach zdań</h4>
+        <ul>
+          <li><code>People say that he is rich.</code> → <strong>He is said to be rich.</strong></li>
+          <li><code>People believe that she won.</code> → <strong>She is believed to have won.</strong></li>
+          <li><code>They expect the team to win.</code> → <strong>The team is expected to win.</strong></li>
+          <li><code>Experts claim he discovered it.</code> → <strong>He is claimed to have discovered it.</strong></li>
+        </ul>
+        <p style="margin-top:0.75rem"><strong>Schemat:</strong> Subject + <code>is/are + [said/believed/reported/claimed/thought/known/expected/supposed] + to (have) + V</code></p>
+        <p>Przeszłość (that clause w przeszłości) → <code>to have + V3</code><br>Teraźniejszość → <code>to + V</code></p>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #2 — Passive z "get"</h4>
+        <ul>
+          <li><code>Get + V3</code> to nieformalny odpowiednik: <strong>She got fired. / He got injured.</strong></li>
+          <li>Używaj w e-mailach nieformalnych, unikaj w esejach akademickich.</li>
+          <li>Typowe kolokacje: <code>get paid / get promoted / get arrested / get married / get lost</code></li>
+        </ul>
+      </div>
+      <div class="warn-box">
+        <h4>⚠️ Pułapki — Phrasal verbs w stronie biernej</h4>
+        <ul>
+          <li>Zachowaj przyimek! <strong>❌</strong> <code>The office was broken.</code> → <strong>✅</strong> <code>The office was broken into.</code></li>
+          <li><code>look after → The children were looked after.</code></li>
+          <li><code>deal with → The problem was dealt with.</code></li>
+          <li><code>call off → The match was called off.</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= KONDYCJONALIS ======= -->
+    <div class="theory-section" id="th-conditionals">
+      <div class="th-hero">
+        <h2>🔀 Zdania warunkowe (Conditionals)</h2>
+        <p>Jeden z najważniejszych działów na maturze rozszerzonej. Musisz znać wszystkie 4 typy + mixed conditionals + inwersję + wyrażenia alternatywne.</p>
+      </div>
+
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Typ</th><th>If-clause</th><th>Main clause</th><th>Znaczenie</th><th>Przykład</th></tr>
+          <tr><td><strong>Zero</strong></td><td class="hl">Present Simple</td><td class="hl">Present Simple</td><td>fakty, prawa natury</td><td class="hl2">If you heat water to 100°C, it boils.</td></tr>
+          <tr><td><strong>1st</strong></td><td class="hl">Present Simple</td><td class="hl">will + V</td><td>realny, możliwy warunek</td><td class="hl2">If it rains, I will stay home.</td></tr>
+          <tr><td><strong>2nd</strong></td><td class="hl">Past Simple</td><td class="hl">would + V</td><td>hipotetyczny (teraźniejszość)</td><td class="hl2">If I were rich, I would travel.</td></tr>
+          <tr><td><strong>3rd</strong></td><td class="hl">Past Perfect</td><td class="hl">would have + V3</td><td>nierealne (przeszłość)</td><td class="hl2">If I had studied, I would have passed.</td></tr>
+          <tr><td><strong>Mixed</strong></td><td class="hl">Past Perfect</td><td class="hl">would + V</td><td>przeszłość → skutek teraz</td><td class="hl2">If I had studied, I would be a doctor now.</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Inwersja warunkowa (bez "if") — ulubiony temat egzaminatorów!</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Normalnie</th><th>Inwersja</th></tr>
+          <tr><td class="hl2">If I had known...</td><td class="hl"><strong>Had I known...</strong></td></tr>
+          <tr><td class="hl2">If it were not for her...</td><td class="hl"><strong>Were it not for her...</strong></td></tr>
+          <tr><td class="hl2">If you should need help...</td><td class="hl"><strong>Should you need help...</strong></td></tr>
+          <tr><td class="hl2">If it were not for the rain...</td><td class="hl"><strong>But for the rain...</strong></td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Alternatywne wyrażenia warunkowe</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#e8c547">
+          <h4>Zamiast "if"</h4>
+          <ul>
+            <li><strong>Unless</strong> = if...not: <code>Unless you hurry, you'll miss it.</code></li>
+            <li><strong>Provided/providing (that)</strong> = pod warunkiem że</li>
+            <li><strong>As long as</strong> = dopóki</li>
+            <li><strong>On condition (that)</strong> = pod warunkiem</li>
+            <li><strong>Supposing/Imagine (that)</strong> = wyobraź sobie że</li>
+            <li><strong>In case</strong> = na wypadek gdyby (≠ if!)</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>Wyrażenia ze znaczeniem "gdyby nie"</h4>
+          <ul>
+            <li><strong>But for + noun:</strong> <code>But for her help, I would have failed.</code></li>
+            <li><strong>Were it not for:</strong> <code>Were it not for the traffic...</code></li>
+            <li><strong>Had it not been for:</strong> <code>Had it not been for the rain...</code></li>
+            <li><strong>Without:</strong> <code>Without your support, I couldn't have done it.</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #3 — Wish / If only / It's time</h4>
+        <ul>
+          <li><code>I wish + Past Simple</code> = życzenie o teraźniejszości: <strong>I wish I knew the answer.</strong></li>
+          <li><code>I wish + Past Perfect</code> = żal za przeszłością: <strong>I wish I had studied harder.</strong></li>
+          <li><code>I wish + would</code> = irytacja (dot. innych): <strong>I wish he would stop talking.</strong></li>
+          <li><code>If only</code> = intensywniejsza wersja wish: <strong>If only I had been there!</strong></li>
+          <li><code>It's (high) time + Past Simple</code>: <strong>It's high time you started studying.</strong></li>
+          <li><code>I'd rather/sooner + Past Simple</code> (o innych): <strong>I'd rather you didn't tell anyone.</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= MOWA ZALEŻNA ======= -->
+    <div class="theory-section" id="th-reported">
+      <div class="th-hero">
+        <h2>💬 Mowa zależna (Reported Speech)</h2>
+        <p>Transformacje z mowy niezależnej na zależną i odwrotnie to stały element matury. Kluczowe: cofanie czasów (backshift), zmiana zaimków i wyrażeń czasowych.</p>
+      </div>
+
+      <div class="th-section-title">Cofanie czasów (Backshift)</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Mowa niezależna</th><th>Mowa zależna</th></tr>
+          <tr><td class="hl">Present Simple → </td><td class="hl2">Past Simple: "I work" → he said he <em>worked</em></td></tr>
+          <tr><td class="hl">Present Continuous → </td><td class="hl2">Past Continuous: "I'm working" → he said he <em>was working</em></td></tr>
+          <tr><td class="hl">Present Perfect → </td><td class="hl2">Past Perfect: "I have done" → she said she <em>had done</em></td></tr>
+          <tr><td class="hl">Past Simple → </td><td class="hl2">Past Perfect: "I went" → he said he <em>had gone</em></td></tr>
+          <tr><td class="hl">will → </td><td class="hl2">would: "I will go" → she said she <em>would go</em></td></tr>
+          <tr><td class="hl">can → </td><td class="hl2">could: "I can help" → he said he <em>could help</em></td></tr>
+          <tr><td class="hl">may → </td><td class="hl2">might: "It may rain" → she said it <em>might rain</em></td></tr>
+          <tr><td class="hl">must (obowiązek) → </td><td class="hl2">had to: "I must leave" → he said he <em>had to leave</em></td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Zmiana wyrażeń czasowych i miejsca</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Mowa niezależna</th><th>Mowa zależna</th></tr>
+          <tr><td class="hl2">now</td><td class="hl">then / at that time</td></tr>
+          <tr><td class="hl2">today</td><td class="hl">that day</td></tr>
+          <tr><td class="hl2">yesterday</td><td class="hl">the day before / the previous day</td></tr>
+          <tr><td class="hl2">tomorrow</td><td class="hl">the next day / the following day</td></tr>
+          <tr><td class="hl2">last week</td><td class="hl">the week before / the previous week</td></tr>
+          <tr><td class="hl2">here</td><td class="hl">there</td></tr>
+          <tr><td class="hl2">this / these</td><td class="hl">that / those</td></tr>
+          <tr><td class="hl2">ago</td><td class="hl">before / earlier</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Reporting verbs z wzorami</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#e8c547">
+          <h4>Verb + to-infinitive</h4>
+          <ul>
+            <li><strong>agree, offer, refuse, promise, decide, threaten</strong></li>
+            <li>"I'll help." → <code>He offered to help.</code></li>
+            <li>"I won't do it." → <code>She refused to do it.</code></li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>Verb + sb + to-infinitive</h4>
+          <ul>
+            <li><strong>ask, tell, warn, order, advise, remind, encourage, beg</strong></li>
+            <li>"Don't touch it!" → <code>She warned us not to touch it.</code></li>
+            <li>"Please come." → <code>He asked her to come.</code></li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>Verb + that-clause</h4>
+          <ul>
+            <li><strong>say, tell, claim, admit, explain, insist, deny, suggest</strong></li>
+            <li>"I didn't do it." → <code>He denied doing it.</code></li>
+            <li>"suggest" + gerund lub that + should: <code>She suggested going / that we go.</code></li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#a5d6a7">
+          <h4>Verb + -ing</h4>
+          <ul>
+            <li><strong>admit, deny, suggest, recommend, confess, apologise for</strong></li>
+            <li>"I'm sorry I was late." → <code>She apologised for being late.</code></li>
+            <li>"I broke it." → <code>He admitted breaking it.</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="warn-box">
+        <h4>⚠️ Nie cofaj, gdy wprowadzasz zdanie ogólnie prawdziwe</h4>
+        <ul>
+          <li>"Paris is the capital of France." → <code>He said Paris is the capital of France.</code> (prawda ogólna — brak cofnięcia)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= MODALS ======= -->
+    <div class="theory-section" id="th-modal">
+      <div class="th-hero">
+        <h2>🎯 Czasowniki modalne (Modal Verbs)</h2>
+        <p>Modals wyrażają możliwość, konieczność, prawdopodobieństwo i pozwolenie. Na maturze szczególnie ważne są modals w odniesieniu do przeszłości (modal + have + V3).</p>
+      </div>
+
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Modal</th><th>Znaczenie</th><th>Przeszłość (+ have + V3)</th><th>Przykład</th></tr>
+          <tr><td class="hl">must</td><td>obowiązek / pewna dedukcja (+)</td><td class="hl3">must have done = z pewnością zrobił</td><td class="hl2">He must have left early.</td></tr>
+          <tr><td class="hl">can't / couldn't</td><td>niemożliwość</td><td class="hl3">can't have done = niemożliwe że zrobił</td><td class="hl2">She can't have been there.</td></tr>
+          <tr><td class="hl">might / may / could</td><td>możliwość</td><td class="hl3">might have done = być może zrobił</td><td class="hl2">He might have forgotten.</td></tr>
+          <tr><td class="hl">should</td><td>rada / oczekiwanie</td><td class="hl3">should have done = powinienem był (ale nie)</td><td class="hl2">You should have called me.</td></tr>
+          <tr><td class="hl">shouldn't</td><td>zakaz / krytyka</td><td class="hl3">shouldn't have done = nie powinienem był</td><td class="hl2">He shouldn't have lied.</td></tr>
+          <tr><td class="hl">needn't</td><td>brak konieczności</td><td class="hl3">needn't have done = nie musiał (ale zrobił)</td><td class="hl2">You needn't have bought it.</td></tr>
+          <tr><td class="hl">didn't need to</td><td>brak konieczności</td><td>nie musiał (i nie zrobił)</td><td class="hl2">He didn't need to come.</td></tr>
+          <tr><td class="hl">would</td><td>przeszłe nawyki</td><td>—</td><td class="hl2">We would go there every summer.</td></tr>
+          <tr><td class="hl">used to</td><td>przeszłe nawyki/stany</td><td>—</td><td class="hl2">I used to play piano as a child.</td></tr>
+        </table>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #4 — Dedukcja o przeszłości (must/can't/might have)</h4>
+        <ul>
+          <li>Pewność (+): <strong>must have</strong> → <code>She must have taken the wrong bus. (jestem pewien)</code></li>
+          <li>Niemożliwość: <strong>can't have</strong> → <code>He can't have done it — he was with me. (niemożliwe)</code></li>
+          <li>Możliwość: <strong>might/may/could have</strong> → <code>They might have missed the train. (może)</code></li>
+          <li>Żal: <strong>should/ought to have</strong> → <code>I should have apologised. (powinienem był)</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= TRANSFORMACJE ======= -->
+    <div class="theory-section" id="th-transforms">
+      <div class="th-hero">
+        <h2>🔑 Transformacje zdań — Key Word Transformations</h2>
+        <p>Najtrudniejszy element Use of English. Egzaminator daje słowo kluczowe i 2–5 wyrazów do wpisania. Poniżej najczęściej testowane wzory.</p>
+      </div>
+
+      <div class="th-section-title">TOP wzory — musisz znać na pamięć</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#e8c547">
+          <h4>so...that → too...to / enough</h4>
+          <ul>
+            <li><code>so tired that she couldn't walk</code> → <strong>too tired to walk</strong></li>
+            <li><code>so strong that he can lift it</code> → <strong>strong enough to lift it</strong></li>
+            <li><code>not enough + noun</code> → <strong>too few / too little</strong></li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>Active → Passive</h4>
+          <ul>
+            <li><code>They built it in 1990.</code> → <strong>It was built in 1990.</strong></li>
+            <li><code>People say he is rich.</code> → <strong>He is said to be rich.</strong></li>
+            <li><code>They have just announced...</code> → <strong>... has just been announced.</strong></li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>Conditional transforms</h4>
+          <ul>
+            <li><code>If she hadn't helped...</code> → <strong>Had she not helped... / But for her help...</strong></li>
+            <li><code>unless = if...not</code></li>
+            <li><code>as long as / provided that</code> = jeśli tylko</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#a5d6a7">
+          <h4>Verb patterns</h4>
+          <ul>
+            <li><code>remember/forget + to-inf</code> vs <code>+ -ing</code> (różne znaczenia!)</li>
+            <li><code>stop + -ing</code> = przestać; <code>stop + to-inf</code> = zatrzymać się żeby</li>
+            <li><code>try + -ing</code> = spróbować; <code>try + to-inf</code> = usiłować</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#ffb74d">
+          <h4>Reporting verbs</h4>
+          <ul>
+            <li><code>warned us not to</code> / <code>advised us to</code></li>
+            <li><code>denied doing</code> / <code>admitted doing</code></li>
+            <li><code>suggested that we go</code> / <code>suggested going</code></li>
+            <li><code>apologised for + -ing</code></li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#ce93d8">
+          <h4>Prepositional phrases</h4>
+          <ul>
+            <li><code>in spite of / despite + noun/-ing</code></li>
+            <li><code>due to / because of + noun</code></li>
+            <li><code>on the grounds that</code> = z powodu tego że</li>
+            <li><code>with a view to + -ing</code> = w celu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #5 — Strategia rozwiązywania transformacji</h4>
+        <ul>
+          <li><strong>Krok 1:</strong> Znajdź kategorię — patrz na SŁOWO KLUCZOWE. <code>WISH</code> → żal. <code>BEEN</code> → passive. <code>UNLESS</code> → conditional.</li>
+          <li><strong>Krok 2:</strong> Policz wyrazy w luce — muszą być 2–5 (włącznie ze słowem kluczowym).</li>
+          <li><strong>Krok 3:</strong> Nie zmieniaj formy słowa kluczowego! <code>WISH</code> musi zostać <code>wish</code>.</li>
+          <li><strong>Krok 4:</strong> Sprawdź, czy sens zdania jest zachowany — nie zmieniaj czasu akcji.</li>
+          <li><strong>Krok 5:</strong> Uważaj na skróty — <code>haven't</code> = 2 wyrazy, <code>have not</code> = też 2.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= WORD FORMATION ======= -->
+    <div class="theory-section" id="th-wordform">
+      <div class="th-hero">
+        <h2>🧬 Word Formation — Tworzenie wyrazów</h2>
+        <p>Stały element matury rozszerzonej. Musisz rozpoznać, jakiej formy (noun/adjective/adverb/verb) wymaga luka i zastosować właściwy przedrostek lub przyrostek.</p>
+      </div>
+
+      <div class="th-section-title">Kluczowe przedrostki (Prefixes)</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Prefiks</th><th>Znaczenie</th><th>Przykłady</th></tr>
+          <tr><td class="hl">un-</td><td>nie-, od-</td><td class="hl2">unhappy, unlikely, unfair, undo, unable, unaware</td></tr>
+          <tr><td class="hl">in-/im-/il-/ir-</td><td>nie-</td><td class="hl2">incorrect, impossible, illegal, irregular, invisible</td></tr>
+          <tr><td class="hl">dis-</td><td>nie-, roz-</td><td class="hl2">disagree, dishonest, disappear, discomfort</td></tr>
+          <tr><td class="hl">mis-</td><td>źle, błędnie</td><td class="hl2">misunderstand, mislead, misuse, misjudge</td></tr>
+          <tr><td class="hl">over-</td><td>prze-, zbyt</td><td class="hl2">overestimate, overworked, overreact, overcome</td></tr>
+          <tr><td class="hl">under-</td><td>za mało, pod-</td><td class="hl2">underestimate, underpaid, undermine</td></tr>
+          <tr><td class="hl">pre-</td><td>przed-</td><td class="hl2">prehistoric, predict, prevent, precaution</td></tr>
+          <tr><td class="hl">re-</td><td>ponownie</td><td class="hl2">rewrite, rethink, rebuild, reconsider</td></tr>
+          <tr><td class="hl">inter-</td><td>między-</td><td class="hl2">international, interact, interconnected</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Przyrostki rzeczownikowe (Noun Suffixes)</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Przyrostek</th><th>Typ</th><th>Przykłady</th></tr>
+          <tr><td class="hl">-tion / -sion / -ation</td><td>czynność/stan</td><td class="hl2">education, pollution, decision, imagination</td></tr>
+          <tr><td class="hl">-ness</td><td>stan/cecha</td><td class="hl2">happiness, sadness, awareness, darkness</td></tr>
+          <tr><td class="hl">-ity / -ty</td><td>cecha</td><td class="hl2">ability, creativity, equality, safety</td></tr>
+          <tr><td class="hl">-ment</td><td>wynik/czynność</td><td class="hl2">employment, achievement, improvement</td></tr>
+          <tr><td class="hl">-ance / -ence</td><td>stan/cecha</td><td class="hl2">importance, independence, reliance</td></tr>
+          <tr><td class="hl">-er / -or / -ist / -ian</td><td>osoba</td><td class="hl2">teacher, director, scientist, musician</td></tr>
+          <tr><td class="hl">-ship</td><td>relacja/stan</td><td class="hl2">friendship, leadership, scholarship</td></tr>
+          <tr><td class="hl">-hood</td><td>stan/okres</td><td class="hl2">childhood, neighbourhood, likelihood</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">Przyrostki przymiotnikowe i przysłówkowe</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>Adjective suffixes</h4>
+          <ul>
+            <li><strong>-ful:</strong> helpful, careful, powerful</li>
+            <li><strong>-less:</strong> careless, useless, helpless</li>
+            <li><strong>-ous / -ious:</strong> dangerous, ambitious, conscious</li>
+            <li><strong>-able / -ible:</strong> acceptable, responsible, flexible</li>
+            <li><strong>-al / -ical:</strong> environmental, historical</li>
+            <li><strong>-ic:</strong> scientific, catastrophic, economic</li>
+            <li><strong>-ive:</strong> creative, effective, decisive</li>
+            <li><strong>-ing / -ed:</strong> boring/bored, surprising/surprised</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>Verb suffixes</h4>
+          <ul>
+            <li><strong>-ise / -ize:</strong> realise, recognise, minimise</li>
+            <li><strong>-en:</strong> widen, shorten, strengthen, weaken</li>
+            <li><strong>-ify:</strong> simplify, clarify, intensify, justify</li>
+          </ul>
+          <h4 style="margin-top:0.75rem">Adverb suffixes</h4>
+          <ul>
+            <li><strong>-ly:</strong> quickly, carefully, honestly</li>
+            <li>Uwaga: <strong>friendly, lovely, likely</strong> → przymiotniki!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #6 — Strategia word formation</h4>
+        <ul>
+          <li><strong>Krok 1:</strong> Sprawdź rolę w zdaniu — jaka część mowy jest potrzebna? (rzeczownik? przymiotnik?)</li>
+          <li><strong>Krok 2:</strong> Sprawdź, czy potrzebny jest <strong>prefiks negacji</strong> (kontekst jest negatywny?).</li>
+          <li><strong>Krok 3:</strong> Sprawdź liczbę i formę — czy rzeczownik ma być w liczbie mnogiej?</li>
+          <li><strong>Krok 4:</strong> Uważaj na <strong>nieregularne zmiany:</strong> <code>strong → strength</code>, <code>wide → width</code>, <code>long → length</code>, <code>decide → decision</code>, <code>describe → description</code></li>
+          <li><strong>Nieregularne „pułapki":</strong> <code>able → ability</code>, <code>curious → curiosity</code>, <code>probable → probability</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= READING ======= -->
+    <div class="theory-section" id="th-reading">
+      <div class="th-hero">
+        <h2>📖 Strategie — Rozumienie Tekstów</h2>
+        <p>Na maturze rozszerzonej są 3 typy zadań do tekstów: wielokrotny wybór, dobieranie (nagłówki/zdania), prawda/fałsz/brak informacji. Każdy wymaga innej strategii.</p>
+      </div>
+
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#e8c547">
+          <h4>📌 Multiple Choice — krok po kroku</h4>
+          <ul>
+            <li><strong>1.</strong> Przeczytaj pytanie ZANIM przeczytasz tekst.</li>
+            <li><strong>2.</strong> Zaznacz słowa kluczowe w pytaniu.</li>
+            <li><strong>3.</strong> Znajdź odpowiedni akapit w tekście.</li>
+            <li><strong>4.</strong> Szukaj <em>parafraz</em> — odpowiedź nigdy nie jest słowo w słowo z tekstu.</li>
+            <li><strong>5.</strong> Eliminuj błędne: uważaj na opcje <em>prawdziwe ale niezwiązane</em> z pytaniem.</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>📌 True / False / Not Given</h4>
+          <ul>
+            <li><strong>TRUE:</strong> informacja WPROST potwierdzona w tekście (jako parafraza).</li>
+            <li><strong>FALSE:</strong> tekst mówi COŚ PRZECIWNEGO do zdania.</li>
+            <li><strong>NOT GIVEN:</strong> tekst NIE wspomina o tej kwestii — nawet jeśli logicznie się to wydaje możliwe.</li>
+            <li>⚠️ Nie używaj wiedzy ogólnej — tylko to, co jest w tekście!</li>
+            <li>Słowa ekstremlane (always, never, all, only) często = FALSE.</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>📌 Uwaga na pułapki MCQ</h4>
+          <ul>
+            <li><strong>Partial truth:</strong> opcja jest częściowo prawdziwa ale niekompletna.</li>
+            <li><strong>Too extreme:</strong> "always", "never", "completely" — rzadko poprawne.</li>
+            <li><strong>Opposite meaning:</strong> sprawdź negacje i przeczenia.</li>
+            <li><strong>Wrong referent:</strong> dotyczy innej osoby/rzeczy niż pytanie.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>📖 Słownictwo do rozumienia intencji autora</h4>
+        <p>Egzaminator może pytać o stosunek/nastawienie autora. Kluczowe słowa w tekście:</p>
+        <div class="keyword-grid" style="margin-top:0.75rem">
+          <span class="keyword-tag">however<span>= kontrast</span></span>
+          <span class="keyword-tag">nevertheless<span>= jednak</span></span>
+          <span class="keyword-tag">yet<span>= mimo to</span></span>
+          <span class="keyword-tag">arguably<span>= można twierdzić</span></span>
+          <span class="keyword-tag">crucially<span>= co istotne</span></span>
+          <span class="keyword-tag">paradoxically<span>= paradoksalnie</span></span>
+          <span class="keyword-tag">while/whereas<span>= podczas gdy</span></span>
+          <span class="keyword-tag">despite<span>= pomimo</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= WRITING ======= -->
+    <div class="theory-section" id="th-writing">
+      <div class="th-hero">
+        <h2>✍️ Wypowiedź Pisemna — Esej & E-mail</h2>
+        <p>Za wypowiedź pisemną można dostać do 13 punktów. Liczy się: treść (4), spójność i logika (2), zakres słownictwa (3), poprawność językowa (3) oraz długość i forma (1).</p>
+      </div>
+
+      <div class="th-section-title">Esej argumentacyjny — struktura</div>
+      <div class="th-card" style="--card-color:#e8c547;margin-bottom:1rem">
+        <h4>Szablon eseju (200–250 słów)</h4>
+        <ul>
+          <li><strong>§1 Wstęp (2–3 zd.):</strong> Wprowadź temat + przedstaw tezę. Nie kopiuj polecenia — przeformułuj.</li>
+          <li><strong>§2 Argument ZA (3–4 zd.):</strong> Główny argument + rozwinięcie + przykład.</li>
+          <li><strong>§3 Argument PRZECIW + kontrargument (4–5 zd.):</strong> Uznaj rację drugiej strony ale odpierz ją.</li>
+          <li><strong>§4 Zakończenie (2–3 zd.):</strong> Podsumuj + jasno wyraź własną opinię.</li>
+        </ul>
+      </div>
+
+      <div class="th-section-title">Łączniki spójności — musisz ich używać!</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Funkcja</th><th>Łączniki</th></tr>
+          <tr><td>Dodawanie</td><td class="hl2">Furthermore, Moreover, In addition, What is more, Not only... but also</td></tr>
+          <tr><td>Kontrast</td><td class="hl2">However, Nevertheless, On the other hand, In contrast, Conversely, That said</td></tr>
+          <tr><td>Przyczyna</td><td class="hl2">Therefore, As a result, Consequently, Hence, This leads to</td></tr>
+          <tr><td>Przykład</td><td class="hl2">For instance, For example, To illustrate, Such as, A case in point is</td></tr>
+          <tr><td>Uznanie arg. opp.</td><td class="hl2">Admittedly, It is true that, While it may be argued that, Although</td></tr>
+          <tr><td>Konkluzja</td><td class="hl2">In conclusion, To sum up, On balance, All things considered, It is clear that</td></tr>
+        </table>
+      </div>
+
+      <div class="th-section-title">E-mail formalny vs. nieformalny</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>📧 E-mail FORMALNY</h4>
+          <ul>
+            <li><strong>Otwarcie:</strong> Dear Mr/Ms [Surname], / Dear Sir or Madam,</li>
+            <li><strong>Cel:</strong> I am writing to enquire about... / I am writing with regard to...</li>
+            <li><strong>Styl:</strong> pełne formy (I am, I have), brak slangów, formalne słownictwo</li>
+            <li><strong>Zamknięcie:</strong> I look forward to hearing from you. / Yours sincerely, (znasz imię) / Yours faithfully, (nie znasz)</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>📱 E-mail NIEFORMALNY</h4>
+          <ul>
+            <li><strong>Otwarcie:</strong> Hi/Hey [Name]! / Great to hear from you!</li>
+            <li><strong>Styl:</strong> skróty (I'm, can't, won't), potoczne wyrażenia, emotki ew.</li>
+            <li><strong>Treść:</strong> osobisty, żywy, bezpośredni ton</li>
+            <li><strong>Zamknięcie:</strong> Take care! / Looking forward to seeing you! / [Imię]</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hack-box">
+        <h4>💡 Hack #7 — Jak zdobyć punkty za zakres słownictwa</h4>
+        <ul>
+          <li>Unikaj prostych słów: <code>good → excellent/outstanding/remarkable</code>, <code>bad → detrimental/problematic/concerning</code>, <code>say → claim/argue/contend/assert</code></li>
+          <li>Używaj kolokacji: <code>raise awareness, tackle an issue, have far-reaching consequences, draw a conclusion</code></li>
+          <li>Użyj pasywnej strony: <code>It has been argued that... / It is widely believed that...</code></li>
+          <li>Różnicuj struktury: zdania proste + złożone + z inwersją</li>
+        </ul>
+      </div>
+      <div class="warn-box">
+        <h4>⚠️ Czego unikać w eseju</h4>
+        <ul>
+          <li>Nie pisz w 1. osobie liczby mnogiej (We all know...) — zbyt potoczne</li>
+          <li>Nie zaczynaj zdań od: <em>Because, Also, And, But</em></li>
+          <li>Nie używaj języka potocznego: <em>kids, stuff, a lot of, gonna</em></li>
+          <li>Nie przekraczaj limitu słów o więcej niż 10% — egzaminator może nie czytać reszty</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======= KOLOKACJE ======= -->
+    <div class="theory-section" id="th-collocations">
+      <div class="th-hero">
+        <h2>🧩 Kolokacje & Wyrażenia Idiomatyczne</h2>
+        <p>Znajomość kolokacji to różnica między poziomem B2 a C1. Poniżej kolokacje według tematów najczęściej pojawiających się na maturze rozszerzonej.</p>
+      </div>
+
+      <div class="th-section-title">Kolokacje tematyczne</div>
+      <div class="th-grid">
+        <div class="th-card" style="--card-color:#e8c547">
+          <h4>🌍 Środowisko</h4>
+          <ul>
+            <li>tackle / address climate change</li>
+            <li>reduce carbon emissions / footprint</li>
+            <li>raise environmental awareness</li>
+            <li>preserve biodiversity</li>
+            <li>renewable energy sources</li>
+            <li>have far-reaching consequences</li>
+            <li>pose a threat to ecosystems</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#4fc3f7">
+          <h4>💼 Praca i gospodarka</h4>
+          <ul>
+            <li>seek employment / pursue a career</li>
+            <li>work-life balance</li>
+            <li>boost economic growth</li>
+            <li>face redundancy / be made redundant</li>
+            <li>bridge the skills gap</li>
+            <li>launch a startup / run a business</li>
+            <li>meet a deadline</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#f06292">
+          <h4>📱 Technologia i media</h4>
+          <ul>
+            <li>have a significant impact on</li>
+            <li>spread misinformation / fake news</li>
+            <li>invade privacy</li>
+            <li>become heavily reliant on</li>
+            <li>artificial intelligence poses risks</li>
+            <li>social media platforms</li>
+            <li>digital literacy</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#a5d6a7">
+          <h4>🏥 Zdrowie i społeczeństwo</h4>
+          <ul>
+            <li>lead a healthy lifestyle</li>
+            <li>tackle obesity / mental health issues</li>
+            <li>cope with stress / pressure</li>
+            <li>seek professional help</li>
+            <li>have access to healthcare</li>
+            <li>exacerbate inequalities</li>
+            <li>marginalised communities</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#ffb74d">
+          <h4>🎓 Edukacja</h4>
+          <ul>
+            <li>acquire knowledge / skills</li>
+            <li>broaden one's horizons</li>
+            <li>foster critical thinking</li>
+            <li>provide equal opportunities</li>
+            <li>fall behind / catch up</li>
+            <li>extracurricular activities</li>
+            <li>lifelong learning</li>
+          </ul>
+        </div>
+        <div class="th-card" style="--card-color:#ce93d8">
+          <h4>🔬 Nauka i badania</h4>
+          <ul>
+            <li>conduct / carry out research</li>
+            <li>groundbreaking discovery</li>
+            <li>draw conclusions from data</li>
+            <li>raise ethical concerns</li>
+            <li>peer-reviewed studies</li>
+            <li>yield results / findings</li>
+            <li>challenge established beliefs</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="th-section-title">Phrasal verbs — TOP 30 na maturę</div>
+      <div class="th-table-wrap">
+        <table class="th-table">
+          <tr><th>Phrasal verb</th><th>Znaczenie</th><th>Przykład</th></tr>
+          <tr><td class="hl">bring about</td><td>spowodować</td><td class="hl2">The new policy brought about significant changes.</td></tr>
+          <tr><td class="hl">call off</td><td>odwołać</td><td class="hl2">The event was called off due to bad weather.</td></tr>
+          <tr><td class="hl">carry out</td><td>przeprowadzić</td><td class="hl2">Scientists carried out experiments.</td></tr>
+          <tr><td class="hl">come across</td><td>natknąć się</td><td class="hl2">She came across an interesting article.</td></tr>
+          <tr><td class="hl">deal with</td><td>zajmować się</td><td class="hl2">We need to deal with this problem.</td></tr>
+          <tr><td class="hl">draw up</td><td>sporządzić (plan)</td><td class="hl2">They drew up a new contract.</td></tr>
+          <tr><td class="hl">give up</td><td>zrezygnować</td><td class="hl2">He gave up smoking last year.</td></tr>
+          <tr><td class="hl">look into</td><td>zbadać</td><td class="hl2">The police looked into the matter.</td></tr>
+          <tr><td class="hl">make up for</td><td>nadrobić, zrekompensować</td><td class="hl2">She worked extra hours to make up for lost time.</td></tr>
+          <tr><td class="hl">phase out</td><td>wycofywać stopniowo</td><td class="hl2">Coal plants will be phased out by 2030.</td></tr>
+          <tr><td class="hl">put forward</td><td>zaproponować</td><td class="hl2">She put forward an interesting proposal.</td></tr>
+          <tr><td class="hl">rule out</td><td>wykluczyć</td><td class="hl2">Doctors ruled out a serious illness.</td></tr>
+          <tr><td class="hl">set out</td><td>wyruszyć; przedstawić</td><td class="hl2">The report sets out the key findings.</td></tr>
+          <tr><td class="hl">take over</td><td>przejąć</td><td class="hl2">A larger company took over the startup.</td></tr>
+          <tr><td class="hl">turn out</td><td>okazać się</td><td class="hl2">It turned out to be a mistake.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ==================== STATE ====================
+const STORAGE_KEY = 'matura_en_progress';
+const EXERCISES_KEY = 'matura_en_exercises';
+
+let state = {
+  progress: {},     // id -> {attempts, correct, lastSeen}
+  history: [],      // [{date, category, score, total, time}]
+  streak: { lastDate: null, count: 0 },
+  exercises: []
+};
+
+let session = {
+  exercises: [],
+  current: 0,
+  correct: 0,
+  wrong: 0,
+  startTime: null,
+  category: null,
+  answered: false
+};
+
+// ==================== PERSISTENCE ====================
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ progress: state.progress, history: state.history, streak: state.streak }));
+  localStorage.setItem(EXERCISES_KEY, JSON.stringify(state.exercises));
+}
+
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) Object.assign(state, JSON.parse(saved));
+  const exs = localStorage.getItem(EXERCISES_KEY);
+  if (exs) state.exercises = JSON.parse(exs);
+  else { loadBuiltinExercises(); saveState(); }
+}
+
+// ==================== CATEGORIES ====================
+const CATEGORIES = {
+  reading: { name: 'Rozumienie Tekstów', icon: '📖', desc: 'MCQ, prawda/fałsz/brak, pytania otwarte do tekstów', color: '#4fc3f7' },
+  grammar: { name: 'Gramatyka', icon: '🔧', desc: 'Uzupełnianie luk, transformacje zdań, czas i tryb', color: '#f06292' },
+  vocabulary: { name: 'Słownictwo', icon: '📚', desc: 'Tworzenie wyrazów, dobór leksyki, kolokacje', color: '#a5d6a7' },
+  use_of_english: { name: 'Use of English', icon: '⚙️', desc: 'Luki, parafrazy, word formation, key word transformations', color: '#ffb74d' },
+  writing: { name: 'Wypowiedź Pisemna', icon: '✍️', desc: 'Esej, e-mail, artykuł, recenzja — ocena AI', color: '#ce93d8' },
+  listening_text: { name: 'Tekst Słuchany', icon: '🎧', desc: 'Pytania do transkryptów z egzaminów', color: '#80cbc4' },
+};
+
+// ==================== SAMPLE EXERCISES ====================
+function loadBuiltinExercises() {
+  state.exercises = [
+    // === READING ===
+    {id:"r1",category:"reading",type:"multiple_choice",year:2023,
+      instruction:"Przeczytaj tekst i zaznacz właściwą odpowiedź A, B, C lub D.",
+      text:`The concept of "rewilding" has gained significant traction in recent years as a conservation strategy aimed at restoring ecosystems to their natural state. Unlike traditional conservation, which often focuses on protecting individual species, rewilding takes a broader approach by reintroducing apex predators and allowing nature to manage itself. In Europe, the reintroduction of wolves to Yellowstone in the 1990s is frequently cited as a landmark example of how predators can trigger a "trophic cascade" — a chain reaction that ultimately benefits the entire ecosystem, including river dynamics.`,
+      question:"What distinguishes rewilding from traditional conservation approaches?",
+      options:["A. It focuses exclusively on protecting endangered plant species.","B. It takes a broader ecosystem view by reintroducing predators.","C. It relies primarily on human management of wildlife populations.","D. It is only applied in North American national parks."],
+      answer:"B",explanation:"Tekst mówi, że rewilding 'takes a broader approach by reintroducing apex predators', w przeciwieństwie do tradycyjnej ochrony skupionej na gatunkach."},
+
+    {id:"r2",category:"reading",type:"true_false_ng",year:2023,
+      instruction:"Przeczytaj zdania i zdecyduj: TRUE (T), FALSE (F), lub NOT GIVEN (NG).",
+      text:`Remote work has fundamentally altered urban planning considerations. City planners are now grappling with the phenomenon of \"donut cities\" — urban centres that are losing population to suburban and rural areas as workers no longer need to commute daily. Some economists predict this could lead to a permanent restructuring of real estate markets, with commercial property in city centres losing value while demand for larger homes in less densely populated areas grows. However, critics argue that once pandemic restrictions fully lifted, many workers returned to offices, suggesting the shift may be less permanent than initially feared.`,
+      question:"City planners unanimously agree that remote work will permanently change urban areas.",
+      options:["A. TRUE","B. FALSE","C. NOT GIVEN"],
+      answer:"B",explanation:"Tekst mówi, że 'critics argue' iż shift może nie być permanentny — co przeczy 'unanimously agree'. Odpowiedź to FALSE."},
+
+    {id:"r3",category:"reading",type:"multiple_choice",year:2022,
+      instruction:"Przeczytaj tekst i zaznacz właściwą odpowiedź.",
+      text:`Microplastics have now been detected in virtually every environment on Earth, from the deepest ocean trenches to the peaks of remote mountain ranges. What began as research into marine pollution has expanded into a global public health concern as these tiny particles, smaller than 5mm, have been found in human blood, lungs, and even placentas. Scientists are still debating the precise health implications, but initial studies suggest potential links to inflammation and hormonal disruption. The ubiquity of microplastics presents a unique challenge: unlike many pollutants, there is no clear source to shut down or regulate.`,
+      question:"According to the text, what makes microplastic pollution particularly difficult to address?",
+      options:["A. Scientists have not yet detected microplastics in the human body.","B. Microplastics are too small to be studied effectively in laboratories.","C. There is no single identifiable source that can be regulated.","D. The pollution is currently limited to ocean environments."],
+      answer:"C",explanation:"Tekst stwierdza: 'there is no clear source to shut down or regulate' — to czyni problem wyjątkowo trudnym."},
+
+    // === GRAMMAR ===
+    {id:"g1",category:"grammar",type:"sentence_transform",year:2023,
+      instruction:"Uzupełnij drugie zdanie tak, aby miało podobne znaczenie do pierwszego. Użyj słowa kluczowego (2–5 wyrazów).",
+      question:"I regret not studying harder for the exam. (WISH)\nI _______ harder for the exam.",
+      answer:"wish I had studied",explanation:"Wyrażenie 'wish + past perfect' opisuje żal za przeszłością. I wish I had studied harder for the exam."},
+
+    {id:"g2",category:"grammar",type:"fill_blank",year:2022,
+      instruction:"Uzupełnij luki odpowiednimi formami słów.",
+      text:"By the time we arrived at the station, the train ___1___ (already / leave). We had no choice but to wait for the next one, which ___2___ (not announce) yet.",
+      blanks:[
+        {num:1,hint:"past perfect",answer:"had already left"},
+        {num:2,hint:"past perfect passive",answer:"had not been announced"}
+      ],explanation:"Zdanie 1: past perfect (had already left) — czynność wcześniejsza. Zdanie 2: past perfect passive (had not been announced)."},
+
+    {id:"g3",category:"grammar",type:"sentence_transform",year:2023,
+      instruction:"Uzupełnij drugie zdanie słowem kluczowym (2–5 wyrazów, nie zmieniaj formy słowa).",
+      question:"It was such a boring lecture that most students fell asleep. (SO)\nThe lecture _______ most students fell asleep.",
+      answer:"was so boring that",explanation:"Transformacja 'such + noun' → 'so + adjective': 'was so boring that'."},
+
+    {id:"g4",category:"grammar",type:"fill_blank",year:2024,
+      instruction:"Wpisz poprawne słowo lub wyrażenie w każdą lukę.",
+      text:"If I ___1___ (know) about the traffic, I would have taken a different route. Had I ___2___ (leave) earlier, I ___3___ (not be) late for the interview.",
+      blanks:[
+        {num:1,hint:"conditional past",answer:"had known"},
+        {num:2,hint:"inversion conditional",answer:"left"},
+        {num:3,hint:"would have",answer:"would not have been"}
+      ],explanation:"Trzecia kondycjonalis: had known; inwersja Had I left; would not have been."},
+
+    // === VOCABULARY / USE OF ENGLISH ===
+    {id:"v1",category:"vocabulary",type:"fill_blank",year:2023,
+      instruction:"Utwórz wyraz od słowa w nawiasie, aby pasował do kontekstu zdania.",
+      text:"The scientist's ___1___ (discover) of the new compound was met with ___2___ (skeptic) by the academic community. Nevertheless, her findings proved ___3___ (ground) for future research.",
+      blanks:[
+        {num:1,hint:"rzeczownik od discover",answer:"discovery"},
+        {num:2,hint:"rzeczownik od skeptic",answer:"skepticism"},
+        {num:3,hint:"przymiotnik od ground",answer:"groundbreaking"}
+      ],explanation:"Tworzenie wyrazów: discovery (noun), skepticism (noun), groundbreaking (adjective)."},
+
+    {id:"v2",category:"use_of_english",type:"fill_blank",year:2022,
+      instruction:"Wpisz jedno słowo, które pasuje do wszystkich trzech zdań (key word).",
+      text:"1. She couldn't _____ up with the fast pace of the new job.\n2. Scientists need to _____ up with the latest research in their field.\n3. He ran so fast that nobody could _____ up with him.",
+      blanks:[{num:1,hint:"jedno słowo do wszystkich 3 zdań",answer:"keep"}],
+      explanation:"'Keep up with' = nadążać za. Jedno słowo pasujące do wszystkich trzech zdań to KEEP."},
+
+    {id:"v3",category:"vocabulary",type:"multiple_choice",year:2023,
+      instruction:"Wybierz słowo, które najlepiej pasuje do kontekstu.",
+      question:"The new policy was met with considerable _______ from the opposition party, who argued it would harm the economy.",
+      options:["A. acclaim","B. resistance","C. indifference","D. enthusiasm"],
+      answer:"B",explanation:"'Resistance' (opór, sprzeciw) najlepiej pasuje — opozycja nie zgadza się z polityką."},
+
+    {id:"v4",category:"use_of_english",type:"sentence_transform",year:2024,
+      instruction:"Przeformułuj zdanie, używając podanego słowa kluczowego (2–5 wyrazów).",
+      question:"Despite working overtime, she didn't finish the project. (MANAGE)\nShe _______ the project despite working overtime.",
+      answer:"didn't manage to finish",explanation:"'Manage to do' = udać się coś zrobić. Negacja: didn't manage to finish."},
+
+    // === WRITING ===
+    {id:"w1",category:"writing",type:"essay",year:2023,
+      instruction:"Napisz esej (ok. 200–250 słów) na podany temat. Użyj odpowiedniej struktury: wstęp, rozwinięcie (2 argumenty + kontrargument), zakończenie.",
+      question:"'Social media does more harm than good to young people's mental health.' Discuss both sides of this argument and give your own opinion.",
+      answer:"",explanation:"Oceń: 1) Struktura (wstęp, teza, argumenty za, przeciw, konkluzja) 2) Spójność i kohezja 3) Zakres słownictwa 4) Poprawność gramatyczna 5) Odpowiednia długość"},
+
+    {id:"w2",category:"writing",type:"email",year:2022,
+      instruction:"Napisz e-mail formalny (ok. 150–200 słów) zgodnie z instrukcją.",
+      question:"You saw an advertisement for a summer internship at a technology company. Write an email to the HR department expressing your interest, outlining your relevant skills and experience, and asking about the application process.",
+      answer:"",explanation:"Oceń: 1) Odpowiedni rejestr (formalny) 2) Właściwe zwroty otwierające i zamykające 3) Treść merytoryczna 4) Poprawność językowa"},
+
+    {id:"w3",category:"writing",type:"essay",year:2024,
+      instruction:"Napisz rozprawkę (200–250 słów).",
+      question:"'Space exploration is a waste of resources that should be invested in solving problems on Earth.' Do you agree or disagree? Discuss.",
+      answer:"",explanation:"Kryteria CKE: treść (4 pkt), spójność i logika (2 pkt), zakres środków językowych (3 pkt), poprawność (3 pkt)."},
+
+    // === LISTENING (as text) ===
+    {id:"l1",category:"listening_text",type:"multiple_choice",year:2023,
+      instruction:"Przeczytaj transkrypt nagrania i odpowiedz na pytania. (W oryginale to zadanie do słuchania.)",
+      text:`INTERVIEWER: Dr. Patel, you've been researching urban heat islands for over a decade. Can you explain what exactly makes cities so much hotter than surrounding areas?
+DR. PATEL: Certainly. The phenomenon has several causes. First, dark surfaces like asphalt and rooftops absorb significantly more solar radiation than vegetation. Second, buildings trap heat between them — a canyon effect. Third, there's the direct heat output from vehicles, air conditioning, and industry. What people don't often realise is that the absence of trees is perhaps the most important factor, since vegetation cools its surroundings through transpiration.
+INTERVIEWER: Are some cities tackling this effectively?
+DR. PATEL: Singapore is frequently cited as a success story. They've integrated greenery into building design at every level — literally growing gardens on facades and rooftops. Their approach has reduced local temperatures by measurable amounts. Rotterdam in the Netherlands is another example, focusing on water management and green roofs.`,
+      question:"According to Dr. Patel, which factor does she consider MOST important in causing urban heat islands?",
+      options:["A. The direct heat output from vehicles and industry.","B. The canyon effect created by tall buildings.","C. The lack of vegetation and its cooling effect.","D. The dark colour of road surfaces."],
+      answer:"C",explanation:"Dr. Patel mówi: 'the absence of trees is perhaps the most important factor, since vegetation cools its surroundings through transpiration.'"},
+
+    {id:"l2",category:"listening_text",type:"true_false_ng",year:2022,
+      instruction:"Na podstawie transkryptu zdecyduj: TRUE / FALSE / NOT GIVEN.",
+      text:`PRESENTER: Welcome to Science Today. Today we're discussing a new study from the University of Edinburgh which examined the relationship between multilingualism and cognitive reserve. The researchers followed 853 participants over 25 years. Their key finding was that people who regularly switch between languages showed significantly slower rates of cognitive decline after the age of 65, compared to monolingual peers. Interestingly, the type of language — whether related or unrelated to the native tongue — seemed to make little difference. The effect was also observed regardless of socioeconomic status.`,
+      question:"The study found that learning related languages (like Spanish and Italian) provides fewer cognitive benefits than learning unrelated languages.",
+      options:["A. TRUE","B. FALSE","C. NOT GIVEN"],
+      answer:"B",explanation:"Transkrypt wyraźnie mówi: 'the type of language seemed to make little difference' — a więc twierdzenie jest FAŁSZYWE."},
+
+  ];
+}
+
+// ==================== VIEWS ====================
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  // highlight correct nav button
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    if (b.getAttribute('onclick') === `showView('${name}')`) b.classList.add('active');
+  });
+  if (name === 'home') renderHome();
+  if (name === 'stats') renderStats();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==================== HOME ====================
+function renderHome() {
+  const exs = state.exercises;
+  const total = exs.length;
+  const done = Object.keys(state.progress).length;
+  const allAttempts = Object.values(state.progress);
+  const totalCorrect = allAttempts.reduce((a,p) => a + p.correct, 0);
+  const totalAttempts = allAttempts.reduce((a,p) => a + p.attempts, 0);
+  const score = totalAttempts > 0 ? Math.round(totalCorrect / totalAttempts * 100) : 0;
+
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-score').textContent = score + '%';
+  document.getElementById('stat-streak').textContent = state.streak.count || 0;
+
+  const grid = document.getElementById('categories-grid');
+  grid.innerHTML = '';
+
+  Object.entries(CATEGORIES).forEach(([key, cat]) => {
+    const catExs = exs.filter(e => e.category === key);
+    const catDone = catExs.filter(e => state.progress[e.id]).length;
+    const catAttempts = catExs.reduce((a,e) => a + (state.progress[e.id]?.attempts || 0), 0);
+    const catCorrect = catExs.reduce((a,e) => a + (state.progress[e.id]?.correct || 0), 0);
+    const catScore = catAttempts > 0 ? Math.round(catCorrect / catAttempts * 100) : 0;
+    const pct = catExs.length > 0 ? Math.round(catDone / catExs.length * 100) : 0;
+
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.style.setProperty('--cat-color', cat.color);
+    card.innerHTML = `
+      <div class="cat-icon">${cat.icon}</div>
+      <div class="cat-name">${cat.name}</div>
+      <div class="cat-desc">${cat.desc}</div>
+      <div class="cat-progress"><div class="cat-progress-fill" style="width:${pct}%;background:${cat.color}"></div></div>
+      <div class="cat-stats">
+        <span>${catExs.length} zadań</span>
+        <span>${catDone} zrobionych</span>
+        <span>${catScore}% trafnych</span>
+      </div>`;
+    card.onclick = () => startSession(key);
+    grid.appendChild(card);
+  });
+}
+
+// ==================== SESSION ====================
+function startSession(category) {
+  const all = state.exercises.filter(e => e.category === category);
+  if (all.length === 0) { alert('Brak zadań w tej kategorii. Dodaj zadania przez Import JSON.'); return; }
+
+  // Sort: unseen first, then by lowest correct rate
+  all.sort((a,b) => {
+    const pa = state.progress[a.id];
+    const pb = state.progress[b.id];
+    if (!pa && !pb) return 0;
+    if (!pa) return -1;
+    if (!pb) return 1;
+    const ra = pa.attempts > 0 ? pa.correct / pa.attempts : 0;
+    const rb = pb.attempts > 0 ? pb.correct / pb.attempts : 0;
+    return ra - rb;
+  });
+
+  session.exercises = all;
+  session.current = 0;
+  session.correct = 0;
+  session.wrong = 0;
+  session.startTime = Date.now();
+  session.category = category;
+  session.answered = false;
+
+  showView('exercise');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('ex-cat-name').textContent = CATEGORIES[category]?.name || category;
+  renderExercise();
+}
+
+function renderExercise() {
+  const ex = session.exercises[session.current];
+  if (!ex) { showSessionResults(); return; }
+
+  session.answered = false;
+  const total = session.exercises.length;
+  const idx = session.current + 1;
+  document.getElementById('ex-counter').textContent = `${idx}/${total}`;
+  document.getElementById('ex-progress-fill').style.width = ((idx - 1) / total * 100) + '%';
+
+  const area = document.getElementById('exercise-area');
+  const TYPE_LABELS = {
+    multiple_choice: 'Wielokrotny wybór', fill_blank: 'Uzupełnij luki',
+    true_false_ng: 'Prawda / Fałsz / Brak', sentence_transform: 'Transformacja zdań',
+    word_formation: 'Tworzenie wyrazów', essay: 'Wypowiedź pisemna',
+    email: 'E-mail formalny / nieformalny', open_answer: 'Odpowiedź otwarta'
+  };
+
+  let inputHTML = '';
+  if (ex.type === 'multiple_choice' || ex.type === 'true_false_ng') {
+    const opts = ex.options || [];
+    inputHTML = `<div class="options">` + opts.map((o,i) => {
+      const letter = String.fromCharCode(65 + i);
+      return `<button class="option-btn" onclick="checkOption(this,'${letter}','${ex.answer}')" data-letter="${letter}">
+        <span class="opt-letter">${letter}</span>${o.replace(/^[A-D]\.\s*/,'')}
+      </button>`;
+    }).join('') + `</div>`;
+  } else if (ex.type === 'fill_blank') {
+    if (ex.blanks && ex.blanks.length > 0) {
+      inputHTML = `<div class="fill-blanks">` + ex.blanks.map(b =>
+        `<div class="blank-row">
+          <span class="blank-num">${b.num}.</span>
+          <input class="blank-input" type="text" id="blank-${b.num}" placeholder="${b.hint || 'odpowiedź'}" autocomplete="off">
+          <span class="blank-hint" id="blank-hint-${b.num}"></span>
+        </div>`
+      ).join('') + `</div>`;
+    } else {
+      inputHTML = `<input class="ex-input" type="text" id="single-input" placeholder="Wpisz odpowiedź..." autocomplete="off">`;
+    }
+  } else if (ex.type === 'sentence_transform' || ex.type === 'open_answer') {
+    inputHTML = `<input class="ex-input" type="text" id="single-input" placeholder="Wpisz odpowiedź (2–5 wyrazów)..." autocomplete="off">`;
+  } else if (ex.type === 'essay' || ex.type === 'email') {
+    inputHTML = `<textarea class="ex-input" id="essay-input" placeholder="Napisz swoją wypowiedź tutaj..."></textarea>`;
+  }
+
+  area.innerHTML = `<div class="exercise-card">
+    <span class="ex-type-badge">${TYPE_LABELS[ex.type] || ex.type}${ex.year ? ' · ' + ex.year : ''}</span>
+    ${ex.instruction ? `<div class="ex-instruction">${ex.instruction}</div>` : ''}
+    ${ex.text ? `<div class="ex-text">${ex.text.replace(/\n/g,'<br>')}</div>` : ''}
+    <div class="ex-question">${ex.question || ''}</div>
+    ${inputHTML}
+    <div class="feedback-box" id="feedback-box"></div>
+    <div class="action-row">
+      ${ex.type === 'essay' || ex.type === 'email'
+        ? `<button class="btn btn-secondary" id="self-pass-btn" onclick="selfGrade(true)">✅ Poprawne</button>
+           <button class="btn btn-secondary" onclick="selfGrade(false)" style="border-color:var(--error);color:var(--error)">❌ Do poprawy</button>`
+        : `<button class="btn btn-primary" id="check-btn" onclick="checkAnswer()">Sprawdź</button>`
+      }
+      <button class="btn btn-secondary" id="next-btn" onclick="nextExercise()" style="display:none">Następne →</button>
+    </div>
+  </div>`;
+}
+
+function checkOption(btn, letter, correct) {
+  if (session.answered) return;
+  session.answered = true;
+  const ex = session.exercises[session.current];
+  const isCorrect = letter === correct;
+  document.querySelectorAll('.option-btn').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.letter === correct) b.classList.add('correct');
+    if (b === btn && !isCorrect) b.classList.add('wrong');
+  });
+  showFeedback(isCorrect, ex.explanation, correct);
+  recordResult(ex.id, isCorrect);
+  document.getElementById('next-btn').style.display = 'inline-flex';
+}
+
+function checkAnswer() {
+  if (session.answered) return;
+  const ex = session.exercises[session.current];
+  let isCorrect = false;
+
+  if (ex.type === 'fill_blank' && ex.blanks) {
+    let allOk = true;
+    ex.blanks.forEach(b => {
+      const inp = document.getElementById('blank-' + b.num);
+      if (!inp) return;
+      const val = inp.value.trim().toLowerCase();
+      const ok = val === b.answer.toLowerCase() || isCloseEnough(val, b.answer.toLowerCase());
+      inp.classList.add(ok ? 'correct' : 'wrong');
+      const hint = document.getElementById('blank-hint-' + b.num);
+      if (hint) hint.textContent = ok ? '✓' : '✗ ' + b.answer;
+      if (!ok) allOk = false;
+    });
+    isCorrect = allOk;
+  } else {
+    const inp = document.getElementById('single-input');
+    if (inp) {
+      const val = inp.value.trim().toLowerCase();
+      isCorrect = isCloseEnough(val, ex.answer.toLowerCase());
+      inp.classList.add(isCorrect ? 'correct' : 'wrong');
+      inp.disabled = true;
+    }
+  }
+
+  session.answered = true;
+  showFeedback(isCorrect, ex.explanation, ex.answer);
+  recordResult(ex.id, isCorrect);
+  document.getElementById('check-btn').style.display = 'none';
+  document.getElementById('next-btn').style.display = 'inline-flex';
+}
+
+function selfGrade(passed) {
+  session.answered = true;
+  const ex = session.exercises[session.current];
+  showFeedback(passed, ex.explanation || 'Kryteria: struktura, spójność, zakres słownictwa, poprawność.', null);
+  recordResult(ex.id, passed);
+  document.getElementById('next-btn').style.display = 'inline-flex';
+  if (document.getElementById('self-pass-btn')) document.getElementById('self-pass-btn').style.display = 'none';
+}
+
+function isCloseEnough(val, correct) {
+  if (val === correct) return true;
+  // allow minor typos via Levenshtein for short answers
+  if (correct.length > 20) {
+    return val.includes(correct.split(' ').slice(0,3).join(' ')) || correct.includes(val);
+  }
+  return false;
+}
+
+function showFeedback(isCorrect, explanation, correct) {
+  const fb = document.getElementById('feedback-box');
+  fb.className = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+  fb.style.display = 'block';
+  fb.innerHTML = `<strong>${isCorrect ? '✅ Poprawnie!' : '❌ Niepoprawnie'}</strong>
+    ${!isCorrect && correct ? `<div>Poprawna odpowiedź: <strong>${correct}</strong></div>` : ''}
+    ${explanation ? `<div style="margin-top:0.5rem;color:var(--text-muted);font-size:0.88rem">${explanation}</div>` : ''}`;
+  if (isCorrect) session.correct++; else session.wrong++;
+}
+
+function recordResult(id, isCorrect) {
+  if (!state.progress[id]) state.progress[id] = { attempts: 0, correct: 0, lastSeen: null };
+  state.progress[id].attempts++;
+  if (isCorrect) state.progress[id].correct++;
+  state.progress[id].lastSeen = new Date().toISOString();
+  updateStreak();
+  saveState();
+}
+
+function updateStreak() {
+  const today = new Date().toDateString();
+  if (state.streak.lastDate === today) return;
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  if (state.streak.lastDate === yesterday) state.streak.count++;
+  else state.streak.count = 1;
+  state.streak.lastDate = today;
+}
+
+function nextExercise() {
+  session.current++;
+  renderExercise();
+}
+
+function showSessionResults() {
+  const elapsed = Math.round((Date.now() - session.startTime) / 1000);
+  const mins = Math.floor(elapsed / 60);
+  const secs = elapsed % 60;
+  const total = session.correct + session.wrong;
+  const scorePct = total > 0 ? Math.round(session.correct / total * 100) : 0;
+
+  state.history.unshift({
+    date: new Date().toLocaleDateString('pl-PL'),
+    category: session.category,
+    score: session.correct,
+    total: total,
+    time: `${mins}:${secs.toString().padStart(2,'0')}`
+  });
+  if (state.history.length > 50) state.history = state.history.slice(0,50);
+  saveState();
+
+  const area = document.getElementById('exercise-area');
+  area.innerHTML = `<div class="session-results">
+    <div style="font-size:1.2rem;color:var(--text-muted)">Sesja zakończona 🎉</div>
+    <div class="session-score">${scorePct}<span>%</span></div>
+    <div style="color:var(--text-muted);margin-bottom:1.5rem">${CATEGORIES[session.category]?.name || session.category}</div>
+    <div class="session-breakdown">
+      <div class="sb-item"><div class="sb-val" style="color:var(--success)">${session.correct}</div><div class="sb-lbl">Poprawnych</div></div>
+      <div class="sb-item"><div class="sb-val" style="color:var(--error)">${session.wrong}</div><div class="sb-lbl">Błędnych</div></div>
+      <div class="sb-item"><div class="sb-val" style="color:var(--accent2)">${mins}m ${secs}s</div><div class="sb-lbl">Czas</div></div>
+    </div>
+    <div class="action-row" style="justify-content:center;gap:1rem">
+      <button class="btn btn-primary" onclick="startSession('${session.category}')">Ćwicz ponownie</button>
+      <button class="btn btn-secondary" onclick="endSession()">← Kategorie</button>
+      <button class="btn btn-secondary" onclick="showView('stats')">📊 Postępy</button>
+    </div>
+  </div>`;
+}
+
+function endSession() {
+  showView('home');
+  renderHome();
+}
+
+// ==================== STATS ====================
+function renderStats() {
+  const chartEl = document.getElementById('chart-categories');
+  chartEl.innerHTML = '';
+
+  const categoryColors = Object.fromEntries(Object.entries(CATEGORIES).map(([k,v]) => [k, v.color]));
+
+  Object.entries(CATEGORIES).forEach(([key, cat]) => {
+    const catExs = state.exercises.filter(e => e.category === key);
+    const attempts = catExs.reduce((a,e) => a + (state.progress[e.id]?.attempts || 0), 0);
+    const correct = catExs.reduce((a,e) => a + (state.progress[e.id]?.correct || 0), 0);
+    const pct = attempts > 0 ? Math.round(correct / attempts * 100) : 0;
+
+    chartEl.innerHTML += `<div class="chart-row">
+      <span class="chart-label">${cat.icon} ${cat.name}</span>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="width:${pct}%;background:${cat.color}">${pct > 10 ? pct + '%' : ''}</div>
+      </div>
+      <span class="chart-pct">${pct}%</span>
+    </div>`;
+  });
+
+  // Weak areas
+  const weakEl = document.getElementById('weak-areas');
+  weakEl.innerHTML = '';
+  const weakItems = Object.entries(state.progress)
+    .map(([id, p]) => {
+      const ex = state.exercises.find(e => e.id === id);
+      const rate = p.attempts > 0 ? p.correct / p.attempts : 0;
+      return { id, ex, rate, p };
+    })
+    .filter(x => x.ex && x.p.attempts >= 1 && x.rate < 0.6)
+    .sort((a,b) => a.rate - b.rate)
+    .slice(0,6);
+
+  if (weakItems.length === 0) {
+    weakEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.9rem">Brak danych lub świetne wyniki 🎉 Ćwicz więcej, aby zobaczyć słabe punkty.</div>';
+  } else {
+    weakItems.forEach(({ id, ex, rate, p }) => {
+      weakEl.innerHTML += `<div class="weak-card">
+        <div class="wname">${ex.question?.slice(0,60) || id}...</div>
+        <div class="wstat">${p.correct}/${p.attempts} poprawnych</div>
+        <div class="wpct">${Math.round(rate * 100)}% trafność · ${CATEGORIES[ex.category]?.name || ex.category}</div>
+      </div>`;
+    });
+  }
+
+  // History
+  const tbody = document.getElementById('history-tbody');
+  tbody.innerHTML = '';
+  if (state.history.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="color:var(--text-muted);text-align:center;padding:2rem">Brak historii sesji. Zacznij ćwiczyć!</td></tr>';
+  } else {
+    state.history.slice(0,20).forEach(h => {
+      const pct = h.total > 0 ? Math.round(h.score / h.total * 100) : 0;
+      const cls = pct >= 70 ? 'good' : pct >= 50 ? 'mid' : 'bad';
+      tbody.innerHTML += `<tr>
+        <td>${h.date}</td>
+        <td>${CATEGORIES[h.category]?.name || h.category}</td>
+        <td>${h.score}/${h.total}</td>
+        <td>${h.time}</td>
+        <td><span class="badge ${cls}">${pct}%</span></td>
+      </tr>`;
+    });
+  }
+}
+
+// ==================== IMPORT / EXPORT ====================
+function handleFileImport(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('json-textarea').value = e.target.result;
+    importJSON();
+  };
+  reader.readAsText(file);
+}
+
+function importJSON() {
+  const raw = document.getElementById('json-textarea').value.trim();
+  const msgEl = document.getElementById('import-msg');
+  try {
+    const data = JSON.parse(raw);
+    if (!Array.isArray(data)) throw new Error('JSON musi być tablicą zadań []');
+    const required = ['id','category','type'];
+    const invalid = data.filter(e => !required.every(k => e[k]));
+    if (invalid.length > 0) throw new Error(`${invalid.length} zadań brakuje wymaganych pól (id, category, type).`);
+
+    const newIds = new Set(data.map(e => e.id));
+    const existing = state.exercises.filter(e => !newIds.has(e.id));
+    state.exercises = [...existing, ...data];
+    saveState();
+    msgEl.className = 'import-msg ok';
+    msgEl.textContent = `✅ Zaimportowano ${data.length} zadań. Łącznie: ${state.exercises.length}.`;
+  } catch (err) {
+    msgEl.className = 'import-msg err';
+    msgEl.textContent = '❌ Błąd JSON: ' + err.message;
+  }
+}
+
+function exportProgress() {
+  const data = {
+    exportDate: new Date().toISOString(),
+    progress: state.progress,
+    history: state.history,
+    streak: state.streak
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'matura-progress.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function loadSampleData() {
+  loadBuiltinExercises();
+  saveState();
+  const msgEl = document.getElementById('import-msg');
+  msgEl.className = 'import-msg ok';
+  msgEl.textContent = `✅ Załadowano ${state.exercises.length} przykładowych zadań maturalnych.`;
+  document.getElementById('json-textarea').value = JSON.stringify(state.exercises.slice(0,2), null, 2);
+}
+
+// === THEORY ===
+function showTheory(section) {
+  document.querySelectorAll('.theory-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.th-nav-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('th-' + section);
+  if (el) el.classList.add('active');
+  // find the button
+  document.querySelectorAll('.th-nav-btn').forEach(b => {
+    if (b.getAttribute('onclick') === `showTheory('${section}')`) b.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// === INIT ===
+loadState();
+renderHome();
+</script>
+</body>
+</html>

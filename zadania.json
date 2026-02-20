@@ -1,0 +1,105 @@
+[
+  {
+    "id": "r4",
+    "category": "reading",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Przeczytaj tekst i zaznacz właściwą odpowiedź A, B, C lub D.",
+    "text": "The gig economy, characterised by short-term contracts and freelance work as opposed to permanent jobs, has transformed the labour market in ways economists are still trying to fully comprehend. Proponents argue that it offers unprecedented flexibility and autonomy — workers can set their own hours and take on multiple clients. Critics, however, point to the erosion of workers' rights: no sick pay, no holiday entitlement, and no guaranteed minimum hours. A 2023 report found that gig workers earn on average 25% less per hour than their permanently employed counterparts when accounting for unpaid downtime between gigs.",
+    "question": "What is stated in the text about gig workers' earnings?",
+    "options": [
+      "A. They earn 25% more than permanent employees due to flexibility bonuses.",
+      "B. Their hourly earnings are comparable to those of permanent employees.",
+      "C. When unpaid gaps are factored in, they earn less than permanent workers.",
+      "D. The report was unable to establish any reliable data on gig workers' income."
+    ],
+    "answer": "C",
+    "explanation": "Tekst mówi: 'gig workers earn on average 25% less per hour than their permanently employed counterparts when accounting for unpaid downtime.'"
+  },
+  {
+    "id": "g5",
+    "category": "grammar",
+    "type": "sentence_transform",
+    "year": 2024,
+    "instruction": "Uzupełnij drugie zdanie tak, aby zachować sens pierwotnego. Użyj słowa kluczowego (2–5 wyrazów).",
+    "question": "People say that she discovered the formula by accident. (SAID)\nShe _______ the formula by accident.",
+    "answer": "is said to have discovered",
+    "explanation": "Reporting verb w stronie biernej: 'She is said to have discovered' — pasywna konstrukcja z 'to have + past participle' dla przeszłości."
+  },
+  {
+    "id": "g6",
+    "category": "grammar",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij zdania właściwą formą gramatyczną.",
+    "text": "Not only ___1___ (he / speak) three languages fluently, but he also ___2___ (manage) to learn basic Japanese during lockdown. Were he ___3___ (not / take) that online course, he would never have progressed so quickly.",
+    "blanks": [
+      { "num": 1, "hint": "inwersja not only", "answer": "does he speak" },
+      { "num": 2, "hint": "czas teraźniejszy", "answer": "managed" },
+      {
+        "num": 3,
+        "hint": "conditional inversion",
+        "answer": "not to have taken"
+      }
+    ],
+    "explanation": "Inwersja po 'not only': does he speak. Managed — czas przeszły. Were he not to have taken — inversion conditional 3rd."
+  },
+  {
+    "id": "uoe1",
+    "category": "use_of_english",
+    "type": "fill_blank",
+    "year": 2023,
+    "instruction": "Uzupełnij zdania jednym słowem pasującym do wszystkich luk (key word).",
+    "text": "1. She has a real _____ for languages — she picks them up effortlessly.\n2. The board gave the _____ to proceed with the new project.\n3. Common _____ suggests you should save before closing a document.",
+    "blanks": [
+      {
+        "num": 1,
+        "hint": "jedno słowo do wszystkich 3 zdań",
+        "answer": "sense"
+      }
+    ],
+    "explanation": "SENSE: talent/flair (sense for), permission (go-ahead... but here: make sense / common sense / give the go-ahead). Właściwe słowo: SENSE — sense for languages, gave the sense, common sense."
+  },
+  {
+    "id": "v5",
+    "category": "vocabulary",
+    "type": "fill_blank",
+    "year": 2022,
+    "instruction": "Utwórz właściwy wyraz pochodny od słowa w nawiasie.",
+    "text": "The government's ___1___ (hesitate) response to the crisis drew widespread ___2___ (criticise). Many experts argued that a more ___3___ (decide) action plan should have been implemented from the ___4___ (begin).",
+    "blanks": [
+      { "num": 1, "hint": "przymiotnik", "answer": "hesitant" },
+      { "num": 2, "hint": "rzeczownik", "answer": "criticism" },
+      { "num": 3, "hint": "przymiotnik", "answer": "decisive" },
+      { "num": 4, "hint": "rzeczownik", "answer": "beginning" }
+    ],
+    "explanation": "hesitate→hesitant (adj), criticise→criticism (noun), decide→decisive (adj), begin→beginning (noun)"
+  },
+  {
+    "id": "w4",
+    "category": "writing",
+    "type": "essay",
+    "year": 2024,
+    "instruction": "Napisz esej argumentacyjny (200–250 słów). Przedstaw argumenty za i przeciw, a następnie wyraź własną opinię.",
+    "question": "'Artificial intelligence will eliminate more jobs than it creates over the next 20 years.' Discuss this statement and give your opinion.",
+    "answer": "",
+    "explanation": "Kryteria oceny (CKE matura rozszerzona):\n• Treść: teza, argumenty za (np. automatyzacja, koszty), argumenty przeciw (nowe branże AI, historia rewolucji przemysłowej), własna opinia.\n• Spójność: akapity, łączniki (however, nevertheless, on the other hand).\n• Słownictwo: unikaj powtórzeń, użyj kolokacji (job displacement, labour market, emerging industries).\n• Gramatyka: różnorodne struktury, tryb warunkowy, strona bierna.\n• Długość: 200–250 słów."
+  },
+  {
+    "id": "l3",
+    "category": "listening_text",
+    "type": "multiple_choice",
+    "year": 2024,
+    "instruction": "Przeczytaj transkrypt i zaznacz właściwą odpowiedź.",
+    "text": "HOST: Today on 'Green Futures' we speak with marine biologist Dr. Clara Voss about coral reef restoration. Dr. Voss, how hopeful are you?\nDR. VOSS: Cautiously optimistic. The lab-grown coral techniques we've been piloting show a 70% survival rate after transplantation — that's a significant improvement from the 30% we saw a decade ago. But I want to be honest: we can restore reefs all we like, but if ocean temperatures keep rising due to climate change, those restored corals will bleach again within years. Restoration is a stopgap, not a solution.\nHOST: What's the most promising development you've seen recently?\nDR. VOSS: Thermal-resistant coral strains. Researchers in Hawaii and Australia have been selectively breeding corals that can tolerate warmer temperatures. It's essentially assisted evolution. If we can scale that up, we might be able to buy enough time for broader climate action to take effect.",
+    "question": "What does Dr. Voss say about coral restoration efforts?",
+    "options": [
+      "A. They are a permanent solution to the coral reef crisis.",
+      "B. They are effective but will not succeed without addressing climate change.",
+      "C. The survival rate of transplanted corals has remained unchanged for a decade.",
+      "D. She is fully confident that restoration alone will save coral reefs."
+    ],
+    "answer": "B",
+    "explanation": "Dr. Voss mówi: 'Restoration is a stopgap, not a solution' i ostrzega, że bez działań klimatycznych rafy będą ponownie blaknąć. Odpowiedź B."
+  }
+]
