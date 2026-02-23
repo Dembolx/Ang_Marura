@@ -1,0 +1,218 @@
+[
+  {
+    "id": "p_gram_001",
+    "category": "basic_grammar",
+    "type": "fill_blank",
+    "instruction": "Uzupełnij zdanie poprawną formą czasownika w czasie Present Simple.",
+    "question": "She _______ (to work) in a hospital.",
+    "answer": "works",
+    "translation": "Ona pracuje w szpitalu.",
+    "explanation": "W czasie Present Simple dla trzeciej osoby liczby pojedynczej (he, she, it) dodajemy końcówkę -s do czasownika."
+  },
+  {
+    "id": "p_gram_002",
+    "category": "basic_grammar",
+    "type": "multiple_choice",
+    "instruction": "Wybierz poprawną odpowiedź.",
+    "question": "They _______ to the cinema yesterday.",
+    "options": ["A. go", "B. went", "C. gone", "D. goes"],
+    "answer": "B",
+    "translation": "Oni poszli do kina wczoraj.",
+    "explanation": "'Yesterday' (wczoraj) to charakterystyczne określenie czasu dla Past Simple. Poprawna forma to 'went'."
+  },
+  {
+    "id": "p_gram_003",
+    "category": "basic_grammar",
+    "type": "sentence_transform",
+    "instruction": "Uzupełnij drugie zdanie, aby znaczyło to samo co pierwsze. Użyj podanego słowa.",
+    "question": "I am 14 years old. My brother is 16 years old. (OLDER)\nMy brother is _______ me.",
+    "answer": "older than",
+    "translation": "Mój brat jest starszy ode mnie.",
+    "explanation": "Do porównania przymiotników używamy 'older than' (starszy niż)."
+  },
+  {
+    "id": "p_gram_004",
+    "category": "basic_grammar",
+    "type": "fill_blank",
+    "instruction": "Uzupełnij pytanie odpowiednim słowem.",
+    "question": "_______ do you usually get up in the morning? (AT WHAT TIME?)",
+    "answer": "When",
+    "translation": "Kiedy zazwyczaj wstajesz rano?",
+    "explanation": "Pytanie o czas rozpoczynamy od słówka 'When' (Kiedy)."
+  },
+  {
+    "id": "p_gram_005",
+    "category": "basic_grammar",
+    "type": "fill_blank",
+    "instruction": "Uzupełnij zdanie odpowiednią formą 'there is' lub 'there are'.",
+    "question": "_______ a book on the table.",
+    "answer": "There is",
+    "translation": "Na stole jest książka.",
+    "explanation": "'There is' używamy dla rzeczowników w liczbie pojedynczej (a book)."
+  },
+  {
+    "id": "p_gram_006",
+    "category": "basic_grammar",
+    "type": "multiple_choice",
+    "instruction": "Wybierz poprawny zaimek dzierżawczy.",
+    "question": "This is not my phone. It's _______.",
+    "options": ["A. her", "B. hers", "C. she", "D. him"],
+    "answer": "B",
+    "translation": "To nie jest mój telefon. To jest jej.",
+    "explanation": "Po 'It's' używamy zaimka dzierżawczego 'hers' (jej), który stoi samodzielnie, bez rzeczownika."
+  },
+  {
+    "id": "p_voc_001",
+    "category": "basic_vocabulary",
+    "type": "fill_blank",
+    "instruction": "Przetłumacz fragment w nawiasie na język angielski.",
+    "question": "I'd like a glass of _______ (woda), please.",
+    "answer": "water",
+    "translation": "Poproszę szklankę wody.",
+    "explanation": "'Woda' po angielsku to 'water'."
+  },
+  {
+    "id": "p_voc_002",
+    "category": "basic_vocabulary",
+    "type": "multiple_choice",
+    "instruction": "Wybierz słowo, które najlepiej pasuje do zdania.",
+    "question": "My mother's brother is my _______.",
+    "options": ["A. cousin", "B. uncle", "C. nephew", "D. grandfather"],
+    "answer": "B",
+    "translation": "Brat mojej mamy to mój wujek.",
+    "explanation": "'Uncle' oznacza wujka."
+  },
+  {
+    "id": "p_voc_003",
+    "category": "basic_vocabulary",
+    "type": "fill_blank",
+    "instruction": "Podaj angielskie słowo pasujące do opisu.",
+    "question": "A place where you can borrow books. (l_______y)",
+    "answer": "library",
+    "translation": "Miejsce, w którym można wypożyczać książki.",
+    "explanation": "Poprawna odpowiedź to 'library' (biblioteka)."
+  },
+  {
+    "id": "p_voc_004",
+    "category": "basic_vocabulary",
+    "type": "fill_blank",
+    "instruction": "Uzupełnij zdanie odpowiednim przymiotnikiem.",
+    "question": "I am very _______ (zmęczony) after work.",
+    "answer": "tired",
+    "translation": "Jestem bardzo zmęczony po pracy.",
+    "explanation": "'Zmęczony' po angielsku to 'tired'."
+  },
+  {
+    "id": "p_read_001",
+    "category": "basic_reading",
+    "type": "true_false_ng",
+    "instruction": "Przeczytaj tekst i zdecyduj, czy zdanie jest prawdziwe (TRUE), fałszywe (FALSE).",
+    "text": "Hi! My name is Tom and I live in London. I have a younger sister, Anna. She is 10 years old. My favorite subject at school is History. I don't like Maths because it's difficult.",
+    "question": "Tom's sister is older than him.",
+    "options": ["A. TRUE", "B. FALSE"],
+    "answer": "B",
+    "translation": "Tom mówi, że ma młodszą siostrę (younger sister), więc nie jest od niego starsza.",
+    "explanation": "W tekście jest: 'I have a younger sister', co oznacza, że siostra jest młodsza. Zdanie jest fałszywe."
+  },
+  {
+    "id": "p_read_002",
+    "category": "basic_reading",
+    "type": "multiple_choice",
+    "instruction": "Przeczytaj tekst i wybierz właściwą odpowiedź.",
+    "text": "Anna gets up at 7 o'clock every morning. She has breakfast at 7:30. Then she goes to school by bus. Her first lesson starts at 8:45.",
+    "question": "How does Anna get to school?",
+    "options": ["A. By car", "B. On foot", "C. By bus", "D. By bike"],
+    "answer": "C",
+    "translation": "Anna jeździ do szkoły autobusem.",
+    "explanation": "W tekście jest: 'she goes to school by bus'."
+  },
+  {
+    "id": "p_list_001",
+    "category": "basic_listening",
+    "type": "fill_blank",
+    "instruction": "Posłuchaj nagrania (lub przeczytaj transkrypt) i uzupełnij zdanie.",
+    "text": "MAN: Excuse me, how much is this blue T-shirt?\nWOMAN: It's $15, but there is a 10% discount today.\nMAN: Great, I'll take it.",
+    "question": "The man wants to buy a blue _______.",
+    "answer": "T-shirt",
+    "translation": "Mężczyzna chce kupić niebieską koszulkę.",
+    "explanation": "Mężczyzna pyta o cenę 'this blue T-shirt'."
+  },
+  {
+    "id": "p_list_002",
+    "category": "basic_listening",
+    "type": "multiple_choice",
+    "instruction": "Przeczytaj transkrypt rozmowy i wybierz właściwą odpowiedź.",
+    "text": "GIRL: What are you doing this weekend, Mark?\nBOY: I'm going to the beach with my family on Saturday. On Sunday, I'm staying home to play video games.",
+    "question": "What is Mark doing on Saturday?",
+    "options": [
+      "A. Playing video games.",
+      "B. Staying at home.",
+      "C. Going to the beach.",
+      "D. Visiting his family."
+    ],
+    "answer": "C",
+    "translation": "Co Mark robi w sobotę?",
+    "explanation": "Mark mówi: 'I'm going to the beach with my family on Saturday'."
+  },
+  {
+    "id": "p_write_001",
+    "category": "basic_writing",
+    "type": "email",
+    "instruction": "Napisz e-mail do kolegi z Anglii. Użyj 30-50 słów.",
+    "question": "Napisz do kolegi Toma. Podziękuj mu za email. Napisz, że w weekend idziesz do kina. Zapytaj go, co u niego słychać.",
+    "answer": "",
+    "translation": "",
+    "explanation": "Pamiętaj o: 1) Nagłówku (Hi Tom,), 2) Podziękowaniu (Thanks for your email), 3) Informacji o kinie (I'm going to the cinema this weekend), 4) Pytaniu (What about you?)."
+  },
+  {
+    "id": "p_write_002",
+    "category": "basic_writing",
+    "type": "email",
+    "instruction": "Napisz e-mail do kolegi z Anglii. Użyj 30-50 słów.",
+    "question": "Twój angielski przyjaciel, Jack, wysłał Ci zdjęcie swojego nowego psa. Odpowiedz na email: napisz, że pies jest słodki (cute), powiedz, że Ty też masz kota, i zapytaj, jak ma na imię pies.",
+    "answer": "",
+    "translation": "",
+    "explanation": "Użyj zwrotów: 'He is so cute!', 'I have a cat too.', 'What is his name?'."
+  },
+  {
+    "id": "p_gram_007",
+    "category": "basic_grammar",
+    "type": "fill_blank",
+    "instruction": "Uzupełnij zdanie czasownikiem 'have got' lub 'has got'.",
+    "question": "My sister _______ a new bicycle.",
+    "answer": "has got",
+    "translation": "Moja siostra ma nowy rower.",
+    "explanation": "Dla trzeciej osoby liczby pojedynczej (my sister) używamy 'has got'."
+  },
+  {
+    "id": "p_voc_005",
+    "category": "basic_vocabulary",
+    "type": "fill_blank",
+    "instruction": "Podaj przeciwieństwo podanego słowa.",
+    "question": "The opposite of 'big' is _______.",
+    "answer": "small",
+    "translation": "Przeciwieństwem 'duży' jest 'mały'.",
+    "explanation": "Przeciwieństwem 'big' (duży) jest 'small' (mały)."
+  },
+  {
+    "id": "p_gram_008",
+    "category": "basic_grammar",
+    "type": "fill_blank",
+    "instruction": "Uzupełnij zdanie odpowiednim przyimkiem czasu: in, on, at.",
+    "question": "I usually get up _______ 7:00.",
+    "answer": "at",
+    "translation": "Zazwyczaj wstaję o 7:00.",
+    "explanation": "Przyimka 'at' używamy przed godzinami."
+  },
+  {
+    "id": "p_gram_009",
+    "category": "basic_grammar",
+    "type": "multiple_choice",
+    "instruction": "Wybierz poprawną formę.",
+    "question": "Look! It _______ outside.",
+    "options": ["A. snows", "B. is snowing", "C. snow", "D. has snowed"],
+    "answer": "B",
+    "translation": "Popatrz! Na zewnątrz pada śnieg.",
+    "explanation": "'Look!' wskazuje, że czynność dzieje się w momencie mówienia, więc używamy czasu Present Continuous."
+  }
+]
