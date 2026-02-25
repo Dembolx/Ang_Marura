@@ -669,6 +669,9 @@
         <button class="nav-btn" onclick="showView('db-config')">
           🗄️ Baza danych
         </button>
+        <button class="nav-btn" onclick="showView('import')">
+          📥 Import JSON
+        </button>
       </nav>
     </header>
 
@@ -851,19 +854,164 @@
           </div>
         </div>
       </div>
+
+      <!-- IMPORT VIEW -->
+      <div id="view-import" class="view">
+        <div
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.4rem;
+          "
+        >
+          📥 Import zadań z JSON
+        </div>
+        <div
+          style="
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.75rem;
+          "
+        >
+          Wgraj plik JSON lub wklej dane — zadania zostaną dodane do bazy danych
+        </div>
+
+        <div class="db-config">
+          <h3>// 1. Wybierz źródło</h3>
+          <div
+            style="
+              display: flex;
+              gap: 0.75rem;
+              flex-wrap: wrap;
+              margin-bottom: 1rem;
+            "
+          >
+            <label
+              class="btn btn-primary"
+              style="
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              📂 Wczytaj plik JSON
+              <input
+                type="file"
+                id="json-file-input"
+                accept=".json"
+                style="display: none"
+                onchange="loadJSONFile(event)"
+              />
+            </label>
+            <button
+              class="btn btn-secondary"
+              onclick="
+                document.getElementById('json-paste').style.display = 'block'
+              "
+            >
+              📋 Wklej JSON
+            </button>
+            <button class="btn btn-secondary" onclick="loadBuiltinJSON()">
+              ⚡ Załaduj wbudowane zadania
+            </button>
+          </div>
+          <textarea
+            id="json-paste"
+            class="ex-input"
+            style="
+              display: none;
+              min-height: 160px;
+              font-family: &quot;DM Mono&quot;, monospace;
+              font-size: 0.78rem;
+            "
+            placeholder='[{"id":"r001","category":"reading",...}]'
+            oninput="parseJSONPaste()"
+          ></textarea>
+        </div>
+
+        <div class="db-config" id="import-preview" style="display: none">
+          <h3>// 2. Podgląd importu</h3>
+          <div
+            id="import-summary"
+            style="
+              font-family: &quot;DM Mono&quot;, monospace;
+              font-size: 0.82rem;
+              line-height: 2;
+              margin-bottom: 1rem;
+            "
+          ></div>
+          <div
+            id="import-table-wrap"
+            style="overflow-x: auto; max-height: 320px; overflow-y: auto"
+          ></div>
+        </div>
+
+        <div class="db-config" id="import-action" style="display: none">
+          <h3>// 3. Wykonaj import</h3>
+          <div
+            style="
+              display: flex;
+              gap: 0.75rem;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <button class="btn btn-primary" id="push-btn" onclick="pushToDB()">
+              🚀 Push do bazy danych
+            </button>
+            <button class="btn btn-secondary" onclick="clearImport()">
+              🗑 Wyczyść
+            </button>
+            <label
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                cursor: pointer;
+              "
+            >
+              <input
+                type="checkbox"
+                id="skip-duplicates"
+                checked
+                style="accent-color: var(--accent)"
+              />
+              Pomiń duplikaty (ON CONFLICT DO NOTHING)
+            </label>
+          </div>
+          <div
+            id="push-log"
+            style="
+              margin-top: 1rem;
+              font-family: &quot;DM Mono&quot;, monospace;
+              font-size: 0.78rem;
+              line-height: 1.8;
+              max-height: 200px;
+              overflow-y: auto;
+            "
+          ></div>
+        </div>
+      </div>
     </main>
 
     <script type="module">
-      import { neon } from "https://esm.sh/@neondatabase/serverless@1.0.0";
+      // Neon serverless driver przez esm.sh — Pool używa WebSocket, działa w przeglądarce
+      import {
+        Pool,
+        neonConfig,
+      } from "https://esm.sh/@neondatabase/serverless@1.0.0";
 
       // =====================================================
-      // KONFIGURACJA — Neon Serverless Driver v1
+      // KONFIGURACJA — Neon Pool (WebSocket, przeglądarka)
       // =====================================================
       const CONNECTION_STRING =
         "postgresql://neondb_owner:npg_w4bAGP3HiZYa@ep-old-moon-agtpam3x-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require";
 
-      // neon() zwraca tagged-template funkcję z właściwością .query() dla dynamicznych zapytań
-      const _db = neon(CONNECTION_STRING);
+      // Pool obsługuje dynamiczne zapytania z parametrami — bez problemu tagged-template
+      const _pool = new Pool({ connectionString: CONNECTION_STRING });
 
       const CONFIG = {
         get user() {
@@ -883,13 +1031,9 @@
       // =====================================================
       // API HELPER — sql(query, params)
       // =====================================================
-      // _db.query(string, params[]) — oficjalne API dla dynamicznych stringów w v1.x
-      // (tagged template jest bezpieczniejsze ale wymaga literałów, nie zmiennych)
       async function sql(query, params = []) {
-        const rows = await _db.query(query, params);
-        // .query() w v1.x zwraca tablicę wierszy bezpośrednio
-        if (Array.isArray(rows)) return rows;
-        return rows.rows ?? rows;
+        const result = await _pool.query(query, params);
+        return result.rows;
       }
 
       // =====================================================
@@ -1539,6 +1683,244 @@
       init();
 
       // Eksport funkcji do globalnego scope (wymagany przy type="module")
+      // =====================================================
+      // IMPORT JSON → NEON DB
+      // =====================================================
+      let importData = [];
+
+      function loadJSONFile(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const parsed = JSON.parse(e.target.result);
+            importData = Array.isArray(parsed) ? parsed : [parsed];
+            renderImportPreview();
+          } catch (err) {
+            logPush("Blad parsowania pliku: " + err.message, "error");
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      function parseJSONPaste() {
+        const val = document.getElementById("json-paste").value.trim();
+        if (!val) {
+          importData = [];
+          return;
+        }
+        try {
+          const parsed = JSON.parse(val);
+          importData = Array.isArray(parsed) ? parsed : [parsed];
+          renderImportPreview();
+        } catch (e) {
+          /* niepelny JSON */
+        }
+      }
+
+      function loadBuiltinJSON() {
+        logPush(
+          "Wbudowane zadania sa juz w bazie. Wczytaj nowy plik JSON z dysku.",
+          "info",
+        );
+      }
+
+      function clearImport() {
+        importData = [];
+        document.getElementById("import-preview").style.display = "none";
+        document.getElementById("import-action").style.display = "none";
+        document.getElementById("push-log").innerHTML = "";
+        document.getElementById("json-paste").value = "";
+        document.getElementById("json-paste").style.display = "none";
+        const fi = document.getElementById("json-file-input");
+        if (fi) fi.value = "";
+      }
+
+      async function renderImportPreview() {
+        const preview = document.getElementById("import-preview");
+        const action = document.getElementById("import-action");
+        if (!importData.length) {
+          preview.style.display = "none";
+          action.style.display = "none";
+          return;
+        }
+
+        let existingIds = new Set();
+        try {
+          const rows = await sql("SELECT id FROM exercises");
+          rows.forEach((r) => existingIds.add(r.id));
+        } catch (e) {}
+
+        const newItems = importData.filter((e) => !existingIds.has(e.id));
+        const dupItems = importData.filter((e) => existingIds.has(e.id));
+
+        const catCounts = {};
+        importData.forEach((e) => {
+          const cat = e.category || "unknown";
+          catCounts[cat] = (catCounts[cat] || 0) + 1;
+        });
+
+        document.getElementById("import-summary").innerHTML =
+          'Lacznie w pliku: <strong style="color:var(--accent)">' +
+          importData.length +
+          "</strong>\n" +
+          'Nowe (do dodania): <strong style="color:var(--success)">' +
+          newItems.length +
+          "</strong>\n" +
+          'Duplikaty (juz w bazie): <strong style="color:var(--warn)">' +
+          dupItems.length +
+          "</strong>\n\n" +
+          "Kategorie:\n" +
+          Object.entries(catCounts)
+            .map(
+              ([k, v]) =>
+                "  " +
+                (CATEGORIES[k]
+                  ? CATEGORIES[k].icon + " " + CATEGORIES[k].name
+                  : k) +
+                ": " +
+                v,
+            )
+            .join("\n");
+
+        const preview50 = importData.slice(0, 50);
+        let tbl =
+          '<table style="width:100%;border-collapse:collapse;font-size:.78rem"><thead><tr>' +
+          ["ID", "Kategoria", "Typ", "Rok", "Status"]
+            .map(
+              (h) =>
+                '<th style="text-align:left;padding:.4rem .75rem;border-bottom:1px solid var(--border);color:var(--text-muted)">' +
+                h +
+                "</th>",
+            )
+            .join("") +
+          "</tr></thead><tbody>";
+
+        preview50.forEach((e) => {
+          const isDup = existingIds.has(e.id);
+          tbl +=
+            '<tr style="opacity:' +
+            (isDup ? ".6" : "1") +
+            '">' +
+            "<td style=\"padding:.35rem .75rem;border-bottom:1px solid rgba(42,45,58,.4);font-family:'DM Mono',monospace;color:var(--accent2)\">" +
+            e.id +
+            "</td>" +
+            '<td style="padding:.35rem .75rem;border-bottom:1px solid rgba(42,45,58,.4)">' +
+            (CATEGORIES[e.category]
+              ? CATEGORIES[e.category].icon + " " + e.category
+              : e.category || "-") +
+            "</td>" +
+            '<td style="padding:.35rem .75rem;border-bottom:1px solid rgba(42,45,58,.4);color:var(--text-muted)">' +
+            (e.type || "-") +
+            "</td>" +
+            '<td style="padding:.35rem .75rem;border-bottom:1px solid rgba(42,45,58,.4);color:var(--text-muted)">' +
+            (e.year || "-") +
+            "</td>" +
+            '<td style="padding:.35rem .75rem;border-bottom:1px solid rgba(42,45,58,.4);color:' +
+            (isDup ? "var(--warn)" : "var(--success)") +
+            '">' +
+            (isDup ? "duplikat" : "nowe") +
+            "</td>" +
+            "</tr>";
+        });
+        if (importData.length > 50)
+          tbl +=
+            '<tr><td colspan="5" style="padding:.5rem .75rem;color:var(--text-muted)">... i ' +
+            (importData.length - 50) +
+            " wiecej</td></tr>";
+        tbl += "</tbody></table>";
+
+        document.getElementById("import-table-wrap").innerHTML = tbl;
+        preview.style.display = "block";
+        action.style.display = "block";
+        document.getElementById("push-log").innerHTML = "";
+      }
+
+      async function pushToDB() {
+        const skipDups = document.getElementById("skip-duplicates").checked;
+        const btn = document.getElementById("push-btn");
+        btn.disabled = true;
+        btn.textContent = "Importuje...";
+        const log = document.getElementById("push-log");
+        log.innerHTML = "";
+        let inserted = 0,
+          errors = 0;
+
+        logPush(
+          "Rozpoczynam import " + importData.length + " zadan...",
+          "info",
+        );
+
+        for (let i = 0; i < importData.length; i++) {
+          const e = importData[i];
+          const conflictClause = skipDups
+            ? "ON CONFLICT (id) DO NOTHING"
+            : "ON CONFLICT (id) DO UPDATE SET category_id=EXCLUDED.category_id, type=EXCLUDED.type, year=EXCLUDED.year, instruction=EXCLUDED.instruction, text=EXCLUDED.text, question=EXCLUDED.question, answer=EXCLUDED.answer, explanation=EXCLUDED.explanation, options=EXCLUDED.options, blanks=EXCLUDED.blanks";
+
+          try {
+            await sql(
+              "INSERT INTO exercises (id,category_id,level,type,year,instruction,text,question,answer,explanation,options,blanks) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) " +
+                conflictClause,
+              [
+                e.id,
+                e.category || null,
+                "rozszerzony",
+                e.type || null,
+                e.year || null,
+                e.instruction || null,
+                e.text || null,
+                e.question || null,
+                e.answer || null,
+                e.explanation || null,
+                e.options ? JSON.stringify(e.options) : null,
+                e.blanks ? JSON.stringify(e.blanks) : null,
+              ],
+            );
+            if (i % 10 === 0 || i === importData.length - 1)
+              logPush(
+                "[" + (i + 1) + "/" + importData.length + "] " + e.id + " OK",
+                "ok",
+              );
+            inserted++;
+          } catch (err) {
+            logPush("[" + (i + 1) + "] " + e.id + ": " + err.message, "error");
+            errors++;
+          }
+        }
+
+        try {
+          exercises = await sql(
+            "SELECT * FROM exercises WHERE level = 'rozszerzony' ORDER BY id",
+          );
+        } catch (e) {}
+        logPush(
+          "Import zakonczony! Wstawiono: " + inserted + "  Bledy: " + errors,
+          errors === 0 ? "done" : "warn",
+        );
+        setDBStatus("connected", "Polaczono - " + exercises.length + " zadan");
+        btn.disabled = false;
+        btn.textContent = "Push do bazy danych";
+      }
+
+      function logPush(msg, type) {
+        const log = document.getElementById("push-log");
+        if (!log) return;
+        const colors = {
+          info: "var(--text-muted)",
+          ok: "var(--success)",
+          error: "var(--error)",
+          done: "var(--accent)",
+          warn: "var(--warn)",
+        };
+        const div = document.createElement("div");
+        div.style.color = colors[type] || "var(--text)";
+        div.style.whiteSpace = "pre";
+        div.textContent = msg;
+        log.appendChild(div);
+        log.scrollTop = log.scrollHeight;
+      }
+
       Object.assign(window, {
         init,
         showView,
@@ -1553,6 +1935,11 @@
         selfGrade,
         renderStats,
         loadSessionHistory,
+        loadJSONFile,
+        parseJSONPaste,
+        loadBuiltinJSON,
+        clearImport,
+        pushToDB,
       });
     </script>
   </body>
