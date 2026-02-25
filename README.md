@@ -1,186 +1,282 @@
-# 🗄️ Instrukcja: Podłączenie projektu Matura EN do Neon PostgreSQL
+MATURA EN TRENER
+Aplikacja webowa do nauki angielskiego na poziomie maturalnym (podstawowym i rozszerzonym). System śledzi postępy użytkownika, zapisuje historię odpowiedzi i synchronizuje dane z bazą PostgreSQL (Neon).
 
-## Krok 1 — Uruchomienie SQL w konsoli Neon
+https://img.shields.io/badge/status-aktywny-success
+https://img.shields.io/badge/database-Neon%2520PostgreSQL-blue
+https://img.shields.io/badge/license-MIT-green
 
-1. Otwórz konsolę Neon: `https://console.neon.tech`
-2. Wybierz swój projekt i kliknij **SQL Editor**
-3. Wgraj plik `matura_schema.sql` lub wklej całą jego zawartość
-4. Kliknij **Run** (lub Ctrl+Enter)
+📋 Spis treści
+Funkcje
 
-> ✅ Powinna pojawić się informacja o sukcesie. Tabele zostaną utworzone:
->
-> - `categories` — kategorie zadań
-> - `exercises` — wszystkie zadania z bazą wiedzy
-> - `user_progress` — postępy użytkownika
-> - `session_history` — historia sesji
-> - `user_streak` — seria dni
+Technologie
 
----
+Struktura bazy danych
 
-## Krok 2 — Włączenie REST API w Neon
+Konfiguracja
 
-Neon udostępnia REST API przez **Neon HTTP API** (PostgREST-style).
+Użycie
 
-**Twój URL REST:**
+Import zadań z JSON
 
-```
-https://ep-old-moon-agtpam3x.apirest.c-2.eu-central-1.aws.neon.tech/neondb/rest/v1
-```
+Struktura zadania w JSON
 
-Sprawdź czy działa, wchodząc w przeglądarkę:
+Rozwój projektu
 
-```
-https://ep-old-moon-agtpam3x.apirest.c-2.eu-central-1.aws.neon.tech/neondb/rest/v1/categories
-```
+Autor
 
-Powinnaś zobaczyć JSON z kategoriami.
+✨ Funkcje
+Dla użytkownika
+Dwa poziomy trudności: podstawowy (PP) i rozszerzony (PR)
 
----
+Kategorie zadań: gramatyka, słownictwo, czytanie, słuchanie, pisanie, Use of English
 
-## Krok 3 — Weryfikacja danych
+Różne typy zadań: multiple choice, fill the blank, true/false/not given, transformacje, email, esej
 
-Po wykonaniu SQL sprawdź czy dane są w bazie:
+Śledzenie postępów: statystyki skuteczności, liczba wykonanych zadań, seria dni
 
-```sql
--- Liczba zadań
-SELECT COUNT(*) FROM exercises;
+Historia odpowiedzi: przeglądanie poprzednich odpowiedzi z wyjaśnieniami
 
--- Zadania wg kategorii
-SELECT category_id, COUNT(*) FROM exercises GROUP BY category_id;
+Teoria i hacki: kompletne kompendium wiedzy z przykładami i wskazówkami
 
--- Kategorie
-SELECT * FROM categories;
-```
+Import własnych zadań: wgrywanie plików JSON z nowymi zadaniami
 
----
+Dla developera
+Serverless PostgreSQL: połączenie z Neon przez driver @neondatabase/serverless
 
-## Krok 4 — Otwórz plik HTML
+Automatyczne tworzenie tabel: skrypt SQL tworzy wszystkie potrzebne tabele
 
-Plik `matura_neon.html` to gotowy projekt z integracją.
+Indeksy wydajnościowe: zoptymalizowane zapytania
 
-1. Otwórz plik w przeglądarce (dwuklik lub drag & drop)
-2. Na dole ekranu pojawi się wskaźnik połączenia:
-   - 🟡 **Łączenie** — trwa nawiązywanie połączenia
-   - 🟢 **Połączono** — wszystko działa
-   - 🔴 **Błąd** — problem z połączeniem
+Responsywny interfejs: działa na desktopie i urządzeniach mobilnych
 
----
+🛠 Technologie
+Frontend: HTML5, CSS3, JavaScript (ES6+), moduły ES6
 
-## Krok 5 — Konfiguracja (jeśli potrzebna)
+Backend: Neon PostgreSQL (serverless)
 
-Kliknij przycisk **🗄️ Baza danych** w nawigacji.
+Baza danych: PostgreSQL 15+
 
-Wypełnij pola:
+Driver: @neondatabase/serverless (https://esm.sh/)
 
-- **API Base URL**: `https://ep-old-moon-agtpam3x.apirest.c-2.eu-central-1.aws.neon.tech/neondb/rest/v1`
-- **API Key**: pozostaw puste (jeśli baza jest publiczna) lub wpisz token
-- **User ID**: dowolny identyfikator, np. `jan` lub `default`
+Czcionki: Google Fonts (Playfair Display, DM Mono, DM Sans)
 
-Kliknij **💾 Zapisz i połącz**, a następnie **🔌 Test połączenia**.
+🗄 Struktura bazy danych
+Tabele główne
+categories
+sql
 
----
+- id: TEXT PRIMARY KEY
+- name: TEXT
+- icon: TEXT
+- description: TEXT
+- color: TEXT
+- level: TEXT DEFAULT 'rozszerzony'
+  exercises
+  sql
+- id: TEXT PRIMARY KEY
+- category_id: TEXT REFERENCES categories(id)
+- type: TEXT (multiple_choice, fill_blank, true_false_ng, sentence_transform, essay, email, open_answer)
+- year: INT
+- instruction: TEXT
+- text: TEXT
+- question: TEXT
+- options: JSONB
+- blanks: JSONB
+- answer: TEXT
+- explanation: TEXT
+- translation: TEXT
+- level: TEXT DEFAULT 'rozszerzony'
+- created_at: TIMESTAMPTZ DEFAULT NOW()
+  user_progress
+  sql
+- id: SERIAL PRIMARY KEY
+- user_id: TEXT DEFAULT 'default'
+- exercise_id: TEXT REFERENCES exercises(id)
+- attempts: INT DEFAULT 0
+- correct: INT DEFAULT 0
+- last_seen: TIMESTAMPTZ DEFAULT NOW()
+  answer_history
+  sql
+- id: SERIAL PRIMARY KEY
+- user_id: TEXT NOT NULL
+- exercise_id: TEXT NOT NULL
+- is_correct: BOOLEAN NOT NULL
+- user_answer: TEXT
+- answered_at: TIMESTAMPTZ DEFAULT NOW()
+  session_history
+  sql
+- id: SERIAL PRIMARY KEY
+- user_id: TEXT DEFAULT 'default'
+- category_id: TEXT NOT NULL
+- score: INT NOT NULL
+- total: INT NOT NULL
+- duration_seconds: INT
+- level: TEXT DEFAULT 'rozszerzony'
+- played_at: TIMESTAMPTZ DEFAULT NOW()
+  user_streak
+  sql
+- user_id: TEXT PRIMARY KEY DEFAULT 'default'
+- streak_count: INT DEFAULT 0
+- last_date: DATE
+  ⚙️ Konfiguracja
 
-## Krok 6 — Jak działa integracja
+1. Połączenie z bazą Neon
+   Aplikacja korzysta z gotowego połączenia do Neon PostgreSQL:
 
-| Akcja w aplikacji   | Zapytanie do Neon                                             |
-| ------------------- | ------------------------------------------------------------- |
-| Ładowanie kategorii | `GET /categories`                                             |
-| Ładowanie zadań     | `GET /exercises?level=eq.rozszerzony`                         |
-| Pobranie postępów   | `GET /user_progress?user_id=eq.{user}`                        |
-| Zapis odpowiedzi    | `POST /user_progress` (upsert)                                |
-| Zapis sesji         | `POST /session_history`                                       |
-| Podgląd historii    | `GET /session_history?user_id=eq.{user}&order=played_at.desc` |
-| Reset postępów      | `DELETE /user_progress?user_id=eq.{user}`                     |
+javascript
+const CONNECTION_STRING = 'postgresql://neondb_owner:npg_w4bAGP3HiZYa@ep-old-moon-agtpam3x-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require';
+const \_db = neon(CONNECTION_STRING); 2. Inicjalizacja bazy
+Skrypt SQL do stworzenia wszystkich tabel znajduje się w pliku schema.sql. Możesz go wykonać w konsoli Neon lub automatycznie przez aplikację (funkcja ensureTables()).
 
----
+3. Konfiguracja użytkownika
+   W panelu "Baza" możesz ustawić własny identyfikator użytkownika (domyślnie 'default'):
 
-## Krok 7 — Dodawanie nowych zadań
+Kliknij zakładkę 🗄️ Baza
 
-**Metoda 1: SQL Editor w Neon**
+Wpisz nazwę użytkownika (np. "jan_kowalski")
 
-```sql
-INSERT INTO exercises (id, category_id, type, year, instruction, question, options, answer, explanation, level)
-VALUES (
-  'moje-zadanie-001',
-  'grammar',
-  'sentence_transform',
-  2024,
-  'Uzupełnij drugie zdanie słowem kluczowym.',
-  'She was too tired to cook. (ENOUGH)\nShe was not _______ cook.',
-  NULL,
-  'energetic enough to',
-  'Too + adj → not + adj + enough + to-inf',
-  'rozszerzony'
-);
-```
+Kliknij 💾 Zapisz
 
-**Metoda 2: Przez API (fetch)**
+🚀 Użycie
+Uruchomienie
+Otwórz plik index.html w przeglądarce (przez serwer lokalny, np. Live Server)
 
-```javascript
-fetch(
-  "https://ep-old-moon-agtpam3x.apirest.c-2.eu-central-1.aws.neon.tech/neondb/rest/v1/exercises",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      id: "moje-zadanie-002",
-      category_id: "reading",
-      type: "multiple_choice",
-      // ...
-    }),
-  },
-);
-```
+Aplikacja automatycznie połączy się z bazą danych
 
----
+Wybierz poziom (Podstawowy/Rozszerzony)
 
-## Rozwiązywanie problemów
+Kliknij kategorię i rozpocznij naukę!
 
-### ❌ "CORS error" w przeglądarce
+Tryb nauki
+Wybór poziomu: kliknij "Podstawowy (PP)" lub "Rozszerzony (PR)"
 
-- Neon REST API może nie zezwalać na żądania z localhost.
-- **Rozwiązanie**: Hostuj plik HTML na serwerze (np. GitHub Pages, Netlify, Vercel).
+Wybór kategorii: wybierz interesującą Cię kategorię
 
-### ❌ "401 Unauthorized"
+Rozwiązywanie zadań: pojawia się losowe zadanie z wybranej kategorii
 
-- Baza wymaga tokenu API.
-- Pobierz go z: `Neon Console → Project → Settings → API Keys`
-- Wpisz w polu **API Key** w konfiguracji aplikacji.
+Odpowiedź: wybierz opcję, wpisz odpowiedź lub napisz tekst
 
-### ❌ "relation does not exist"
+Informacja zwrotna: system pokazuje czy odpowiedź jest poprawna + wyjaśnienie
 
-- Tabele nie zostały stworzone — wykonaj ponownie `matura_schema.sql`.
+Postępy: dane zapisują się automatycznie w bazie
 
-### ❌ Zadania się nie ładują
+Statystyki
+W zakładce 📊 Postępy znajdziesz:
 
-- Sprawdź czy URL REST jest poprawny.
-- Wejdź bezpośrednio: `{URL}/exercises` w przeglądarce.
+Historię sesji treningowych
 
----
+Wykresy skuteczności według kategorii
 
-## Struktura plików
+Procent poprawnych odpowiedzi
 
-```
-📁 Projekt
-├── matura_neon.html      ← aplikacja z integracją Neon
-├── matura_schema.sql     ← schemat bazy + dane wszystkich zadań
-└── INSTRUKCJA.md         ← ten plik
-```
+Teoria
+Zakładka 📖 Teoria zawiera kompletne kompendium:
 
----
+Czasy angielskie
 
-## Typy zadań w bazie danych
+Okresy warunkowe
 
-| Typ (`type`)         | Opis                        | Pola                       |
-| -------------------- | --------------------------- | -------------------------- |
-| `multiple_choice`    | Wybór A/B/C/D               | `options` (JSON), `answer` |
-| `true_false_ng`      | TRUE/FALSE/NOT GIVEN        | `options` (JSON), `answer` |
-| `fill_blank`         | Uzupełnianie luk            | `blanks` (JSON), `text`    |
-| `sentence_transform` | Transformacje (KEY WORD)    | `question`, `answer`       |
-| `essay`              | Wypowiedź pisemna           | `question`                 |
-| `email`              | E-mail formalny/nieformalny | `question`                 |
+Strona bierna
 
----
+Mowa zależna
 
-_Aplikacja zapisuje postępy automatycznie po każdej odpowiedzi._
-_Wszystkie dane przechowywane są w Neon PostgreSQL na Twoim koncie._
+Czasowniki modalne
+
+Słowotwórstwo
+
+Kolokacje
+
+Spójniki
+
+Pisanie esejów i e-maili
+
+Hacki do czytania
+
+Taktyka egzaminacyjna
+
+📥 Import zadań z JSON
+Format pliku JSON
+json
+[
+{
+"id": "p_gram_001",
+"category": "basic_grammar",
+"type": "fill_blank",
+"level": "podstawowy",
+"year": 2023,
+"instruction": "Uzupełnij zdanie poprawną formą czasownika.",
+"question": "She **\_\_\_** (to work) in a hospital.",
+"answer": "works",
+"explanation": "Dla trzeciej osoby liczby pojedynczej dodajemy końcówkę -s.",
+"translation": "Ona pracuje w szpitalu."
+},
+{
+"id": "p_read_001",
+"category": "basic_reading",
+"type": "true_false_ng",
+"level": "podstawowy",
+"instruction": "Przeczytaj tekst i zdecyduj TRUE/FALSE.",
+"text": "Tom lives in London with his family.",
+"question": "Tom lives in Paris.",
+"options": ["A. TRUE", "B. FALSE"],
+"answer": "B",
+"explanation": "Tekst mówi, że Tom mieszka w Londynie.",
+"translation": "Tom mieszka w Londynie z rodziną."
+}
+]
+Pola zadania
+Pole Typ Wymagane Opis
+id string ✅ Unikalny identyfikator
+category string ✅ ID kategorii (z categories.id)
+type string ✅ Typ zadania
+level string ✅ 'podstawowy' lub 'rozszerzony'
+year number ❌ Rok matury
+instruction string ❌ Instrukcja
+text string ❌ Tekst do czytania/słuchania
+question string ✅ Treść pytania
+options array ❌ Opcje (dla multiple_choice)
+answer string ✅ Poprawna odpowiedź
+explanation string ❌ Wyjaśnienie
+translation string ❌ Tłumaczenie na polski
+Typy zadań
+multiple_choice - wielokrotny wybór (wymaga options)
+
+fill_blank - uzupełnianie luk (może wymagać blanks)
+
+true_false_ng - prawda/fałsz/not given (wymaga options)
+
+sentence_transform - transformacje zdań
+
+essay - wypowiedź pisemna (esej)
+
+email - e-mail
+
+open_answer - odpowiedź otwarta
+
+🧪 Rozwój projektu
+Dodawanie nowych kategorii
+Dodaj kategorię do tabeli categories
+
+Dodaj wpis w obiekcie CATEGORIES w pliku HTML/JS
+
+Utwórz zadania z odpowiednim category_id
+
+Modyfikacja schematu bazy
+Jeśli potrzebujesz dodać kolumnę do tabeli:
+
+sql
+ALTER TABLE exercises ADD COLUMN IF NOT EXISTS new_column TEXT;
+Środowisko deweloperskie
+bash
+
+# Uruchom lokalny serwer
+
+python3 -m http.server 8000
+
+# lub
+
+npx live-server
+👨‍💻 Autor
+Projekt stworzony na potrzeby nauki języka angielskiego do matury.
+
+Matura EN Trener - Twoja droga do zdanej matury z angielskiego! 🎓
